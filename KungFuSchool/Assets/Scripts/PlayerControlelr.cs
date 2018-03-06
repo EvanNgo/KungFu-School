@@ -24,11 +24,11 @@ public class PlayerControlelr : MonoBehaviour {
         myAni.SetFloat("Speed", Mathf.Abs(move));
 		handleAttack ();
         if (move > 0 && !facingRight) {
-            faceCotnroll();
+			faceControll();
         }
         else if (move < 0 && facingRight)
         {
-            faceCotnroll();
+			faceControll();
         }
 
         if (Input.GetKey(KeyCode.Space))
@@ -55,7 +55,7 @@ public class PlayerControlelr : MonoBehaviour {
 		}
 	}
 
-    void faceCotnroll()
+    void faceControll()
     {
         facingRight = !facingRight;
         Vector3 theScale = transform.localScale;

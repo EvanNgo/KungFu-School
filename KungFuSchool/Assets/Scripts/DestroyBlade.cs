@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DestroyBlade : MonoBehaviour {
-	
+	public float aliveTime;
 	// Use this for initialization
 	void Start () {
 		

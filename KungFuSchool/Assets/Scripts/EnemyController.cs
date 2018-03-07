@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieController : MonoBehaviour {
+public class EnemyController : MonoBehaviour {
 	public Transform[] patrolpoints;
 	public Transform target;
 	public float moveSpeed;
@@ -31,7 +31,7 @@ public class ZombieController : MonoBehaviour {
 		anim = GetComponent<Animator>();
 		zomBody = GetComponent<Rigidbody2D>();
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (!(target.position.x + widthTarget <= rightPoint && target.position.x  + widthTarget >= leftPoint && Mathf.Abs((target.position.y - transform.position.y)) < target.GetComponent<SpriteRenderer>().bounds.size.y/1.5)) {
@@ -87,7 +87,7 @@ public class ZombieController : MonoBehaviour {
 	{	
 		if (collision.gameObject.tag == "Player")
 		{
-			
+
 		}
 	}
 }

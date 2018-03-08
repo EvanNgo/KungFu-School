@@ -93,18 +93,6 @@ public class EnemyController : MonoBehaviour {
                 }
             }
         }
-        else
-        {
-            if (timeToDead > 0)
-            {
-                timeToDead -= Time.deltaTime;
-            }
-            else
-            {
-                Destroy(gameObject);
-            }
-        }
-		
 	}
 
 	void faceControll()
@@ -122,12 +110,13 @@ public class EnemyController : MonoBehaviour {
 		}
 	}
     public void TakeDameged(int dameged){
-        health -= dameged;
-        Debug.Log("Damged "+dameged);
-        if (health <= 0)
-        {   
-            
-            Debug.Log("Enemy Killed");
+        currentHealth -= dameged;
+        if (currentHealth <= 0)
+        {
+            BoxCollider2D col = gameObject.GetComponent<BoxCollider2D>();
+            col.enabled = false;
+            anim.SetTrigger("Dead");
+            Destroy(gameObject, 2.5f);
         }
     }
 }

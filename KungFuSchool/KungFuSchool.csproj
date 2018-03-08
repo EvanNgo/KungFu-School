@@ -296,7 +296,8 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\AttackController.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
-    <Compile Include="Assets\Scripts\DestroyBlade.cs" />
+    <Compile Include="Assets\Scripts\EnemyController.cs" />
+    <Compile Include="Assets\Scripts\MeleeBladeController.cs" />
     <Compile Include="Assets\Scripts\PlayerControlelr.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

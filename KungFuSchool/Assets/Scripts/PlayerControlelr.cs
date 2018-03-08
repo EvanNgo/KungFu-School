@@ -5,24 +5,20 @@ using UnityEngine;
 public class PlayerControlelr : MonoBehaviour {
     public float maxSpeed;
     public float jumpHeight;
-    bool facingRight;
-    bool grounded;
-	bool attack;
+    float health = 100;
     Rigidbody2D myBody;
     Animator myAni;
-    // Use this for initialization
-    void Start() {
+    bool facingRight = true;
+    bool grounded;
+    void Start(){
         myBody = GetComponent<Rigidbody2D>();
         myAni = GetComponent<Animator>();
-        facingRight = true;
     }
-
     // Update is called once per frame
     void FixedUpdate() {
         float move = Input.GetAxis("Horizontal");
         myBody.velocity = new Vector2(move * maxSpeed, myBody.velocity.y);
         myAni.SetFloat("Speed", Mathf.Abs(move));
-		handleAttack ();
         if (move > 0 && !facingRight) {
 			faceControll();
         }
@@ -40,20 +36,8 @@ public class PlayerControlelr : MonoBehaviour {
 				myBody.velocity = new Vector2 (myBody.velocity.x, jumpHeight);
 			}
         }
-
+       
     }
-
-	void Update(){
-		if (Input.GetKeyDown(KeyCode.K)) {
-			attack = true;
-		}
-	}
-	private void handleAttack(){
-		if (attack) {
-			myAni.SetTrigger ("Attack");
-			attack = false;
-		}
-	}
 
     void faceControll()
     {
@@ -70,5 +54,12 @@ public class PlayerControlelr : MonoBehaviour {
 			myAni.SetBool("Jumping",false);
 			grounded = true;
 		}
+    }
+    public void TakeDameged(int dameged){
+        health -= dameged;
+        if (health <= 0)
+        {
+            Debug.Log("Dead");
+        }
     }
 }

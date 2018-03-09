@@ -18,7 +18,6 @@ public class EnemyController : MonoBehaviour {
 	float zombieWidth;
 	bool Attack;
 	public float attackDelay;
-    float timeToDead = 1.5f;
     float currentHealth;
 	float lastAttackTime = 0;
 	Animator anim;

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +10,8 @@ public class PlayerControlelr : MonoBehaviour {
     Animator myAni;
     bool facingRight = true;
     bool grounded;
+    bool borderLeft = false;
+    bool borderRight = false;
     void Start(){
         myBody = GetComponent<Rigidbody2D>();
         myAni = GetComponent<Animator>();
@@ -17,7 +19,10 @@ public class PlayerControlelr : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate() {
         float move = Input.GetAxis("Horizontal");
-        myBody.velocity = new Vector2(move * maxSpeed, myBody.velocity.y);
+        if (!(move <= 0 && borderLeft) || !(move >= 0 && borderRight))
+        {   
+            myBody.velocity = new Vector2(move * maxSpeed, myBody.velocity.y);
+        }
         myAni.SetFloat("Speed", Mathf.Abs(move));
         if (move > 0 && !facingRight) {
 			faceControll();
@@ -54,12 +59,27 @@ public class PlayerControlelr : MonoBehaviour {
 			myAni.SetBool("Jumping",false);
 			grounded = true;
 		}
+        if (collision.gameObject.tag == "BorderLeft")
+        {
+            borderLeft = true;
+        }
+        if (collision.gameObject.tag == "BorderRight")
+        {
+            borderRight = true;
+        }
     }
     public void TakeDameged(int dameged){
         health -= dameged;
         if (health <= 0)
         {
             Debug.Log("Dead");
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {   
+        if (collision.gameObject.tag == "Ground")
+        {
+            grounded = false;
         }
     }
 }

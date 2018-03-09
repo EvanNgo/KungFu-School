@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Maps/BaLangHuyen.unity
+- path: Assets/Maps/HomeTown.unity
   isLoaded: 1
   isActive: 1

@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4578891729951854}
   - component: {fileID: 61136852005387138}
+  - component: {fileID: 114215551173724694}
   m_Layer: 0
   m_Name: AttackTrigger
   m_TagString: Untagged
@@ -40,6 +41,7 @@ GameObject:
   - component: {fileID: 95388208849055492}
   - component: {fileID: 114923519421021674}
   - component: {fileID: 70393998165401790}
+  - component: {fileID: 114850059056354482}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -67,8 +69,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1309179856757972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.938, y: -5.879, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: -26.715755, y: -33.43348, z: 0}
+  m_LocalScale: {x: -0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 4578891729951854}
   m_Father: {fileID: 0}
@@ -88,7 +90,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2.5
+  m_GravityScale: 10
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -151,6 +153,29 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114215551173724694
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1034951852873658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d727bc4f02c474a7d9357e705b5ed0e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114850059056354482
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1309179856757972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9d3aefc1c918497398b26ef0c6d253e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackTrigger: {fileID: 61136852005387138}
 --- !u!114 &114923519421021674
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -162,13 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c342a52dc9d884340870357324bd5f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 3
-  jumpHeight: 8
-  attackTrigger: {fileID: 61136852005387138}
-  attackDelay: 1
-  dame: 7
-  health: 100
-  attackSpeed: 0
+  maxSpeed: 30
+  jumpHeight: 42
 --- !u!212 &212148832750921770
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -203,7 +223,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 6a959b7e7fa5c2f4085f8e33088c2cd3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d70faa6f06ff54d4dad306c91ceb6ddd, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

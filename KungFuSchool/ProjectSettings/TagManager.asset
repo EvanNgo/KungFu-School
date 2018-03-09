@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - Zombie
   - Enemy
+  - BorderLeft
+  - BorderRight
   layers:
   - Default
   - TransparentFX

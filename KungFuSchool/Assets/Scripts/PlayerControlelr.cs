@@ -12,7 +12,8 @@ public class PlayerControlelr : MonoBehaviour {
     bool grounded;
     bool borderLeft = false;
     bool borderRight = false;
-    void Start(){
+    bool isShopping;
+    void Start() {
         myBody = GetComponent<Rigidbody2D>();
         myAni = GetComponent<Animator>();
     }
@@ -20,28 +21,36 @@ public class PlayerControlelr : MonoBehaviour {
     void FixedUpdate() {
         float move = Input.GetAxis("Horizontal");
         if (!(move <= 0 && borderLeft) || !(move >= 0 && borderRight))
-        {   
+        {
             myBody.velocity = new Vector2(move * maxSpeed, myBody.velocity.y);
         }
         myAni.SetFloat("Speed", Mathf.Abs(move));
         if (move > 0 && !facingRight) {
-			faceControll();
+            faceControll();
         }
         else if (move < 0 && facingRight)
         {
-			faceControll();
+            faceControll();
         }
 
         if (Input.GetKey(KeyCode.Space))
         {
-			if (grounded) {	
-				myAni.SetFloat ("Speed", 0);
-				myAni.SetBool ("Jumping", true);
-				grounded = false;
-				myBody.velocity = new Vector2 (myBody.velocity.x, jumpHeight);
-			}
+            if (grounded) {
+                myAni.SetFloat("Speed", 0);
+                myAni.SetBool("Jumping", true);
+                grounded = false;
+                myBody.velocity = new Vector2(myBody.velocity.x, jumpHeight);
+            }
         }
-       
+
+        if (Input.GetKeyUp(KeyCode.B))
+        {
+            if (!isShopping)
+            {
+                OpenInventory();
+            }
+        }
+
     }
 
     void faceControll()
@@ -50,6 +59,10 @@ public class PlayerControlelr : MonoBehaviour {
         Vector3 theScale = transform.localScale;
         theScale.x *= -1;
         transform.localScale = theScale;
+    }
+
+    private void OpenInventory() {
+        Debug.Log("Open Inventory");
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

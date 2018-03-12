@@ -1207,7 +1207,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 119411837}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -36.08, y: 13.67, z: 0}
+  m_LocalPosition: {x: -36.05, y: 13.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 108515718}
@@ -6377,7 +6377,7 @@ GameObject:
   - component: {fileID: 937248060}
   - component: {fileID: 937248064}
   m_Layer: 0
-  m_Name: Idle (1)
+  m_Name: SantaNPC
   m_TagString: NPC
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12083,11 +12083,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4613349785828936, guid: f8e2e6d1bf4054fcebbbe174789b67c0, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0.79
+      value: -19.34
       objectReference: {fileID: 0}
     - target: {fileID: 4613349785828936, guid: f8e2e6d1bf4054fcebbbe174789b67c0, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 14.53
+      value: 14.17
       objectReference: {fileID: 0}
     - target: {fileID: 4613349785828936, guid: f8e2e6d1bf4054fcebbbe174789b67c0, type: 2}
       propertyPath: m_LocalPosition.z
@@ -12880,6 +12880,49 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1729300658}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1773541160
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1773541162}
+  - component: {fileID: 1773541161}
+  m_Layer: 0
+  m_Name: SampleEnemy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1773541161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1773541160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7c67a3e167c440d494a51077c1de8dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1133153193476138, guid: 2cfcc9a7b6d0c48fb88c4d13d3326af7, type: 2}
+  CountDown: 3
+  Dead: 0
+--- !u!4 &1773541162
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1773541160}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -28.60584, y: 14.53, z: -1.1764833}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1776359775
 GameObject:

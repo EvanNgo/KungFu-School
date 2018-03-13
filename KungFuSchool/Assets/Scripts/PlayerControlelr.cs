@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerControlelr : MonoBehaviour {
     public float maxSpeed;
     public float jumpHeight;
-    float health = 100;
     Rigidbody2D myBody;
     Animator myAni;
     bool facingRight = true;
@@ -81,13 +80,7 @@ public class PlayerControlelr : MonoBehaviour {
             borderRight = true;
         }
     }
-    public void TakeDameged(int dameged){
-        health -= dameged;
-        if (health <= 0)
-        {
-            Debug.Log("Dead");
-        }
-    }
+
     private void OnCollisionExit2D(Collision2D collision)
     {   
         if (collision.gameObject.tag == "Ground")

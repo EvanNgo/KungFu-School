@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class MeleeBladeController : MonoBehaviour {
-    float dmg = 100;
+    public float dmg = 100;
 
     void OnTriggerEnter2D(Collider2D collider){
         if (collider.CompareTag("Enemy"))

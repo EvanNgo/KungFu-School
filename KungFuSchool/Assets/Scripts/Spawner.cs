@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour {
-    public bool Death;
-    public float Timer;
     public float Cooldown;
     public GameObject Enemy;
     public string EnemyName;
     string currentEnemyname;
+    public bool Death;
+    float Timer;
 	// Use this for initialization
 	void Start () {
         Death = false;

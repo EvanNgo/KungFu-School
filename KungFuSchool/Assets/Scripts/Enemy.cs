@@ -3,30 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
-    //spawn aliens. This would go on a script called GameManager on empty GameObject or something
-    public GameObject enemy;
-    public float CountDown = 3f;
-    public bool Dead = false;
-    float Timer = 0;
-    void Start(){
-        SpawnEnemy(); //example of calling a function from within the script
+    public float health = 100;
+    float currentHealth;
+    // Use this for initialization
+    void Start () {
+        currentHealth = health;
     }
 
-    void Update(){
-        if (Dead)
+    // Update is called once per frame
+    void Update () {
+
+    }
+
+    public void TakeDameged(int dameged){
+        currentHealth -= dameged;
+        if (currentHealth <= 0)
         {
-            Timer += Time.deltaTime;
-            if (Timer > CountDown)
-            {
-                SpawnEnemy();
-            }
+            //BoxCollider2D col = gameObject.GetComponent<BoxCollider2D>();
+            //col.enabled = false;
+            //anim.SetTrigger("Dead");
+            //Do everything you want with this part, but before destroying the enemy, add this:
+            string[] spawnerName = gameObject.name.Split('_');
+            GameObject.Find(spawnerName[0]).GetComponent<Spawner>().Death = true;
+            Destroy(gameObject, 0.5f);
         }
-    }
-
-    public void SpawnEnemy(){
-        //spawns alien gameObject at spawnPoint position, and give it a rotation to complete the function
-        Instantiate(enemy,transform.position, Quaternion.identity);
-        Dead = false;
-        Timer = 0;
     }
 }

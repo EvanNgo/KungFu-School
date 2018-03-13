@@ -12,6 +12,7 @@ public class AttackController : MonoBehaviour {
     private Animator anim;
     void Start(){
         anim = GetComponent<Animator>();
+        attackTrigger.enabled = false;
     }
 
     private void FixedUpdate()

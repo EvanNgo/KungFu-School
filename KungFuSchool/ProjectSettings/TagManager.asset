@@ -11,6 +11,7 @@ TagManager:
   - BorderRight
   - NPC
   - BoxItem
+  - InterObject
   layers:
   - Default
   - TransparentFX

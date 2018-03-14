@@ -20,19 +20,13 @@ public class Spawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if(Death == true) {
-            //If my enemy is death, a timer will start.
             Timer += Time.deltaTime;
-
         }
-        //If the timer is bigger than cooldown.
         if(Timer >= Cooldown) {
-            //It will create a new Enemy of the same class, at this position.
             Enemy.transform.position = transform.position;
             Enemy.name = currentEnemyname;
             Instantiate(Enemy,transform.position, Quaternion.identity);
-            //My enemy won't be dead anymore.
             Death = false;
-            //Timer will restart.
             Timer = 0;
         }
 	}

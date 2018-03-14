@@ -14,7 +14,7 @@ public class PlayerLevel : MonoBehaviour {
     void Start()
     {
         if (SQLiteCore.rootPlayer.Level == 0)
-        {
+        {   
             CurrentLevel = 1;
             // Save to database;
         }

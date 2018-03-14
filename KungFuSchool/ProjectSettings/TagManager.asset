@@ -10,6 +10,7 @@ TagManager:
   - BorderLeft
   - BorderRight
   - NPC
+  - BoxItem
   layers:
   - Default
   - TransparentFX

@@ -48,3 +48,5 @@
 /Users/gohai/github/KungFuSchool/KungFuSchool/Temp/bin/Debug/UnityEditor.iOS.Extensions.Xcode.xml
 /Users/gohai/github/KungFuSchool/KungFuSchool/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll
 /Users/gohai/github/KungFuSchool/KungFuSchool/Temp/bin/Debug/UnityEditor.iOS.Extensions.Common.dll.mdb
+/Users/gohai/github/KungFuSchool/KungFuSchool/Temp/bin/Debug/Mono.Data.Sqlite.dll
+/Users/gohai/github/KungFuSchool/KungFuSchool/Temp/bin/Debug/System.Data.dll

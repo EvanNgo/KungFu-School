@@ -52,14 +52,24 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\AttackController.cs" />
+     <Compile Include="Assets\Scripts\BoxItem.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Enemy.cs" />
      <Compile Include="Assets\Scripts\EnemyController.cs" />
+     <Compile Include="Assets\Scripts\Interaction\InteractionObject.cs" />
+     <Compile Include="Assets\Scripts\Interaction\PlayerInteraction.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
+     <Compile Include="Assets\Scripts\Inventory\InventoryEditor.cs" />
+     <Compile Include="Assets\Scripts\Inventory\Item.cs" />
      <Compile Include="Assets\Scripts\MeleeBladeController.cs" />
+     <Compile Include="Assets\Scripts\Objects\ApplicationPlayer.cs" />
+     <Compile Include="Assets\Scripts\Objects\LevelManager.cs" />
      <Compile Include="Assets\Scripts\PlayerControlelr.cs" />
-     <Compile Include="Assets\Scripts\PlayerHealth.cs" />
+     <Compile Include="Assets\Scripts\PlayerDetails.cs" />
+     <Compile Include="Assets\Scripts\PlayerLevel.cs" />
      <Compile Include="Assets\Scripts\SantaObject.cs" />
      <Compile Include="Assets\Scripts\Spawner.cs" />
+     <Compile Include="Assets\Scripts\SQLite\SQLiteCore.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
@@ -128,6 +138,12 @@
  </Reference>
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
+ </Reference>
+ <Reference Include="Mono.Data.Sqlite">
+ <HintPath>/Users/gohai/github/KungFuSchool/KungFuSchool/Assets/Plugins/Mono.Data.Sqlite.dll</HintPath>
+ </Reference>
+ <Reference Include="System.Data">
+ <HintPath>/Users/gohai/github/KungFuSchool/KungFuSchool/Assets/Plugins/System.Data.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Advertisements">
  <HintPath>/Users/gohai/Library/Unity/cache/packages/packages.unity.com/com.unity.ads@2.0.3/UnityEngine.Advertisements.dll</HintPath>

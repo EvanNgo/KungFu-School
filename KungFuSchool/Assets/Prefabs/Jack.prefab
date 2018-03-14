@@ -88,7 +88,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1133153193476138}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -30.997297, y: 14.580439, z: -1.636096}
+  m_LocalPosition: {x: -32.8136, y: 14.410648, z: -1.636096}
   m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children:
   - {fileID: 224635505617133270}
@@ -161,6 +161,8 @@ MonoBehaviour:
   health: 100
   enemyExp: 200
   healthBar: {fileID: 114281058836093458}
+  dropingItem: {fileID: 1888892634319608, guid: 30a16ae55455a41448c750663c124747,
+    type: 2}
 --- !u!114 &114526921843239318
 MonoBehaviour:
   m_ObjectHideFlags: 1

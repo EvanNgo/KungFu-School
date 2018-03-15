@@ -59,7 +59,7 @@
      <Compile Include="Assets\Scripts\Interaction\InteractionObject.cs" />
      <Compile Include="Assets\Scripts\Interaction\PlayerInteraction.cs" />
      <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
-     <Compile Include="Assets\Scripts\Inventory\InventoryEditor.cs" />
+     <Compile Include="Assets\Scripts\Inventory\InventoryUI.cs" />
      <Compile Include="Assets\Scripts\Inventory\Item.cs" />
      <Compile Include="Assets\Scripts\MeleeBladeController.cs" />
      <Compile Include="Assets\Scripts\Objects\ApplicationPlayer.cs" />

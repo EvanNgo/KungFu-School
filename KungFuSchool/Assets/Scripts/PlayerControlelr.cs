@@ -1,16 +1,19 @@
-﻿ using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerControlelr : MonoBehaviour {
     public float maxSpeed;
     public float jumpHeight;
+    public GameObject inventoryUI;
     Rigidbody2D myBody;
     Animator myAni;
     bool facingRight = true;
     bool grounded;
     bool borderLeft = false;
     bool borderRight = false;
+    bool isBagging;
     bool isShopping;
     void Start() {
         myBody = GetComponent<Rigidbody2D>();
@@ -18,6 +21,7 @@ public class PlayerControlelr : MonoBehaviour {
     }
     // Update is called once per frame
     void FixedUpdate() {
+        if (EventSystem.current.IsPointerOverGameObject()){ return;}
         float move = Input.GetAxis("Horizontal");
         if (!(move <= 0 && borderLeft) || !(move >= 0 && borderRight))
         {
@@ -41,15 +45,6 @@ public class PlayerControlelr : MonoBehaviour {
                 myBody.velocity = new Vector2(myBody.velocity.x, jumpHeight);
             }
         }
-
-        if (Input.GetKeyUp(KeyCode.B))
-        {
-            if (!isShopping)
-            {
-                OpenInventory();
-            }
-        }
-
     }
 
     void faceControll()

@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour {
+    public GameObject inventoryUI;
     public GameObject[] inventory = new GameObject[20];
     public List<Item> items = new List<Item>();
     public Image[] slotButton = new Image[20];
@@ -17,6 +18,14 @@ public class Inventory : MonoBehaviour {
             }
         }
         LoadCurrentItem();
+    }
+
+    void Update(){
+        if (Input.GetButtonDown("Inventory"))
+        {
+            Debug.Log("Inventory...");
+            inventoryUI.SetActive(!inventoryUI.activeSelf);
+        }
     }
 
     public void LoadCurrentItem(){

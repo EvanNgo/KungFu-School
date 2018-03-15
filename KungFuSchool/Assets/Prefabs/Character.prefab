@@ -895,6 +895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ce407fc26904c83ab8e7e2ddd34bbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inventoryUI: {fileID: 0}
   inventory:
   - {fileID: 0}
   - {fileID: 0}
@@ -916,6 +917,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  items: []
   slotButton:
   - {fileID: 0}
   - {fileID: 0}
@@ -998,6 +1000,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 30
   jumpHeight: 42
+  inventoryUI: {fileID: 0}
 --- !u!114 &114948992602789242
 MonoBehaviour:
   m_ObjectHideFlags: 1

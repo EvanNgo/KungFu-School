@@ -26,6 +26,15 @@ public class PlayerInteraction : MonoBehaviour {
         }
     }
 
+    private void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "InterObject")
+        {   
+            currentObject = collision.gameObject;
+            currentObjectScript = currentObject.GetComponent<InteractionObject>();
+        }
+    }
+
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "InterObject")

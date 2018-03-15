@@ -7,6 +7,9 @@ public class Item : ScriptableObject {
     public string itemIcon;
     public string itemName;
     public int itemColor;
-    public Item(){
+
+    public void Use()
+    {
+        Debug.Log("Used");
     }
 }

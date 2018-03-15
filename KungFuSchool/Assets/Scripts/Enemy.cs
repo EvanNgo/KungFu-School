@@ -11,7 +11,6 @@ public class Enemy : MonoBehaviour {
     public Image healthBar;
     public GameObject dropingItem;
 
-
     // Use this for initialization
     void Start () {
         currentHealth = health;

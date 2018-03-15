@@ -21,7 +21,10 @@ public class PlayerControlelr : MonoBehaviour {
     }
     // Update is called once per frame
     void FixedUpdate() {
-        if (EventSystem.current.IsPointerOverGameObject()){ return;}
+        if (inventoryUI.activeSelf)
+        {
+            return;
+        }
         float move = Input.GetAxis("Horizontal");
         if (!(move <= 0 && borderLeft) || !(move >= 0 && borderRight))
         {

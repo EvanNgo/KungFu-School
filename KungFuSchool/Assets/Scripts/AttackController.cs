@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class AttackController : MonoBehaviour {
     public BoxCollider2D attackTrigger;
+    public GameObject inventoryUI;
     SantaObject santaObject = null;
-    BoxItem boxItem = null;
     GameObject currentGameObject;
     GameObject currentBoxItem;
     private bool attacking = false;
@@ -18,38 +18,34 @@ public class AttackController : MonoBehaviour {
         attackTrigger.enabled = false;
     }
 
-    private void FixedUpdate()
-    {
-        
-    }
-
     void Update(){
-        if (currentGameObject!=null && santaObject!=null && santaObject.talks)
+        if (attacking)
         {
-            if (Input.GetKeyDown(KeyCode.K)) {
-                santaObject.Talk();
+            if (attackTimer > 0)
+            {
+                attackTimer -= Time.deltaTime;
+            }
+            else
+            {
+                attacking = false;
+                attackTrigger.enabled = false;
             }
         }
-        else
+        if (inventoryUI.activeSelf) {
+            return;
+        }
+        if (Input.GetButtonDown("Select"))
         {
-            if (Input.GetKeyUp(KeyCode.K) && !attacking)
+            if (currentGameObject != null && santaObject != null && santaObject.talks) {
+                santaObject.Talk();
+                return;
+            }
+            if (!attacking)
             {
                 anim.SetTrigger("Attack");
                 attackTrigger.enabled = true;
                 attacking = true;
                 attackTimer = attackCd;
-            }
-            if (attacking)
-            {
-                if (attackTimer > 0)
-                {
-                    attackTimer -= Time.deltaTime;
-                }
-                else
-                {
-                    attacking = false;
-                    attackTrigger.enabled = false;
-                }
             }
         }
     }

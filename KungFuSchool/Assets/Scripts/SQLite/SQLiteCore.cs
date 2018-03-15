@@ -8,12 +8,6 @@ using System;
 public static class SQLiteCore {
     public static string connectString = "URI=file:" + Application.dataPath + "/KungFuSchool.db";
     public static IDbConnection conn = new SqliteConnection(connectString);
-
-
-    /// <summary>
-    /// Player information
-    /// </summary>
-    /// 
     public static ApplicationPlayer rootPlayer = new ApplicationPlayer();
     public static List<LevelManager> levelManager = getLevelManager();
     public static List<Item> ItemInInventory = getItemInInvengory();
@@ -94,7 +88,7 @@ public static class SQLiteCore {
                     IDataReader datas = cmd.ExecuteReader();
                     while (datas.Read())
                     {
-                        Item item = new Item();
+                        Item item = ScriptableObject.CreateInstance<Item>();
                         item.id = Convert.ToInt32(datas[0]);
                         item.itemName = Convert.ToString(datas[1]);
                         item.itemIcon = Convert.ToString(datas[2]);

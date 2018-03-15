@@ -12,6 +12,7 @@ TagManager:
   - NPC
   - BoxItem
   - InterObject
+  - Inventory
   layers:
   - Default
   - TransparentFX

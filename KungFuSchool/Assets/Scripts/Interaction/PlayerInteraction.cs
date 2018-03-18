@@ -11,8 +11,8 @@ public class PlayerInteraction : MonoBehaviour {
         if (Input.GetButtonDown("Interact") && currentObject != null)
         {   
             if (currentObjectScript.inventory)
-            {   
-                inventory.AddItem(currentObject);
+            {
+                inventory.AddItem(currentObjectScript.itemTest, currentObject);
             }
         }
     }

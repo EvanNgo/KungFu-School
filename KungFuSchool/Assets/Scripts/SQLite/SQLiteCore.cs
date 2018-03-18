@@ -10,7 +10,7 @@ public static class SQLiteCore {
     public static IDbConnection conn = new SqliteConnection(connectString);
     public static ApplicationPlayer rootPlayer = new ApplicationPlayer();
     public static List<LevelManager> levelManager = getLevelManager();
-    public static List<Item> ItemInInventory = getItemInInvengory();
+    //public static List<Item> ItemInInventory = getItemInInvengory();
     public static int LastAddedItem = -1;
     public static void Connect() {
         if (conn.State != ConnectionState.Open) {
@@ -90,8 +90,19 @@ public static class SQLiteCore {
                     {
                         Item item = ScriptableObject.CreateInstance<Item>();
                         item.id = Convert.ToInt32(datas[0]);
-                        item.itemName = Convert.ToString(datas[1]);
-                        item.itemIcon = Convert.ToString(datas[2]);
+                        item.name = Convert.ToString(datas[1]);
+                        string itemIcon = Convert.ToString(datas[2]);
+                        item.icon = Resources.Load<Sprite>(itemIcon);
+                        item.details = Convert.ToString(datas[3]);
+                        item.equipSlot = (Item.EquipmentSlot)Enum.Parse(typeof(Item.EquipmentSlot),Convert.ToString(datas[4]));
+                        Option op = ScriptableObject.CreateInstance<Option>();
+                        op.title = Convert.ToString(datas[5]);
+                        op.unit = Convert.ToString(datas[7]);
+                        op.tag = Convert.ToString(datas[8]);
+                        item.defaultOption = op;
+                        item.defaultPoint = Convert.ToInt32(datas[6]);
+                        if (Convert.ToInt32(datas[9]) == 0) { item.isEquiping = false; } else { item.isEquiping = true; }
+                        if (Convert.ToInt32(datas[10]) == 0) { item.isEquipment = false; } else { item.isEquipment = true; }
                         items.Add(item);
                     }
 
@@ -101,14 +112,65 @@ public static class SQLiteCore {
         }
         catch (Exception excp)
         {
-            Debug.Log("ERROR:getLevelManager " + excp);
+            Debug.Log("ERROR:getItemInInvengory " + excp);
             return items;
         }
     }
 
-    public static bool AddItemToInventory(Item item)
+    public static List<Option> getOptionItem(int itemID)
     {
-        string query = String.Format("INSERT INTO Inventory (id,name,icon,type,color) VALUES (NULL,'{0}','{1}','{2}','{3}')",item.itemName,item.itemIcon,0,0);
+        string query = "Select * From ItemOption WHERE itemID = "+itemID;
+        Connect();
+        List<Option> options = new List<Option>();
+        try
+        {
+            using (conn)
+            {
+                using (IDbCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = query;
+                    cmd.ExecuteNonQuery();
+                    IDataReader datas = cmd.ExecuteReader();
+                    while (datas.Read())
+                    {
+                        Option op = ScriptableObject.CreateInstance<Option>();
+                        op.tag = Convert.ToString(datas[2]);
+                        op.title = Convert.ToString(datas[3]);
+                        op.point = Convert.ToInt16(datas[4]);
+                        op.unit = Convert.ToString(datas[5]);
+                        options.Add(op);
+                    }
+
+                    return options;
+                }
+            }
+        }
+        catch (Exception excp)
+        {
+            Debug.Log("ERROR:getOptionItem " + excp);
+            return options;
+        }
+    }
+
+    public static int AddItemToInventory(Item item)
+    {
+        int isEquipment = 0;
+        int isEquiping = 0;
+        if (item.isEquiping) { isEquiping = 1; }
+        string query;
+        if (item.isEquipment) {
+            isEquipment = 1;
+            query = String.Format("INSERT INTO Inventory (id,name,icon,detail,equipSlot,defaultOptionTitle,defaultOptionPoint,defaultOptionUnit,defaultOptionTag,isEquiping,isEquipment)" +
+            " VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
+            item.name, item.icon.name, item.details, item.equipSlot + "", item.defaultOption.title, item.defaultPoint, item.defaultOption.unit, item.defaultOption.tag, isEquiping, isEquipment);
+        }
+        else
+        {
+            query = String.Format("INSERT INTO Inventory (id,name,icon,detail,equipSlot,defaultOptionTitle,defaultOptionPoint,defaultOptionUnit,defaultOptionTag,isEquiping,isEquipment)" +
+            " VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
+            item.name, item.icon.name, item.details, item.equipSlot + "","",0, "","", isEquiping, isEquipment);
+        }
+        
         Connect();
         try
         {
@@ -121,16 +183,84 @@ public static class SQLiteCore {
                     cmd.CommandText = "select last_insert_rowid()";
                     Int64 LastRowID64 = (Int64)cmd.ExecuteScalar();
                     LastAddedItem = (int)LastRowID64;
-                    Debug.Log(LastRowID64);
-                    return true;
+                    if (item.isEquipment && item.options.Length>0 && LastAddedItem != -1)
+                    {
+                        for (int i = 0; i < item.options.Length; i++) {
+                            AddItemOption(LastAddedItem,item.points[i],item.options[i]);
+                        }
+                    }
+                    return LastAddedItem;
                 }
             }
         }
         catch (Exception excp)
         {
             Debug.Log("ERROR:AddItemToInventory " + excp);
+            return -1;
+        }
+    }
+
+    public static void AddItemOption(int itemID, int point, Option option)
+    {
+        string query = String.Format("INSERT INTO ItemOption (id,itemID,tag,title,point,unit) VALUES (NULL,'{0}','{1}','{2}','{3}','{4}')", itemID, option.tag, option.title, point,option.unit);
+        Connect();
+        try
+        {
+            using (conn)
+            {
+                using (IDbCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = query;
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        catch (Exception excp)
+        {
+            Debug.Log("ERROR:AddItemOption " + excp);
+        }
+    }
+
+    public static bool RemoveItem(int itemID)
+    {
+        string query = "DELETE FROM Inventory WHERE ID = " + itemID;
+        Connect();
+        try
+        {
+            using (conn)
+            {
+                using (IDbCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = query;
+                    cmd.ExecuteNonQuery();
+                    return true;
+                }
+            }
+        }
+        catch (Exception excp)
+        {
+            Debug.Log("ERROR:RemoveItem " + excp);
             return false;
         }
     }
-        
+    public static void RemoveOptionItem(int itemID)
+    {
+        string query = "DELETE FROM ItemOption WHERE itemID = " + itemID;
+        Connect();
+        try
+        {
+            using (conn)
+            {
+                using (IDbCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = query;
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        catch (Exception excp)
+        {
+            Debug.Log("ERROR:RemoveOptionItem " + excp);
+        }
+    }
 }

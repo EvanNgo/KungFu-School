@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour {
     float currentHealth;
     public float enemyExp = 600;
     public Image healthBar;
-    public GameObject dropingItem;
+    public GameObject[] dropingItem;
 
     // Use this for initialization
     void Start () {
@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour {
         {
             BoxCollider2D col = gameObject.GetComponent<BoxCollider2D>();
             col.enabled = false;
-            Instantiate(dropingItem,transform.position, Quaternion.identity);
+            Instantiate(dropingItem[Random.Range(0,dropingItem.Length)], transform.position, Quaternion.identity);
             target.gameObject.GetComponent<PlayerLevel>().SendMessage("addExp", enemyExp);
             string[] spawnerName = gameObject.name.Split('_');
             GameObject.Find(spawnerName[0]).GetComponent<Spawner>().Death = true;

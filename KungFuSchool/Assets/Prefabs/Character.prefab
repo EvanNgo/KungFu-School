@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 114618858938809962}
   - component: {fileID: 114419518920574242}
   - component: {fileID: 114858098876253556}
+  - component: {fileID: 114857060506096052}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -186,6 +187,14 @@ MonoBehaviour:
   manaBar: {fileID: 0}
   txtHealth: {fileID: 0}
   txtMana: {fileID: 0}
+  countdown: 15
+  teleportCD: 300
+  healthCD: {fileID: 0}
+  manaCD: {fileID: 0}
+  teleCD: {fileID: 0}
+  TxtteleCD: {fileID: 0}
+  TxthealthCD: {fileID: 0}
+  TxtmanaCD: {fileID: 0}
 --- !u!114 &114419518920574242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -227,6 +236,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTrigger: {fileID: 61136852005387138}
   inventoryUI: {fileID: 0}
+--- !u!114 &114857060506096052
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1309179856757972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24dc656827352df4887bd5a55b0f07ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  countdown: 15
+  teleportCD: 300
+  btnHealth: {fileID: 0}
+  btnMana: {fileID: 0}
+  btnTeleport: {fileID: 0}
+  healthCD: {fileID: 0}
+  manaCD: {fileID: 0}
+  teleCD: {fileID: 0}
+  TxtteleCD: {fileID: 0}
+  TxthealthCD: {fileID: 0}
+  TxtmanaCD: {fileID: 0}
+  healthTimeCount: 0
+  manaTimeCount: 0
+  teleTimeCount: 0
+  healthCounting: 0
+  manaCounting: 0
+  teleCounting: 0
 --- !u!114 &114858098876253556
 MonoBehaviour:
   m_ObjectHideFlags: 1

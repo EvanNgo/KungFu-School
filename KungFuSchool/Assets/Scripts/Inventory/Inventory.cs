@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour {
     public GameObject inventoryUI;
     public GameObject regentUI;
+    public GameObject dialogBox;
     public List<Item> items = new List<Item>();
     public Image[] slotIcon = new Image[20];
     public Image[] slectedUI = new Image[20];
@@ -39,9 +40,14 @@ public class Inventory : MonoBehaviour {
         }
         slectedUI[0].enabled = true;
         LoadCurrentItem();
+        dialogBox = GameObject.FindObjectOfType<DialogueManager>().dialogBox;
     }
 
     void Update(){
+        if (dialogBox.activeSelf)
+        {
+            return;
+        }
         if (Input.GetButtonDown("Inventory"))
         {
             inventoryUI.SetActive(!inventoryUI.activeSelf);

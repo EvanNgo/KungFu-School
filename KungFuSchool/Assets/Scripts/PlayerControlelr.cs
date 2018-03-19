@@ -7,6 +7,7 @@ public class PlayerControlelr : MonoBehaviour {
     public float maxSpeed;
     public float jumpHeight;
     public GameObject inventoryUI;
+    private GameObject dialogManager;
     Rigidbody2D myBody;
     Animator myAni;
     bool facingRight = true;
@@ -18,10 +19,11 @@ public class PlayerControlelr : MonoBehaviour {
     void Start() {
         myBody = GetComponent<Rigidbody2D>();
         myAni = GetComponent<Animator>();
-    }
+        dialogManager = GameObject.FindObjectOfType<DialogueManager>().dialogBox;
+    } 
     // Update is called once per frame
     void FixedUpdate() {
-        if (inventoryUI.activeSelf)
+        if (inventoryUI.activeSelf || dialogManager.activeSelf)
         {
             return;
         }

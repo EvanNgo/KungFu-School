@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour {
     public float health = 100;
     private GameObject target;
+    public QuestManager questManager;
     float currentHealth;
     public float enemyExp = 600;
     public Image healthBar;
@@ -13,6 +14,7 @@ public class Enemy : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        questManager = FindObjectOfType<QuestManager>();
         currentHealth = health;
         target = GameObject.FindGameObjectWithTag("Player");
     }

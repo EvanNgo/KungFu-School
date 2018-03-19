@@ -12003,7 +12003,7 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114791103987181498, guid: 52b1e54e7d7812f4db1d4ac1711753bd,
+    - target: {fileID: 114317255689925896, guid: 52b1e54e7d7812f4db1d4ac1711753bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -12013,7 +12013,7 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1213763497}
-    - target: {fileID: 114317255689925896, guid: 52b1e54e7d7812f4db1d4ac1711753bd,
+    - target: {fileID: 114791103987181498, guid: 52b1e54e7d7812f4db1d4ac1711753bd,
         type: 2}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -12021,6 +12021,11 @@ Prefab:
     - target: {fileID: 1129086677612940, guid: 52b1e54e7d7812f4db1d4ac1711753bd, type: 2}
       propertyPath: m_Name
       value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 114738666669129208, guid: 52b1e54e7d7812f4db1d4ac1711753bd,
+        type: 2}
+      propertyPath: m_Text
+      value: Press K To Continue...
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 52b1e54e7d7812f4db1d4ac1711753bd, type: 2}

@@ -300,9 +300,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Scripts\AttackController.cs" />
-    <Compile Include="Assets\Scripts\BoxItem.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\Charactor\AttackController.cs" />
+    <Compile Include="Assets\Scripts\Charactor\PlayerControlelr.cs" />
+    <Compile Include="Assets\Scripts\Charactor\PlayerDetails.cs" />
+    <Compile Include="Assets\Scripts\Charactor\PlayerLevel.cs" />
     <Compile Include="Assets\Scripts\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
@@ -316,9 +318,6 @@
     <Compile Include="Assets\Scripts\MeleeBladeController.cs" />
     <Compile Include="Assets\Scripts\Objects\ApplicationPlayer.cs" />
     <Compile Include="Assets\Scripts\Objects\LevelManager.cs" />
-    <Compile Include="Assets\Scripts\PlayerControlelr.cs" />
-    <Compile Include="Assets\Scripts\PlayerDetails.cs" />
-    <Compile Include="Assets\Scripts\PlayerLevel.cs" />
     <Compile Include="Assets\Scripts\Question\QuestItem.cs" />
     <Compile Include="Assets\Scripts\Question\QuestManager.cs" />
     <Compile Include="Assets\Scripts\Question\QuestObject.cs" />

@@ -42,11 +42,11 @@ GameObject:
   - component: {fileID: 114923519421021674}
   - component: {fileID: 70393998165401790}
   - component: {fileID: 114850059056354482}
-  - component: {fileID: 114395312523434944}
   - component: {fileID: 114618858938809962}
   - component: {fileID: 114419518920574242}
   - component: {fileID: 114858098876253556}
-  - component: {fileID: 114857060506096052}
+  - component: {fileID: 114098458141077944}
+  - component: {fileID: 114639330442701016}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -158,6 +158,17 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114098458141077944
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1309179856757972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d5d0104524e40c4598c4b6a195a14b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114215551173724694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,31 +181,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 50
---- !u!114 &114395312523434944
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1309179856757972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac486def111c25341bfe998ba3737981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 500
-  mana: 500
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  txtHealth: {fileID: 0}
-  txtMana: {fileID: 0}
-  countdown: 15
-  teleportCD: 300
-  healthCD: {fileID: 0}
-  manaCD: {fileID: 0}
-  teleCD: {fileID: 0}
-  TxtteleCD: {fileID: 0}
-  TxthealthCD: {fileID: 0}
-  TxtmanaCD: {fileID: 0}
 --- !u!114 &114419518920574242
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -223,6 +209,31 @@ MonoBehaviour:
   expBar: {fileID: 0}
   txtExp: {fileID: 0}
   txtLevel: {fileID: 0}
+--- !u!114 &114639330442701016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1309179856757972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac486def111c25341bfe998ba3737981, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 500
+  mana: 500
+  healthBar: {fileID: 0}
+  manaBar: {fileID: 0}
+  txtHealth: {fileID: 0}
+  txtMana: {fileID: 0}
+  countdown: 15
+  teleportCD: 120
+  healthCD: {fileID: 0}
+  manaCD: {fileID: 0}
+  teleCD: {fileID: 0}
+  TxtteleCD: {fileID: 0}
+  TxthealthCD: {fileID: 0}
+  TxtmanaCD: {fileID: 0}
 --- !u!114 &114850059056354482
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,34 +247,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTrigger: {fileID: 61136852005387138}
   inventoryUI: {fileID: 0}
---- !u!114 &114857060506096052
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1309179856757972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 24dc656827352df4887bd5a55b0f07ed, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  countdown: 15
-  teleportCD: 300
-  btnHealth: {fileID: 0}
-  btnMana: {fileID: 0}
-  btnTeleport: {fileID: 0}
-  healthCD: {fileID: 0}
-  manaCD: {fileID: 0}
-  teleCD: {fileID: 0}
-  TxtteleCD: {fileID: 0}
-  TxthealthCD: {fileID: 0}
-  TxtmanaCD: {fileID: 0}
-  healthTimeCount: 0
-  manaTimeCount: 0
-  teleTimeCount: 0
-  healthCounting: 0
-  manaCounting: 0
-  teleCounting: 0
 --- !u!114 &114858098876253556
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -277,6 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 0}
   regentUI: {fileID: 0}
+  dialogBox: {fileID: 0}
   items:
   - {fileID: 0}
   - {fileID: 0}
@@ -329,10 +313,6 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  slectedButtonUI:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

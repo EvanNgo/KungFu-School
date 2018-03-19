@@ -10,7 +10,6 @@ public class Inventory : MonoBehaviour {
     public List<Item> items = new List<Item>();
     public Image[] slotIcon = new Image[20];
     public Image[] slectedUI = new Image[20];
-    public Image[] slectedButtonUI = new Image[3];
     public Text[] itemOptionTitle = new Text[9];
     public Text[] itemOptionPoint = new Text[9];
     public Text[] itemOptionUnit = new Text[9];
@@ -34,15 +33,11 @@ public class Inventory : MonoBehaviour {
                 slotIcon[i].enabled = false;
             }
         }
-        for (int i = 0; i < slectedButtonUI.Length; i++)
-        {
-            slectedButtonUI[i].enabled = false;
-        }
         slectedUI[0].enabled = true;
         LoadCurrentItem();
         dialogBox = GameObject.FindObjectOfType<DialogueManager>().dialogBox;
     }
-
+    
     void Update(){
         if (dialogBox.activeSelf)
         {
@@ -54,10 +49,9 @@ public class Inventory : MonoBehaviour {
             regentUI.SetActive(!inventoryUI.activeSelf);
             if (inventoryUI.activeSelf)
             {
-                setItemDetaiToTable();
+               //setItemDetaiToTable();
                 if (selectedButton != -1)
                 {
-                    slectedButtonUI[selectedButton].enabled = false;
                     selectedButton = -1;
                 }
                 slectedUI[selectedPosition].enabled = true;
@@ -74,7 +68,7 @@ public class Inventory : MonoBehaviour {
             slectedUI[selectedPosition].enabled = false;
             selectedPosition -= 4;
             slectedUI[selectedPosition].enabled = true;
-            setItemDetaiToTable();
+            //setItemDetaiToTable();
         }
         if (Input.GetButtonDown("MoveSelectDown") && selectedButton == -1){
             
@@ -85,7 +79,7 @@ public class Inventory : MonoBehaviour {
             slectedUI[selectedPosition].enabled = false;
             selectedPosition += 4;
             slectedUI[selectedPosition].enabled = true;
-            setItemDetaiToTable();
+           //setItemDetaiToTable();
         }
         if (Input.GetButtonDown("MoveSelectLeft")){
             if (selectedButton == -1)
@@ -97,14 +91,12 @@ public class Inventory : MonoBehaviour {
                 slectedUI[selectedPosition].enabled = false;
                 selectedPosition -= 1;
                 slectedUI[selectedPosition].enabled = true;
-                setItemDetaiToTable();
+                //setItemDetaiToTable();
             }
             else
             {
                 if (selectedButton == 0) { return; }
-                slectedButtonUI[selectedButton].enabled = false;
                 selectedButton -= 1;
-                slectedButtonUI[selectedButton].enabled = true;
             }
         }
         if (Input.GetButtonDown("MoveSelectRight")){
@@ -117,17 +109,15 @@ public class Inventory : MonoBehaviour {
                 slectedUI[selectedPosition].enabled = false;
                 selectedPosition += 1;
                 slectedUI[selectedPosition].enabled = true;
-                setItemDetaiToTable();
+                //setItemDetaiToTable();
             }
             else {
                 if (selectedButton == 2) { return; }
-                slectedButtonUI[selectedButton].enabled = false;
                 selectedButton += 1;
-                slectedButtonUI[selectedButton].enabled = true;
             }
         }
         if (Input.GetButtonDown("Select")) {
-            SlotClicked();
+            //SlotClicked();
         }
     }
 
@@ -150,7 +140,7 @@ public class Inventory : MonoBehaviour {
         slotIcon[selectedPosition].enabled = false;
     }
 
-    public void SlotClicked() {
+    /*public void SlotClicked() {
         if (selectedButton == -1 && items.Count > selectedPosition) {
             slectedUI[selectedPosition].enabled = false;
             selectedButton = 0;
@@ -182,7 +172,7 @@ public class Inventory : MonoBehaviour {
                 slectedButtonUI[selectedButton].enabled = false;
                 selectedButton = -1;
                 slectedUI[selectedPosition].enabled = true;
-                setItemDetaiToTable();
+                //setItemDetaiToTable();
             }
             return;
         }
@@ -193,9 +183,9 @@ public class Inventory : MonoBehaviour {
             slectedUI[selectedPosition].enabled = true;
             return;
         }
-    }
+    }*/
 
-    public void setItemDetaiToTable() {
+    /*public void setItemDetaiToTable() {
         if (selectedPosition >= items.Count) {
             itemName.text = "";
             itemDefaultTitle.text = "";
@@ -245,7 +235,7 @@ public class Inventory : MonoBehaviour {
                 itemOptionUnit[i].text = "";
             }
         }
-    }
+    }*/
 
     public void LoadCurrentItem()
     {

@@ -303,10 +303,12 @@
     <Compile Include="Assets\Scripts\AttackController.cs" />
     <Compile Include="Assets\Scripts\BoxItem.cs" />
     <Compile Include="Assets\Scripts\CameraFollow.cs" />
+    <Compile Include="Assets\Scripts\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Interaction\InteractionObject.cs" />
     <Compile Include="Assets\Scripts\Interaction\PlayerInteraction.cs" />
+    <Compile Include="Assets\Scripts\Inventory\EquipmentManager.cs" />
     <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
     <Compile Include="Assets\Scripts\Inventory\InventoryUI.cs" />
     <Compile Include="Assets\Scripts\Inventory\Item.cs" />
@@ -317,6 +319,10 @@
     <Compile Include="Assets\Scripts\PlayerControlelr.cs" />
     <Compile Include="Assets\Scripts\PlayerDetails.cs" />
     <Compile Include="Assets\Scripts\PlayerLevel.cs" />
+    <Compile Include="Assets\Scripts\Question\QuestItem.cs" />
+    <Compile Include="Assets\Scripts\Question\QuestManager.cs" />
+    <Compile Include="Assets\Scripts\Question\QuestObject.cs" />
+    <Compile Include="Assets\Scripts\Question\QuestTrigger.cs" />
     <Compile Include="Assets\Scripts\SantaObject.cs" />
     <Compile Include="Assets\Scripts\Spawner.cs" />
     <Compile Include="Assets\Scripts\SQLite\SQLiteCore.cs" />

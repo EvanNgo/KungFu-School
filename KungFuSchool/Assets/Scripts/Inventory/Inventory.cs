@@ -6,7 +6,10 @@ using UnityEngine.UI;
 public class Inventory : MonoBehaviour {
     public GameObject inventoryUI;
     public GameObject regentUI;
-    public GameObject dialogBox;
+    public DialogItem dialogItem;
+    public GameObject dialogItemUI;
+    private GameObject dialogBox;
+    private EquipmentManager equipManager;
     public List<Item> items = new List<Item>();
     public Image[] slotIcon = new Image[20];
     public Image[] slectedUI = new Image[20];
@@ -16,14 +19,8 @@ public class Inventory : MonoBehaviour {
     public Text manaCount;
     public Text healthCount;
     public Text moneyCount;
-    public Text itemName;
-    public Text itemDetail;
-    public Text itemDefaultTitle;
-    public Text itemDefaultPoint;
-    public Text itemDefaultUnit;
     public int space = 20;
-    int selectedPosition = 0;
-    int selectedButton = -1;
+    int selectedPosition = -1;
     void Start(){
         for (int i = 0; i < space ; i++)
         {
@@ -33,9 +30,9 @@ public class Inventory : MonoBehaviour {
                 slotIcon[i].enabled = false;
             }
         }
-        slectedUI[0].enabled = true;
         LoadCurrentItem();
         dialogBox = GameObject.FindObjectOfType<DialogueManager>().dialogBox;
+        equipManager = FindObjectOfType<EquipmentManager>();
     }
     
     void Update(){
@@ -44,80 +41,18 @@ public class Inventory : MonoBehaviour {
             return;
         }
         if (Input.GetButtonDown("Inventory"))
-        {
+        {   
             inventoryUI.SetActive(!inventoryUI.activeSelf);
             regentUI.SetActive(!inventoryUI.activeSelf);
-            if (inventoryUI.activeSelf)
-            {
-               //setItemDetaiToTable();
-                if (selectedButton != -1)
+            if (!inventoryUI.activeSelf)
+            {   
+                dialogItem.OnClick();
+                if (selectedPosition != -1)
                 {
-                    selectedButton = -1;
+                    slectedUI[selectedPosition].enabled = false;
+                    selectedPosition = -1;
                 }
-                slectedUI[selectedPosition].enabled = true;
             }
-        }
-        if (!inventoryUI.activeSelf) {
-            return;
-        }
-        if (Input.GetButtonDown("MoveSelectUp") && selectedButton == -1) {
-            if (selectedPosition == 0 || selectedPosition == 1 || selectedPosition == 2 || selectedPosition == 3)
-            {
-                return;
-            }
-            slectedUI[selectedPosition].enabled = false;
-            selectedPosition -= 4;
-            slectedUI[selectedPosition].enabled = true;
-            //setItemDetaiToTable();
-        }
-        if (Input.GetButtonDown("MoveSelectDown") && selectedButton == -1){
-            
-            if (selectedPosition == 16 || selectedPosition == 17 || selectedPosition == 18 || selectedPosition == 19)
-            {
-                return;
-            }
-            slectedUI[selectedPosition].enabled = false;
-            selectedPosition += 4;
-            slectedUI[selectedPosition].enabled = true;
-           //setItemDetaiToTable();
-        }
-        if (Input.GetButtonDown("MoveSelectLeft")){
-            if (selectedButton == -1)
-            {
-                if (selectedPosition == 0 || selectedPosition == 4 || selectedPosition == 8 || selectedPosition == 12 || selectedPosition == 16)
-                {
-                    return;
-                }
-                slectedUI[selectedPosition].enabled = false;
-                selectedPosition -= 1;
-                slectedUI[selectedPosition].enabled = true;
-                //setItemDetaiToTable();
-            }
-            else
-            {
-                if (selectedButton == 0) { return; }
-                selectedButton -= 1;
-            }
-        }
-        if (Input.GetButtonDown("MoveSelectRight")){
-            if (selectedButton == -1)
-            {
-                if (selectedPosition == 3 || selectedPosition == 7 || selectedPosition == 11 || selectedPosition == 15 || selectedPosition == 19)
-                {
-                    return;
-                }
-                slectedUI[selectedPosition].enabled = false;
-                selectedPosition += 1;
-                slectedUI[selectedPosition].enabled = true;
-                //setItemDetaiToTable();
-            }
-            else {
-                if (selectedButton == 2) { return; }
-                selectedButton += 1;
-            }
-        }
-        if (Input.GetButtonDown("Select")) {
-            //SlotClicked();
         }
     }
 
@@ -133,109 +68,6 @@ public class Inventory : MonoBehaviour {
         slotIcon[items.Count - 1].enabled = true;
         itemScript.SendMessage("DoInteraction");
     }
-
-    public void RemoveItem(){
-        items.RemoveAt(selectedPosition);
-        slotIcon[selectedPosition].overrideSprite = null;
-        slotIcon[selectedPosition].enabled = false;
-    }
-
-    /*public void SlotClicked() {
-        if (selectedButton == -1 && items.Count > selectedPosition) {
-            slectedUI[selectedPosition].enabled = false;
-            selectedButton = 0;
-            slectedButtonUI[selectedButton].enabled = true;
-            return;
-        }
-        if (selectedButton == 0)
-        {
-            //Equip
-            slectedButtonUI[selectedButton].enabled = false;
-            selectedButton = -1;
-            slectedUI[selectedPosition].enabled = true;
-        }
-        if (selectedButton == 1)
-        {
-            //Delete
-            if (SQLiteCore.RemoveItem(items[selectedPosition].id))
-            {
-                SQLiteCore.RemoveOptionItem(items[selectedPosition].id);
-                for (int i = selectedPosition; i < items.Count - 1; i++)
-                {
-                    items[i] = items[i + 1];
-                    slotIcon[i].overrideSprite = items[i].icon;
-                }
-                items.RemoveAt(items.Count - 1);
-                slotIcon[items.Count].sprite = null;
-                slotIcon[items.Count].enabled = false;
-                selectedPosition -= 1;
-                slectedButtonUI[selectedButton].enabled = false;
-                selectedButton = -1;
-                slectedUI[selectedPosition].enabled = true;
-                //setItemDetaiToTable();
-            }
-            return;
-        }
-        if (selectedButton == 2)
-        {
-            slectedButtonUI[selectedButton].enabled = false;
-            selectedButton = -1;
-            slectedUI[selectedPosition].enabled = true;
-            return;
-        }
-    }*/
-
-    /*public void setItemDetaiToTable() {
-        if (selectedPosition >= items.Count) {
-            itemName.text = "";
-            itemDefaultTitle.text = "";
-            itemDefaultPoint.text = "";
-            itemDefaultUnit.text = "";
-            itemDetail.text = "";
-            for (int i = 0; i < itemOptionTitle.Length; i++)
-            {
-                itemOptionTitle[i].text = "";
-                itemOptionPoint[i].text = "";
-                itemOptionUnit[i].text = "";
-            }
-            return;
-        }
-        itemName.text = items[selectedPosition].name;
-        itemDetail.text = items[selectedPosition].details;
-        if (items[selectedPosition].equipSlot != Item.EquipmentSlot.PotionHP && items[selectedPosition].equipSlot != Item.EquipmentSlot.PotionMP && items[selectedPosition].equipSlot != Item.EquipmentSlot.Question)
-        {
-            itemDefaultTitle.text = items[selectedPosition].defaultOption.title;
-            itemDefaultPoint.text = items[selectedPosition].defaultPoint + "";
-            itemDefaultUnit.text = items[selectedPosition].defaultOption.unit;
-            for (int i = 0; i < itemOptionTitle.Length; i++)
-            {
-                if (i >= items[selectedPosition].options.Length)
-                {
-                    itemOptionTitle[i].text = "";
-                    itemOptionPoint[i].text = "";
-                    itemOptionUnit[i].text = "";
-                }
-                else
-                {
-                    itemOptionTitle[i].text = items[selectedPosition].options[i].title;
-                    itemOptionPoint[i].text = items[selectedPosition].points[i] + "";
-                    itemOptionUnit[i].text = items[selectedPosition].options[i].unit;
-                }
-            }
-        }
-        else
-        {
-            itemDefaultTitle.text = "";
-            itemDefaultPoint.text = "";
-            itemDefaultUnit.text = "";
-            for (int i = 0; i < itemOptionTitle.Length; i++)
-            {
-                itemOptionTitle[i].text = "";
-                itemOptionPoint[i].text = "";
-                itemOptionUnit[i].text = "";
-            }
-        }
-    }*/
 
     public void LoadCurrentItem()
     {
@@ -270,5 +102,65 @@ public class Inventory : MonoBehaviour {
                 }
             }
         }
+    }
+    public void CloseInventory(){
+        inventoryUI.SetActive(!inventoryUI.activeSelf);
+        regentUI.SetActive(!inventoryUI.activeSelf);
+        if (!inventoryUI.activeSelf)
+        {   
+            dialogItem.OnClick();
+            if (selectedPosition != -1)
+            {
+                slectedUI[selectedPosition].enabled = false;
+                selectedPosition = -1;
+            }
+        }
+    }
+
+    public void ItemClick(int id)
+    {   if (id == selectedPosition)
+        {
+            return;
+        }
+        if (selectedPosition != -1)
+        {
+            slectedUI[selectedPosition].enabled = false;
+        }
+        selectedPosition = id;
+        slectedUI[selectedPosition].enabled = true;
+        dialogItem.showItem(items[selectedPosition]);
+    }
+    public void EquipItem(){
+        dialogItem.OnClick();
+        if (equipManager.EquipItem(items[selectedPosition]))
+        {
+            items[selectedPosition] = equipManager.lastItem;
+            slotIcon[selectedPosition].overrideSprite = equipManager.lastItem.icon;
+            slectedUI[selectedPosition].enabled = false;
+            equipManager.lastItem = null;
+            selectedPosition = -1;
+            return;
+        }
+        else
+        {
+            RemoveItem();
+        }
+    }
+    public void RemoveItem(){
+        if (dialogItemUI.activeSelf)
+        {
+            dialogItemUI.SetActive(false);
+        }
+        for (int i = selectedPosition; i < items.Count-1; i++)
+        {
+            items[i] = items[i + 1];
+            slotIcon[i].overrideSprite = items[i + 1].icon;
+        }
+        slotIcon[items.Count - 1].overrideSprite = null;
+        slotIcon[items.Count - 1].enabled = false;
+        slectedUI[selectedPosition].enabled = false;
+        items.RemoveAt(items.Count - 1);
+        selectedPosition = -1;
+
     }
 }

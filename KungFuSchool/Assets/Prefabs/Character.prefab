@@ -169,6 +169,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d5d0104524e40c4598c4b6a195a14b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SlotHead: {fileID: 0}
+  SlotArmor: {fileID: 0}
+  SlotGloves: {fileID: 0}
+  SlotBoot: {fileID: 0}
+  SlotPant: {fileID: 0}
+  SlotWepont: {fileID: 0}
+  SlotShield: {fileID: 0}
+  SlotPedan: {fileID: 0}
+  SlotRing: {fileID: 0}
+  SlotRare: {fileID: 0}
+  itemHead: {fileID: 0}
+  itemArmor: {fileID: 0}
+  itemGloves: {fileID: 0}
+  itemBoot: {fileID: 0}
+  itemPant: {fileID: 0}
+  itemWeapon: {fileID: 0}
+  itemShield: {fileID: 0}
+  itemPedan: {fileID: 0}
+  itemRing: {fileID: 0}
+  itemRare: {fileID: 0}
+  lastItem: {fileID: 0}
+  inventory: {fileID: 0}
 --- !u!114 &114215551173724694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -220,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac486def111c25341bfe998ba3737981, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 500
+  health: 1000
   mana: 500
   healthBar: {fileID: 0}
   manaBar: {fileID: 0}
@@ -260,7 +282,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 0}
   regentUI: {fileID: 0}
-  dialogBox: {fileID: 0}
+  dialogItem: {fileID: 0}
+  dialogItemUI: {fileID: 0}
   items:
   - {fileID: 0}
   - {fileID: 0}
@@ -349,11 +372,6 @@ MonoBehaviour:
   manaCount: {fileID: 0}
   healthCount: {fileID: 0}
   moneyCount: {fileID: 0}
-  itemName: {fileID: 0}
-  itemDetail: {fileID: 0}
-  itemDefaultTitle: {fileID: 0}
-  itemDefaultPoint: {fileID: 0}
-  itemDefaultUnit: {fileID: 0}
   space: 20
 --- !u!114 &114923519421021674
 MonoBehaviour:

@@ -6,6 +6,7 @@ public class InteractionObject : MonoBehaviour {
     public Item itemTest;
     public bool inventory;
     public bool EquipmentItem = false;
+    public bool isStacking;
     public string itemName;
     public string itemDetails;
     public EquipmentSlot itemType;
@@ -23,6 +24,7 @@ public class InteractionObject : MonoBehaviour {
         itemTest.name = itemName;
         itemTest.details = itemDetails;
         itemTest.isEquipment = EquipmentItem;
+        itemTest.isStacking = isStacking;
         if (itemTest.equipSlot != Item.EquipmentSlot.PotionHP && itemTest.equipSlot != Item.EquipmentSlot.PotionHP && itemTest.equipSlot != Item.EquipmentSlot.PotionHP) {
             itemTest.defaultOption = defaultOption;
             itemTest.defaultPoint = defaultPoint;

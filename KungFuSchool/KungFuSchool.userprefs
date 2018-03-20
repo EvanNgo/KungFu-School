@@ -1,12 +1,11 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Enemy.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/Inventory/EquipmentManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/Question/QuestObject.cs" Line="7" Column="38" />
-      <File FileName="Assets/Scripts/Question/QuestManager.cs" Line="10" Column="30" />
-      <File FileName="Assets/Scripts/Question/QuestTrigger.cs" Line="20" Column="37" />
-      <File FileName="Assets/Scripts/Question/QuestItem.cs" Line="19" Column="37" />
-      <File FileName="Assets/Scripts/Enemy.cs" Line="22" Column="42" />
+      <File FileName="Assets/Scripts/Inventory/Inventory.cs" Line="157" Column="41" />
+      <File FileName="Assets/Scripts/Dialog/DialogItem.cs" Line="145" Column="60" />
+      <File FileName="Assets/Scripts/Interaction/InteractionObject.cs" Line="9" Column="28" />
+      <File FileName="Assets/Scripts/Inventory/EquipmentManager.cs" Line="30" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -103,6 +103,7 @@ public static class SQLiteCore {
                         item.defaultPoint = Convert.ToInt32(datas[6]);
                         if (Convert.ToInt32(datas[9]) == 0) { item.isEquiping = false; } else { item.isEquiping = true; }
                         if (Convert.ToInt32(datas[10]) == 0) { item.isEquipment = false; } else { item.isEquipment = true; }
+                        if (Convert.ToInt32(datas[11]) == 0) { item.isStacking = false; } else { item.isStacking = true; }
                         items.Add(item);
                     }
 
@@ -156,19 +157,21 @@ public static class SQLiteCore {
     {
         int isEquipment = 0;
         int isEquiping = 0;
+        int isStacking = 0;
+        if (item.isStacking) { isStacking = 1; }
         if (item.isEquiping) { isEquiping = 1; }
         string query;
         if (item.isEquipment) {
             isEquipment = 1;
-            query = String.Format("INSERT INTO Inventory (id,name,icon,detail,equipSlot,defaultOptionTitle,defaultOptionPoint,defaultOptionUnit,defaultOptionTag,isEquiping,isEquipment)" +
-            " VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-            item.name, item.icon.name, item.details, item.equipSlot + "", item.defaultOption.title, item.defaultPoint, item.defaultOption.unit, item.defaultOption.tag, isEquiping, isEquipment);
+            query = String.Format("INSERT INTO Inventory (id,name,icon,detail,equipSlot,defaultOptionTitle,defaultOptionPoint,defaultOptionUnit,defaultOptionTag,isEquiping,isEquipment,isStacking)" +
+                " VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')",
+                item.name, item.icon.name, item.details, item.equipSlot + "", item.defaultOption.title, item.defaultPoint, item.defaultOption.unit, item.defaultOption.tag, isEquiping, isEquipment,isStacking);
         }
         else
         {
-            query = String.Format("INSERT INTO Inventory (id,name,icon,detail,equipSlot,defaultOptionTitle,defaultOptionPoint,defaultOptionUnit,defaultOptionTag,isEquiping,isEquipment)" +
-            " VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",
-            item.name, item.icon.name, item.details, item.equipSlot + "","",0, "","", isEquiping, isEquipment);
+            query = String.Format("INSERT INTO Inventory (id,name,icon,detail,equipSlot,defaultOptionTitle,defaultOptionPoint,defaultOptionUnit,defaultOptionTag,isEquiping,isEquipment,isStacking)" +
+                " VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}')",
+                item.name, item.icon.name, item.details, item.equipSlot + "","",0, "","", isEquiping, isEquipment,isStacking);
         }
         
         Connect();

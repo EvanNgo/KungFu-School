@@ -16,21 +16,33 @@ public class Inventory : MonoBehaviour {
     public Text[] itemOptionTitle = new Text[9];
     public Text[] itemOptionPoint = new Text[9];
     public Text[] itemOptionUnit = new Text[9];
-    public Text manaCount;
-    public Text healthCount;
-    public Text moneyCount;
+    public Text[] txtCounts = new Text[20];
+    public Text txtMoney;
     public int space = 20;
     int selectedPosition = -1;
     void Start(){
+        LoadCurrentItem();
         for (int i = 0; i < space ; i++)
         {
             slectedUI[i].enabled = false;
             if (i >= items.Count)
             {
                 slotIcon[i].enabled = false;
+                txtCounts[i].enabled = false;
+            }
+            else
+            {
+                if (!items[i].isEquipment && items[i].isStacking)
+                {
+                    txtCounts[i].text = items[i].count + "";
+                    txtCounts[i].enabled = true;
+                }
+                else
+                {
+                    txtCounts[i].enabled = false;
+                }
             }
         }
-        LoadCurrentItem();
         dialogBox = GameObject.FindObjectOfType<DialogueManager>().dialogBox;
         equipManager = FindObjectOfType<EquipmentManager>();
     }
@@ -57,6 +69,21 @@ public class Inventory : MonoBehaviour {
     }
 
     public void AddItem(Item itemToAdd,GameObject itemScript){
+        if (!itemToAdd.isEquipment && items.Count > 0)
+        {
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].name==itemToAdd.name && items[i].details == itemToAdd.details && items[i].icon == itemToAdd.icon && items[i].count<99)
+                {
+                    items[i].count += 1;
+                    if (SQLiteCore.UpdateItem(items[i])){
+                        itemScript.SendMessage("DoInteraction");
+                        txtCounts[i].text = items[i].count + "";
+                        return;
+                    }
+                }
+            }
+        }
         if (items.Count > space) { Debug.Log("Inventory Full!!");  return; }
         if (SQLiteCore.AddItemToInventory(itemToAdd) == -1) {
             Debug.Log("Save item ERROR");
@@ -66,6 +93,12 @@ public class Inventory : MonoBehaviour {
         items.Add(itemToAdd);
         slotIcon[items.Count - 1].overrideSprite = itemToAdd.icon;
         slotIcon[items.Count - 1].enabled = true;
+        if (!itemToAdd.isEquipment && itemToAdd.isStacking)
+        {
+            txtCounts[items.Count - 1].text = itemToAdd.count + "";
+            txtCounts[items.Count - 1].enabled = true;
+
+        }
         itemScript.SendMessage("DoInteraction");
     }
 
@@ -132,21 +165,71 @@ public class Inventory : MonoBehaviour {
     }
     public void EquipItem(){
         dialogItem.OnClick();
+        items[selectedPosition].isEquiping = true;
+        SQLiteCore.UpdateEquipment(items[selectedPosition]);
         if (equipManager.EquipItem(items[selectedPosition]))
         {
             items[selectedPosition] = equipManager.lastItem;
+            items[selectedPosition].isEquiping = false;
             slotIcon[selectedPosition].overrideSprite = equipManager.lastItem.icon;
             slectedUI[selectedPosition].enabled = false;
+            SQLiteCore.UpdateEquipment(items[selectedPosition]);
             equipManager.lastItem = null;
             selectedPosition = -1;
             return;
         }
         else
         {
-            RemoveItem();
+            if (dialogItemUI.activeSelf)
+            {
+                dialogItemUI.SetActive(false);
+            }
+            for (int i = selectedPosition; i < items.Count - 1; i++)
+            {
+                items[i] = items[i + 1];
+                slotIcon[i].overrideSprite = items[i + 1].icon;
+            }
+            slotIcon[items.Count - 1].overrideSprite = null;
+            slotIcon[items.Count - 1].enabled = false;
+            slectedUI[selectedPosition].enabled = false;
+            items.RemoveAt(items.Count - 1);
+            selectedPosition = -1;
         }
     }
     public void RemoveItem(){
+        if (items[selectedPosition].isEquipment)
+        {
+            if (items[selectedPosition].options.Length > 0)
+            {
+                if (SQLiteCore.RemoveOptionItem(items[selectedPosition].id))
+                {
+                    if (!SQLiteCore.RemoveItem(items[selectedPosition].id)){
+                        for (int i = 0; i < items[selectedPosition].options.Length; i++)
+                        {
+                            SQLiteCore.AddItemOption(items[selectedPosition].id, items[selectedPosition].points[i], items[selectedPosition].options[i]);
+                        }
+                        return;
+                    }
+                }
+                else
+                {
+                    return;
+                }
+            }
+            else
+            {
+                if (!SQLiteCore.RemoveItem(items[selectedPosition].id)){
+                    return;
+                }
+            }
+        }
+        else
+        {
+            if (!SQLiteCore.RemoveItem(items[selectedPosition].id))
+            {
+                return;
+            }
+        }
         if (dialogItemUI.activeSelf)
         {
             dialogItemUI.SetActive(false);
@@ -161,6 +244,5 @@ public class Inventory : MonoBehaviour {
         slectedUI[selectedPosition].enabled = false;
         items.RemoveAt(items.Count - 1);
         selectedPosition = -1;
-
     }
 }

@@ -7,6 +7,7 @@ public class InteractionObject : MonoBehaviour {
     public bool inventory;
     public bool EquipmentItem = false;
     public bool isStacking;
+    public int itemCount = 1;
     public string itemName;
     public string itemDetails;
     public EquipmentSlot itemType;
@@ -22,10 +23,11 @@ public class InteractionObject : MonoBehaviour {
         setEquipSlot();
         itemTest.icon = GetComponent<SpriteRenderer>().sprite;
         itemTest.name = itemName;
+        itemTest.count = itemCount;
         itemTest.details = itemDetails;
         itemTest.isEquipment = EquipmentItem;
         itemTest.isStacking = isStacking;
-        if (itemTest.equipSlot != Item.EquipmentSlot.PotionHP && itemTest.equipSlot != Item.EquipmentSlot.PotionHP && itemTest.equipSlot != Item.EquipmentSlot.PotionHP) {
+        if (itemTest.isEquipment) {
             itemTest.defaultOption = defaultOption;
             itemTest.defaultPoint = defaultPoint;
             setOption();
@@ -77,15 +79,6 @@ public class InteractionObject : MonoBehaviour {
                 break;
             case EquipmentSlot.Shield:
                 itemTest.equipSlot = Item.EquipmentSlot.Shield;
-                break;
-            case EquipmentSlot.PotionHP:
-                itemTest.equipSlot = Item.EquipmentSlot.PotionHP;
-                break;
-            case EquipmentSlot.PotionMP:
-                itemTest.equipSlot = Item.EquipmentSlot.PotionMP;
-                break;
-            case EquipmentSlot.Question:
-                itemTest.equipSlot = Item.EquipmentSlot.Question;
                 break;
         }
     }

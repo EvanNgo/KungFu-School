@@ -305,7 +305,8 @@
     <Compile Include="Assets\Scripts\Charactor\PlayerControlelr.cs" />
     <Compile Include="Assets\Scripts\Charactor\PlayerDetails.cs" />
     <Compile Include="Assets\Scripts\Charactor\PlayerLevel.cs" />
-    <Compile Include="Assets\Scripts\DialogueManager.cs" />
+    <Compile Include="Assets\Scripts\Dialog\DialogItem.cs" />
+    <Compile Include="Assets\Scripts\Dialog\DialogueManager.cs" />
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\EnemyController.cs" />
     <Compile Include="Assets\Scripts\Interaction\InteractionObject.cs" />

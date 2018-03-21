@@ -17,7 +17,6 @@ public class DialogItem : MonoBehaviour {
     [Header("Equip Item")]
     public GameObject EquipBox;
     public Text eName;
-    public Text eType;
     public Text eDetail;
     public Text eDefaultTitle;
     public Text eDefaultPoint;
@@ -28,7 +27,6 @@ public class DialogItem : MonoBehaviour {
     [Header("Equiping Item")]
     public GameObject EquipingBox;
     public Text epName;
-    public Text epType;
     public Text epDetail;
     public Text epDefaultTitle;
     public Text epDefaultPoint;
@@ -62,7 +60,6 @@ public class DialogItem : MonoBehaviour {
         else
         {
             eName.text = item.name;
-            eType.text = item.equipSlot + "";
             eDetail.text = item.details;
             eDefaultTitle.text = item.defaultOption.title;
             eDefaultPoint.text = item.defaultPoint + "";
@@ -153,14 +150,13 @@ public class DialogItem : MonoBehaviour {
                 return;
             }
             epName.text = EquipingItem.name;
-            epType.text =EquipingItem.equipSlot + "";
             epDetail.text = EquipingItem.details;
             epDefaultTitle.text = EquipingItem.defaultOption.title;
             epDefaultPoint.text = EquipingItem.defaultPoint + "";
             epDefaultUnit.text = EquipingItem.defaultOption.unit;
             for (int i = 0; i < eOpTitles.Length; i++)
             {
-                if (i >= EquipingItem.options.Length)
+                if (EquipingItem.options==null || EquipingItem.options.Length == 0 || i >= EquipingItem.options.Length)
                 {
                     epOpTitles[i].text = "";
                     epOpPoints[i].text = "";

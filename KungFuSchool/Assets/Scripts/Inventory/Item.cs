@@ -11,6 +11,7 @@ public class Item : ScriptableObject {
     public Sprite icon = null;
     public bool isEquiping = false;
     public bool isStacking = false;
+    public int count = 1;
     public Option defaultOption;
     public int defaultPoint;
     public Option[] options;
@@ -22,5 +23,5 @@ public class Item : ScriptableObject {
     {
         Debug.Log("Used");
     }
-    public enum EquipmentSlot { Head, Armor, Pant, Foot, Gloves, Ring, Pedan, Weapon, Shield, Rare, PotionHP ,PotionMP,Question }
+    public enum EquipmentSlot { Head, Armor, Pant, Foot, Gloves, Ring, Pedan, Weapon, Shield, Rare}
 }

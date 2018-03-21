@@ -72,6 +72,7 @@ MonoBehaviour:
   inventory: 1
   EquipmentItem: 0
   isStacking: 1
+  itemCount: 1
   itemName: "L\u1ECD M\xE1u"
   itemDetails: "S\u1EED d\u1EE5ng \u0111\u1EC3 h\u1ED3i sinh l\u1EF1c"
   itemType: 9

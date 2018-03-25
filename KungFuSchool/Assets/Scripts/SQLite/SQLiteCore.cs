@@ -94,7 +94,12 @@ public static class SQLiteCore {
                         string itemIcon = Convert.ToString(datas[2]);
                         item.icon = Resources.Load<Sprite>(itemIcon);
                         item.details = Convert.ToString(datas[3]);
-                        item.equipSlot = (Item.EquipmentSlot)Enum.Parse(typeof(Item.EquipmentSlot),Convert.ToString(datas[4]));
+                        if (Convert.ToInt32(datas[10]) == 0) {
+                            item.isEquipment = false;
+                        } else {
+                            item.isEquipment = true;
+                            item.equipSlot = (Item.EquipmentSlot)Enum.Parse(typeof(Item.EquipmentSlot), Convert.ToString(datas[4]));
+                        }
                         Option op = ScriptableObject.CreateInstance<Option>();
                         op.title = Convert.ToString(datas[5]);
                         op.unit = Convert.ToString(datas[7]);
@@ -102,7 +107,7 @@ public static class SQLiteCore {
                         item.defaultOption = op;
                         item.defaultPoint = Convert.ToInt32(datas[6]);
                         item.isEquiping = false; 
-                        if (Convert.ToInt32(datas[10]) == 0) { item.isEquipment = false; } else { item.isEquipment = true; }
+                        
                         if (Convert.ToInt32(datas[11]) == 0) { item.isStacking = false; } else { item.isStacking = true; }
                         item.count = Convert.ToInt32(datas[12]);
                         items.Add(item);

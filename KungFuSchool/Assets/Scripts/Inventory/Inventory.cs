@@ -4,68 +4,24 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour {
-    public GameObject inventoryUI;
-    public GameObject regentUI;
-    public DialogItem dialogItem;
-    public GameObject dialogItemUI;
-    private GameObject dialogBox;
-    private EquipmentManager equipManager;
+    #region Singleton
+
+    public static Inventory instance;
+
+    void Awake ()
+    {
+        instance = this;
+    }
+
+    #endregion
+
+    public delegate void OnItemChanged();
+    public OnItemChanged onItemChangedCallback;
     public List<Item> items = new List<Item>();
-    public Image[] slotIcon = new Image[20];
-    public Image[] slectedUI = new Image[20];
-    public Text[] itemOptionTitle = new Text[9];
-    public Text[] itemOptionPoint = new Text[9];
-    public Text[] itemOptionUnit = new Text[9];
-    public Text[] txtCounts = new Text[20];
     public Text txtMoney;
     public int space = 20;
-    int selectedPosition = -1;
     void Start(){
         LoadCurrentItem();
-        for (int i = 0; i < space ; i++)
-        {
-            slectedUI[i].enabled = false;
-            if (i >= items.Count)
-            {
-                slotIcon[i].enabled = false;
-                txtCounts[i].enabled = false;
-            }
-            else
-            {
-                if (!items[i].isEquipment && items[i].isStacking)
-                {
-                    txtCounts[i].text = items[i].count + "";
-                    txtCounts[i].enabled = true;
-                }
-                else
-                {
-                    txtCounts[i].enabled = false;
-                }
-            }
-        }
-        dialogBox = GameObject.FindObjectOfType<DialogueManager>().dialogBox;
-        equipManager = FindObjectOfType<EquipmentManager>();
-    }
-    
-    void Update(){
-        if (dialogBox.activeSelf)
-        {
-            return;
-        }
-        if (Input.GetButtonDown("Inventory"))
-        {   
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
-            regentUI.SetActive(!inventoryUI.activeSelf);
-            if (!inventoryUI.activeSelf)
-            {   
-                dialogItem.OnClick();
-                if (selectedPosition != -1)
-                {
-                    slectedUI[selectedPosition].enabled = false;
-                    selectedPosition = -1;
-                }
-            }
-        }
     }
 
     public void AddItem(Item itemToAdd,GameObject itemScript){
@@ -78,7 +34,6 @@ public class Inventory : MonoBehaviour {
                     items[i].count += 1;
                     if (SQLiteCore.UpdateItem(items[i])){
                         itemScript.SendMessage("DoInteraction");
-                        txtCounts[i].text = items[i].count + "";
                         return;
                     }
                 }
@@ -91,14 +46,6 @@ public class Inventory : MonoBehaviour {
         }
         itemToAdd.id = SQLiteCore.LastAddedItem;
         items.Add(itemToAdd);
-        slotIcon[items.Count - 1].overrideSprite = itemToAdd.icon;
-        slotIcon[items.Count - 1].enabled = true;
-        if (!itemToAdd.isEquipment && itemToAdd.isStacking)
-        {
-            txtCounts[items.Count - 1].text = itemToAdd.count + "";
-            txtCounts[items.Count - 1].enabled = true;
-
-        }
         itemScript.SendMessage("DoInteraction");
     }
 
@@ -108,8 +55,6 @@ public class Inventory : MonoBehaviour {
         if (items.Count > 0) {
             for (int i = 0; i < items.Count; i++)
             {
-                slotIcon[i].overrideSprite = items[i].icon;
-                slotIcon[i].enabled = true;
                 if (items[i].isEquipment)
                 {
                     List<Option> list = SQLiteCore.getOptionItem(items[i].id);
@@ -132,117 +77,44 @@ public class Inventory : MonoBehaviour {
                         items[i].options = new Option[0];
                         items[i].points = new int[0];
                     }
+                    if (onItemChangedCallback != null)
+                        onItemChangedCallback.Invoke ();
                 }
-            }
-        }
-    }
-    public void CloseInventory(){
-        inventoryUI.SetActive(!inventoryUI.activeSelf);
-        regentUI.SetActive(!inventoryUI.activeSelf);
-        if (!inventoryUI.activeSelf)
-        {   
-            dialogItem.OnClick();
-            if (selectedPosition != -1)
-            {
-                slectedUI[selectedPosition].enabled = false;
-                selectedPosition = -1;
             }
         }
     }
 
-    public void ItemClick(int id)
-    {   if (id == selectedPosition)
-        {
-            return;
-        }
-        if (selectedPosition != -1)
-        {
-            slectedUI[selectedPosition].enabled = false;
-        }
-        selectedPosition = id;
-        slectedUI[selectedPosition].enabled = true;
-        dialogItem.showItem(items[selectedPosition]);
+
+    public void unEquipmentItem(Item item,int index){
+        item.isEquiping = false;
+        items.Insert(index, item);
+        SQLiteCore.UpdateEquipment(item);
+        if (onItemChangedCallback != null)
+            onItemChangedCallback.Invoke ();
     }
-    public void EquipItem(){
-        dialogItem.OnClick();
-        items[selectedPosition].isEquiping = true;
-        SQLiteCore.UpdateEquipment(items[selectedPosition]);
-        if (equipManager.EquipItem(items[selectedPosition]))
-        {
-            items[selectedPosition] = equipManager.lastItem;
-            items[selectedPosition].isEquiping = false;
-            slotIcon[selectedPosition].overrideSprite = equipManager.lastItem.icon;
-            slectedUI[selectedPosition].enabled = false;
-            SQLiteCore.UpdateEquipment(items[selectedPosition]);
-            equipManager.lastItem = null;
-            selectedPosition = -1;
-            return;
-        }
-        else
-        {
-            if (dialogItemUI.activeSelf)
-            {
-                dialogItemUI.SetActive(false);
-            }
-            for (int i = selectedPosition; i < items.Count - 1; i++)
-            {
-                items[i] = items[i + 1];
-                slotIcon[i].overrideSprite = items[i + 1].icon;
-            }
-            slotIcon[items.Count - 1].overrideSprite = null;
-            slotIcon[items.Count - 1].enabled = false;
-            slectedUI[selectedPosition].enabled = false;
-            items.RemoveAt(items.Count - 1);
-            selectedPosition = -1;
-        }
+
+    public int EquipItem(Item equipItem){
+        int index = items.IndexOf(equipItem);
+        equipItem.isEquiping = true;
+        items.Remove(equipItem);
+        SQLiteCore.UpdateEquipment(equipItem);
+        if (onItemChangedCallback != null)
+            onItemChangedCallback.Invoke ();
+        return index;
     }
-    public void RemoveItem(){
-        if (items[selectedPosition].isEquipment)
+        
+    public void Remove(Item removeItem){
+        int index = items.IndexOf(removeItem);
+        SQLiteCore.RemoveItem(removeItem.id);
+        if (removeItem.isEquipment)
         {
-            if (items[selectedPosition].options.Length > 0)
-            {
-                if (SQLiteCore.RemoveOptionItem(items[selectedPosition].id))
-                {
-                    if (!SQLiteCore.RemoveItem(items[selectedPosition].id)){
-                        for (int i = 0; i < items[selectedPosition].options.Length; i++)
-                        {
-                            SQLiteCore.AddItemOption(items[selectedPosition].id, items[selectedPosition].points[i], items[selectedPosition].options[i]);
-                        }
-                        return;
-                    }
-                }
-                else
-                {
-                    return;
-                }
-            }
-            else
-            {
-                if (!SQLiteCore.RemoveItem(items[selectedPosition].id)){
-                    return;
-                }
+            if (removeItem.options.Length > 0)
+            {   
+                SQLiteCore.RemoveOptionItem(removeItem.id);
             }
         }
-        else
-        {
-            if (!SQLiteCore.RemoveItem(items[selectedPosition].id))
-            {
-                return;
-            }
-        }
-        if (dialogItemUI.activeSelf)
-        {
-            dialogItemUI.SetActive(false);
-        }
-        for (int i = selectedPosition; i < items.Count-1; i++)
-        {
-            items[i] = items[i + 1];
-            slotIcon[i].overrideSprite = items[i + 1].icon;
-        }
-        slotIcon[items.Count - 1].overrideSprite = null;
-        slotIcon[items.Count - 1].enabled = false;
-        slectedUI[selectedPosition].enabled = false;
-        items.RemoveAt(items.Count - 1);
-        selectedPosition = -1;
+        items.Remove(removeItem);
+        if (onItemChangedCallback != null)
+            onItemChangedCallback.Invoke ();
     }
 }

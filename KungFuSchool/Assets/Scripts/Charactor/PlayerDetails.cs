@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 public class PlayerDetails : MonoBehaviour {
+
     public float health = 1000;
     public float mana = 500;
     private float currentHealth;

@@ -44,8 +44,6 @@ GameObject:
   - component: {fileID: 114850059056354482}
   - component: {fileID: 114618858938809962}
   - component: {fileID: 114419518920574242}
-  - component: {fileID: 114858098876253556}
-  - component: {fileID: 114098458141077944}
   - component: {fileID: 114639330442701016}
   m_Layer: 0
   m_Name: Character
@@ -158,39 +156,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114098458141077944
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1309179856757972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d5d0104524e40c4598c4b6a195a14b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SlotHead: {fileID: 0}
-  SlotArmor: {fileID: 0}
-  SlotGloves: {fileID: 0}
-  SlotBoot: {fileID: 0}
-  SlotPant: {fileID: 0}
-  SlotWepont: {fileID: 0}
-  SlotShield: {fileID: 0}
-  SlotPedan: {fileID: 0}
-  SlotRing: {fileID: 0}
-  SlotRare: {fileID: 0}
-  itemHead: {fileID: 0}
-  itemArmor: {fileID: 0}
-  itemGloves: {fileID: 0}
-  itemBoot: {fileID: 0}
-  itemPant: {fileID: 0}
-  itemWeapon: {fileID: 0}
-  itemShield: {fileID: 0}
-  itemPedan: {fileID: 0}
-  itemRing: {fileID: 0}
-  itemRare: {fileID: 0}
-  lastItem: {fileID: 0}
-  inventory: {fileID: 0}
 --- !u!114 &114215551173724694
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -216,7 +181,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentObject: {fileID: 0}
   currentObjectScript: {fileID: 0}
-  inventory: {fileID: 114858098876253556}
 --- !u!114 &114618858938809962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -269,110 +233,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackTrigger: {fileID: 61136852005387138}
   inventoryUI: {fileID: 0}
---- !u!114 &114858098876253556
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1309179856757972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34ce407fc26904c83ab8e7e2ddd34bbf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryUI: {fileID: 0}
-  regentUI: {fileID: 0}
-  dialogItem: {fileID: 0}
-  dialogItemUI: {fileID: 0}
-  items:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  slotIcon:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  slectedUI:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  itemOptionTitle:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  itemOptionPoint:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  itemOptionUnit:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  manaCount: {fileID: 0}
-  healthCount: {fileID: 0}
-  moneyCount: {fileID: 0}
-  space: 20
 --- !u!114 &114923519421021674
 MonoBehaviour:
   m_ObjectHideFlags: 1

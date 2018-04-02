@@ -10,12 +10,12 @@ public class InteractionObject : MonoBehaviour {
     public int itemCount = 1;
     public string itemName;
     public string itemDetails;
-    public EquipmentSlot itemType;
+    public Item.EquipmentSlot itemType;
     public Option defaultOption;
     public int defaultPoint;
     public List<Option> avaiableOption;
     public int maxLines;
-    public float autoDestroy = 15f;
+    private float autoDestroy = 15f;
     private float timeCount = 0;
     private void Start()
     {
@@ -51,38 +51,9 @@ public class InteractionObject : MonoBehaviour {
         Destroy(gameObject);
     }
     public void setEquipSlot() {
-        switch (itemType)
-        {
-            case EquipmentSlot.Head:
-                itemTest.equipSlot = Item.EquipmentSlot.Head;
-                break;
-            case EquipmentSlot.Armor:
-                itemTest.equipSlot = Item.EquipmentSlot.Armor;
-                break;
-            case EquipmentSlot.Pant:
-                itemTest.equipSlot = Item.EquipmentSlot.Pant;
-                break;
-            case EquipmentSlot.Foot:
-                itemTest.equipSlot = Item.EquipmentSlot.Foot;
-                break;
-            case EquipmentSlot.Gloves:
-                itemTest.equipSlot = Item.EquipmentSlot.Gloves;
-                break;
-            case EquipmentSlot.Ring:
-                itemTest.equipSlot = Item.EquipmentSlot.Ring;
-                break;
-            case EquipmentSlot.Pedan:
-                itemTest.equipSlot = Item.EquipmentSlot.Pedan;
-                break;
-            case EquipmentSlot.Weapon:
-                itemTest.equipSlot = Item.EquipmentSlot.Weapon;
-                break;
-            case EquipmentSlot.Shield:
-                itemTest.equipSlot = Item.EquipmentSlot.Shield;
-                break;
-        }
+        int itemTypeSlot = (int)itemType;
+        itemTest.equipSlot = itemType;
     }
-    public enum EquipmentSlot { Head, Armor, Pant, Foot, Gloves, Ring, Pedan, Weapon, Shield, PotionHP, PotionMP, Question }
     public void setOption()
     {
         if (EquipmentItem) {

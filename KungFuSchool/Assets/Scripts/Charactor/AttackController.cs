@@ -5,7 +5,7 @@ using UnityEngine;
 public class AttackController : MonoBehaviour {
     public BoxCollider2D attackTrigger;
     public GameObject inventoryUI;
-    private GameObject dialogBox;
+    private DialogueManager dialogManager;
     SantaObject santaObject = null;
     GameObject currentGameObject;
     GameObject currentBoxItem;
@@ -17,7 +17,8 @@ public class AttackController : MonoBehaviour {
     void Start(){
         anim = GetComponent<Animator>();
         attackTrigger.enabled = false;
-        dialogBox = GameObject.FindObjectOfType<DialogueManager>().dialogBox;
+        dialogManager = DialogueManager.instance;
+        inventoryUI = Inventory.instance.gameObject;
     }
 
     void Update(){
@@ -33,9 +34,9 @@ public class AttackController : MonoBehaviour {
                 attackTrigger.enabled = false;
             }
         }
-        if (inventoryUI.activeSelf || dialogBox.activeSelf) {
-            return;
-        }
+//        if (inventoryUI.activeSelf || dialogBox.activeSelf) {
+//            return;
+//        }
         if (Input.GetButtonDown("Select"))
         {
             if (currentGameObject != null && santaObject != null && santaObject.talks) {

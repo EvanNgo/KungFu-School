@@ -4,7 +4,25 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class DialogItem : MonoBehaviour {
-    public GameObject dialogUI;
+    #region Singleton
+
+
+    public static DialogItem instance {
+        get {
+            if (_instance == null) {
+                _instance = FindObjectOfType<DialogItem> ();
+            }
+            return _instance;
+        }
+    }
+    static DialogItem _instance;
+
+    void Awake ()
+    {
+        _instance = this;
+    }
+
+    #endregion
     private EquipmentManager eManager;
     private Item EquipingItem;
     private Item ShowingItem;
@@ -35,20 +53,24 @@ public class DialogItem : MonoBehaviour {
     public Text[] epOpPoints;
     public Text[] epOpUnits;
 
-	// Use this for initialization
-	void Start () {
-        eManager = FindObjectOfType<EquipmentManager>();
-        dialogUI.SetActive(false);
-	}
+    [Header("Unequip Item")]
+    public GameObject UnequipBox;
+    public Text ueName;
+    public Text ueDetail;
+    public Text ueDefaultTitle;
+    public Text ueDefaultPoint;
+    public Text ueDefaultUnit;
+    public Text[] ueOpTitles;
+    public Text[] ueOpPoints;
+    public Text[] ueOpUnits;
 
-    public void OnClick(){
-        dialogUI.SetActive(false);
-    }
     public void showItem(Item item){
-        dialogUI.SetActive(true);
+        ShowingItem = item;
+        int slotIndex = (int)item.equipSlot;
         EquipBox.SetActive(false);
         EquipingBox.SetActive(false);
         NonEquipBox.SetActive(false);
+        UnequipBox.SetActive(false);
         if (!item.isEquipment)
         {
             neIcon.overrideSprite = item.icon;
@@ -80,70 +102,14 @@ public class DialogItem : MonoBehaviour {
                 }
             }
             EquipBox.SetActive(true);
-            switch (item.equipSlot)
+            if (eManager == null)
             {
-                case Item.EquipmentSlot.Head:
-                    if (eManager.equipings[0] != null)
-                    {
-                        EquipingItem = eManager.equipings[0];
-                    }
-                    break;
-                case Item.EquipmentSlot.Armor:
-                    if (eManager.equipings[1] != null)
-                    {
-                        EquipingItem = eManager.equipings[1];
-                    }
-                    break;
-                case Item.EquipmentSlot.Gloves:
-                    if (eManager.equipings[2] != null)
-                    {
-                        EquipingItem = eManager.equipings[2];
-                    }
-                    break;
-                case Item.EquipmentSlot.Foot:
-                    if (eManager.equipings[3] != null)
-                    {
-                        EquipingItem = eManager.equipings[3];
-                    }
-                    break;
-                case Item.EquipmentSlot.Pant:
-                    if (eManager.equipings[4] != null)
-                    {
-                        EquipingItem = eManager.equipings[4];
-                    }
-                    break;
-                case Item.EquipmentSlot.Weapon:
-                    if (eManager.equipings[5] != null)
-                    {
-                        EquipingItem = eManager.equipings[5];
-                    }
-                    break;
-                case Item.EquipmentSlot.Shield:
-                    if (eManager.equipings[6] != null)
-                    {
-                        EquipingItem = eManager.equipings[6];
-                    }
-                    break;
-                case Item.EquipmentSlot.Pedan:
-                    if (eManager.equipings[7] != null)
-                    {
-                        EquipingItem = eManager.equipings[7];
-                    }
-                    break;
-                case Item.EquipmentSlot.Ring:
-                    if (eManager.equipings[8] == null)
-                    {
-                        EquipingItem = eManager.equipings[8];
-                    }
-                    break;
-                case Item.EquipmentSlot.Rare:
-                    if (eManager.equipings[9] != null)
-                    {
-                        EquipingItem = eManager.equipings[9];
-                    }
-                    break;
+                eManager = EquipmentManager.instance;
             }
-
+            if (eManager.currentEquipment[slotIndex] != null)
+            {
+                EquipingItem = eManager.currentEquipment[slotIndex];
+            }
             if (EquipingItem == null)
             {   
                 EquipingBox.SetActive(false);
@@ -172,5 +138,43 @@ public class DialogItem : MonoBehaviour {
             EquipingItem = null;
             EquipingBox.SetActive(true);
         }
+    }
+
+    public void showQuipingItem(Item item){
+        ShowingItem = item;
+        int slotIndex = (int)ShowingItem.equipSlot;
+        EquipBox.SetActive(false);
+        EquipingBox.SetActive(false);
+        NonEquipBox.SetActive(false);
+        UnequipBox.SetActive(false);
+        ueName.text = ShowingItem.name;
+        ueDetail.text = ShowingItem.details;
+        ueDefaultTitle.text = ShowingItem.defaultOption.title;
+        ueDefaultPoint.text = ShowingItem.defaultPoint + "";
+        ueDefaultUnit.text = ShowingItem.defaultOption.unit;
+        for (int i = 0; i < ueOpTitles.Length; i++)
+        {
+            if (i >= ShowingItem.options.Length)
+            {
+                ueOpTitles[i].text = "";
+                ueOpPoints[i].text = "";
+                ueOpUnits[i].text = "";
+            }
+            else
+            {
+                ueOpTitles[i].text = ShowingItem.options[i].title;
+                ueOpPoints[i].text = ShowingItem.points[i] + "";
+                ueOpUnits[i].text = ShowingItem.options[i].unit;
+            }
+        }
+        UnequipBox.SetActive(true);
+    }
+
+    public void UsingItem(){
+        ShowingItem.Use();
+    }
+
+    public void RemoveItem(){
+        ShowingItem.RemoveFromInventory();
     }
 }

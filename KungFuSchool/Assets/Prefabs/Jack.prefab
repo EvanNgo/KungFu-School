@@ -163,7 +163,9 @@ MonoBehaviour:
   enemyExp: 200
   healthBar: {fileID: 114281058836093458}
   dropingItem:
-  - {fileID: 1858747596075160, guid: c3a7ca0da95d68f46adbd77a6479bfd9, type: 2}
+  - {fileID: 1888892634319608, guid: 30a16ae55455a41448c750663c124747, type: 2}
+  - {fileID: 1444155140842784, guid: 03036fcae06bdb948b03ec65a42a6926, type: 2}
+  - {fileID: 1516813502844806, guid: b760190853ddc73458fa0b43754f23ac, type: 2}
 --- !u!114 &114526921843239318
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -21,7 +21,21 @@ public class Item : ScriptableObject {
     public bool showInInventory = true;
     public virtual void Use()
     {
-        Debug.Log("Used");
+        if (isEquipment)
+        {
+            EquipmentManager.instance.EquipItem(this,EquipItem ());
+            DialogItemManager.instance.CloseDialog();
+        }
+    }
+
+    public int EquipItem(){
+        return Inventory.instance.EquipItem(this);
+    }
+
+    public void RemoveFromInventory ()
+    {
+       Inventory.instance.Remove(this);
+       DialogItemManager.instance.CloseDialog();
     }
     public enum EquipmentSlot { Head, Armor, Pant, Foot, Gloves, Ring, Pedan, Weapon, Shield, Rare}
 }

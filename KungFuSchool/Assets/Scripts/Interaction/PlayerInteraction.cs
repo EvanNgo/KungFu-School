@@ -5,7 +5,11 @@ using UnityEngine;
 public class PlayerInteraction : MonoBehaviour {
     public GameObject currentObject;
     public InteractionObject currentObjectScript;
-    public Inventory inventory;
+    Inventory inventory;
+
+    void Start(){
+        inventory = Inventory.instance;
+    }
 
     void Update(){
         if (Input.GetButtonDown("Interact") && currentObject != null)

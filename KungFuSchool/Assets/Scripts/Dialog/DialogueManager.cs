@@ -3,6 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour {
+    #region Singleton
+
+
+    public static DialogueManager instance {
+        get {
+            if (_instance == null) {
+                _instance = FindObjectOfType<DialogueManager> ();
+            }
+            return _instance;
+        }
+    }
+    static DialogueManager _instance;
+
+    void Awake ()
+    {
+        _instance = this;
+    }
+
+    #endregion
     public GameObject dialogBox;
     public Text dialogText;
     public bool dialogActive;

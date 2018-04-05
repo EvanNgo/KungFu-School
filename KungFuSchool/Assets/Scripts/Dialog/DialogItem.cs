@@ -71,11 +71,11 @@ public class DialogItem : MonoBehaviour {
         EquipingBox.SetActive(false);
         NonEquipBox.SetActive(false);
         UnequipBox.SetActive(false);
-        if (!item.isEquipment)
+        if ((int)item.itemType!=0)
         {
             neIcon.overrideSprite = item.icon;
             neName.text = item.name;
-            neType.text = item.equipSlot + "";
+            neType.text = ((int)item.itemType == 1 || (int)item.itemType == 2) ? "Dược Phẩm" : "Vật Phẩm Nhiệm Vụ";
             neDetail.text = item.details;
             NonEquipBox.SetActive(true);
         }
@@ -172,6 +172,10 @@ public class DialogItem : MonoBehaviour {
 
     public void UsingItem(){
         ShowingItem.Use();
+    }
+
+    public void UnequipItem(){
+        EquipmentManager.instance.UnEquip(ShowingItem);
     }
 
     public void RemoveItem(){

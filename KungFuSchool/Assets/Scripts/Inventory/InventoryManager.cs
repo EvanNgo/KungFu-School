@@ -3,7 +3,7 @@
 public class InventoryManager : MonoBehaviour {
     Inventory inventory;
     public GameObject inventoryUI;
-    public GameObject inforBarUI;
+    public GameObject RegentBar;
 	// Use this for initialization
 	void Start () {
         inventory = Inventory.instance;
@@ -14,15 +14,19 @@ public class InventoryManager : MonoBehaviour {
 	void Update () {
         if (Input.GetButtonDown("Inventory"))
         {
-            inventoryUI.SetActive(!inventoryUI.activeSelf);
-            UpdateUI();
-            if (!inventoryUI.activeSelf)
-            {
-                DialogItemManager.instance.CloseDialog();
-            }
-            inforBarUI.SetActive(!inventoryUI.activeSelf);
+            InventoryControl();
         }
 	}
+
+    public void InventoryControl(){
+        inventoryUI.SetActive(!inventoryUI.activeSelf);
+        UpdateUI();
+        if (!inventoryUI.activeSelf)
+        {
+            DialogItemManager.instance.CloseDialog();
+        }
+        RegentBar.SetActive(!inventoryUI.activeSelf);
+    }
 
     void UpdateUI(){
         InventorySlot[] slots = GetComponentsInChildren<InventorySlot>();

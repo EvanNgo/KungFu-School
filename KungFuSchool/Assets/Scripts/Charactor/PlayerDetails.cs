@@ -68,14 +68,9 @@ public class PlayerDetails : MonoBehaviour {
                 }
             }
         }
-        if (Input.GetButtonDown("Health") && !healthCounting)
+        if (Input.GetButtonDown("Health"))
         {
-            healthTimeCount = countdown;
-            healthCounting = true;
-            TxthealthCD.text = 10 + "";
-            TxthealthCD.enabled = true;
-            healthCD.fillAmount = 1;
-            healthCD.enabled = true;
+            UsingHPPotion();
         }
 
         if (manaCounting)
@@ -102,12 +97,7 @@ public class PlayerDetails : MonoBehaviour {
         }
         if (Input.GetButtonDown("Mana") && !manaCounting)
         {
-            manaTimeCount = countdown;
-            manaCounting = true;
-            TxtmanaCD.text = 10 + "";
-            TxtmanaCD.enabled = true;
-            manaCD.fillAmount = 1;
-            manaCD.enabled = true;
+            UsingMPPotion();
         }
 
         if (teleCounting)
@@ -157,7 +147,7 @@ public class PlayerDetails : MonoBehaviour {
 
     public void UsingHPPotion()
     {
-        if (healthCounting)
+        if (healthCounting || !Inventory.instance.UsePotion((int)Item.ItemType.HPPotion) || currentHealth == health)
         {
             return;
         }
@@ -167,10 +157,13 @@ public class PlayerDetails : MonoBehaviour {
         TxthealthCD.enabled = true;
         healthCD.fillAmount = 1;
         healthCD.enabled = true;
+        currentHealth = ( health - currentHealth <= 100 ) ? currentHealth = health : currentHealth + 100;
+        txtHealth.text = (float)Math.Round((double)currentHealth / health, 2) * 100 + "%";
+        healthBar.fillAmount = currentHealth / health;
     }
     public void UsingMPPotion()
     {
-        if (manaCounting)
+        if (manaCounting || !Inventory.instance.UsePotion((int)Item.ItemType.MPPotion) || currentMana == mana)
         {
             return;
         }
@@ -180,6 +173,10 @@ public class PlayerDetails : MonoBehaviour {
         TxtmanaCD.enabled = true;
         manaCD.fillAmount = 1;
         manaCD.enabled = true;
+        currentMana = ( mana - currentMana <= 100 ) ? currentMana = mana : currentMana + 100;
+        txtMana.text = (float)Math.Round((double)currentMana / mana, 2) * 100 + "%";
+        manaBar.fillAmount = currentMana / mana;
+
     }
     public void Teleport()
     {

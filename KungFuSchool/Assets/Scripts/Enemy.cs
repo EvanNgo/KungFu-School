@@ -11,7 +11,8 @@ public class Enemy : MonoBehaviour {
     public float enemyExp = 600;
     public Image healthBar;
     public GameObject[] dropingItem;
-
+    public GameObject Gold;
+    public int goldDropping;
     // Use this for initialization
     void Start () {
         questManager = FindObjectOfType<QuestManager>();
@@ -26,7 +27,17 @@ public class Enemy : MonoBehaviour {
         {
             BoxCollider2D col = gameObject.GetComponent<BoxCollider2D>();
             col.enabled = false;
-            Instantiate(dropingItem[Random.Range(0,dropingItem.Length)], transform.position, Quaternion.identity);
+            int index = Random.Range(0, dropingItem.Length+1);
+            if (index == dropingItem.Length)
+            {
+                InteractionObject inter = Gold.GetComponent<InteractionObject>();
+                inter.gold = 300;
+                Instantiate(Gold, transform.position, Quaternion.identity);
+            }
+            else
+            {
+                Instantiate(dropingItem[index], transform.position, Quaternion.identity);
+            }
             target.gameObject.GetComponent<PlayerLevel>().SendMessage("addExp", enemyExp);
             string[] spawnerName = gameObject.name.Split('_');
             GameObject.Find(spawnerName[0]).GetComponent<Spawner>().Death = true;

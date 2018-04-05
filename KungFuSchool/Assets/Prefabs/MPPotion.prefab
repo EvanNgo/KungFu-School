@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 58665560268766100}
   m_Layer: 0
   m_Name: MPPotion
-  m_TagString: Untagged
+  m_TagString: InterObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -68,19 +68,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbdb63af9d6f24a779dae24cf999746b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemTest: {fileID: 0}
+  item: {fileID: 0}
   inventory: 1
-  EquipmentItem: 0
   isStacking: 1
   itemCount: 1
   itemName: "L\u1ECD N\u1ED9i L\u1EF1c"
   itemDetails: "S\u1EED d\u1EE5ng \u0111\u1EC3 h\u1ED3i n\u1ED9 l\u1EF1c"
-  itemType: 10
+  EquipmentSlot: 0
+  itemType: 2
   defaultOption: {fileID: 0}
   defaultPoint: 0
   avaiableOption: []
   maxLines: 0
-  autoDestroy: 15
+  gold: 0
 --- !u!212 &212584176887957068
 SpriteRenderer:
   m_ObjectHideFlags: 1

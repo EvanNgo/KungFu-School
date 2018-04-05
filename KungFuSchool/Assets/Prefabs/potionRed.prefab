@@ -68,19 +68,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbdb63af9d6f24a779dae24cf999746b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemTest: {fileID: 0}
+  item: {fileID: 0}
   inventory: 1
-  EquipmentItem: 0
   isStacking: 1
   itemCount: 1
   itemName: "L\u1ECD M\xE1u"
   itemDetails: "S\u1EED d\u1EE5ng \u0111\u1EC3 h\u1ED3i sinh l\u1EF1c"
-  itemType: 9
+  EquipmentSlot: 0
+  itemType: 1
   defaultOption: {fileID: 0}
   defaultPoint: 0
   avaiableOption: []
   maxLines: 0
-  autoDestroy: 15
+  gold: 0
 --- !u!212 &212522169764726066
 SpriteRenderer:
   m_ObjectHideFlags: 1

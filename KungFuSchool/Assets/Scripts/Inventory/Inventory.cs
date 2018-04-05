@@ -25,7 +25,7 @@ public class Inventory : MonoBehaviour {
     }
 
     public void AddItem(Item itemToAdd,GameObject itemScript){
-        if (!itemToAdd.isEquipment && items.Count > 0)
+        if ((int)itemToAdd.itemType!=0 && items.Count > 0)
         {
             for (int i = 0; i < items.Count; i++)
             {
@@ -55,7 +55,7 @@ public class Inventory : MonoBehaviour {
         if (items.Count > 0) {
             for (int i = 0; i < items.Count; i++)
             {
-                if (items[i].isEquipment)
+                if ((int)items[i].itemType==0)
                 {
                     List<Option> list = SQLiteCore.getOptionItem(items[i].id);
                     if (list.Count > 0)
@@ -85,7 +85,7 @@ public class Inventory : MonoBehaviour {
     }
 
 
-    public void unEquipmentItem(Item item,int index){
+    public void ChangeItemAt(Item item,int index){
         item.isEquiping = false;
         items.Insert(index, item);
         SQLiteCore.UpdateEquipment(item);
@@ -93,6 +93,19 @@ public class Inventory : MonoBehaviour {
             onItemChangedCallback.Invoke ();
     }
 
+    public bool UnEquipitem(Item item){
+        if (items.Count >= space)
+        {
+            return false;
+        }
+        item.isEquiping = false;
+        items.Add(item);
+        SQLiteCore.UpdateEquipment(item);
+        if (onItemChangedCallback != null)
+            onItemChangedCallback.Invoke ();
+        return true;
+    }
+        
     public int EquipItem(Item equipItem){
         int index = items.IndexOf(equipItem);
         equipItem.isEquiping = true;
@@ -104,9 +117,8 @@ public class Inventory : MonoBehaviour {
     }
         
     public void Remove(Item removeItem){
-        int index = items.IndexOf(removeItem);
         SQLiteCore.RemoveItem(removeItem.id);
-        if (removeItem.isEquipment)
+        if ((int)removeItem.itemType==0)
         {
             if (removeItem.options.Length > 0)
             {   
@@ -117,4 +129,38 @@ public class Inventory : MonoBehaviour {
         if (onItemChangedCallback != null)
             onItemChangedCallback.Invoke ();
     }
+    public Item LookUpPotion(int itemType){
+        for (int i = items.Count-1; i > 0; i--)
+        {
+            if ((int)items[i].itemType == itemType)
+            {
+                return items[i];
+            }
+        }
+        return null;
+    }
+    public bool UsePotion(int itemPotion){
+        if (LookUpPotion(itemPotion) != null)
+        {
+            Item usingItem = LookUpPotion(itemPotion);
+            if (usingItem.count > 1)
+            {
+                usingItem.count--;
+                SQLiteCore.UpdateItem(usingItem);
+                if (onItemChangedCallback != null)
+                    onItemChangedCallback.Invoke ();
+            }
+            else
+            {
+                Remove(usingItem);
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public void TakeGold(Item Gold,GameObject itemScript){
+        Debug.Log("You took " + Gold.price);
+        itemScript.SendMessage("DoInteraction");
+    }   
 }

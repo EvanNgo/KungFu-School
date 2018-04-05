@@ -34,7 +34,7 @@ public class EquipmentManager : MonoBehaviour {
         currentEquipment = new Item[numSlots];
         for (int i = 0; i < equipSlots.Length; i++)
         {
-            equipSlots[i].enabled = false;
+            equipSlots[i].sprite = Resources.Load <Sprite> ("root_"+i);;
         }
         if (listCurrentItem.Count > 0)
         {
@@ -73,11 +73,23 @@ public class EquipmentManager : MonoBehaviour {
         if (currentEquipment[slotIndex] != null)
         {
             oldItem = currentEquipment [slotIndex];
-            inventory.unEquipmentItem (oldItem,index);
+            inventory.ChangeItemAt (oldItem,index);
         }
         currentEquipment[slotIndex] = item;
         equipSlots[slotIndex].overrideSprite = item.icon;
         equipSlots[slotIndex].enabled = true;
+    }
+
+    public void UnEquip(Item item){
+        if (!inventory.UnEquipitem(item))
+        {   
+            Debug.Log("Inventory is FULL");
+            return;
+        }
+        int slotIndex = (int)item.equipSlot;
+        currentEquipment[slotIndex] = null;
+        equipSlots[slotIndex].overrideSprite = Resources.Load <Sprite> ("root_"+slotIndex);;
+        DialogItemManager.instance.CloseDialog();
     }
 
     public void LoadCurrentItem(Item item){

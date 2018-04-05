@@ -68,12 +68,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbdb63af9d6f24a779dae24cf999746b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemTest: {fileID: 0}
+  item: {fileID: 0}
   inventory: 1
-  EquipmentItem: 1
+  isStacking: 0
+  itemCount: 1
   itemName: Kiem Go
   itemDetails: Mot cay kiem da cu
-  itemType: 7
+  EquipmentSlot: 5
+  itemType: 0
   defaultOption: {fileID: 11400000, guid: 6d5932ad7fb015146915ba6f69969763, type: 2}
   defaultPoint: 15
   avaiableOption:
@@ -81,7 +83,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 39c311e0332012746855cb0945d18d34, type: 2}
   - {fileID: 11400000, guid: 226b9b2d64b720f479f8b4faf3765bf5, type: 2}
   maxLines: 3
-  autoDestroy: 15
+  gold: 0
 --- !u!212 &212763885338210394
 SpriteRenderer:
   m_ObjectHideFlags: 1

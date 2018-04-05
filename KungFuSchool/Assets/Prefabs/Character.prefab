@@ -44,7 +44,6 @@ GameObject:
   - component: {fileID: 114850059056354482}
   - component: {fileID: 114618858938809962}
   - component: {fileID: 114419518920574242}
-  - component: {fileID: 114639330442701016}
   m_Layer: 0
   m_Name: Character
   m_TagString: Player
@@ -195,31 +194,6 @@ MonoBehaviour:
   expBar: {fileID: 0}
   txtExp: {fileID: 0}
   txtLevel: {fileID: 0}
---- !u!114 &114639330442701016
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1309179856757972}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac486def111c25341bfe998ba3737981, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1000
-  mana: 500
-  healthBar: {fileID: 0}
-  manaBar: {fileID: 0}
-  txtHealth: {fileID: 0}
-  txtMana: {fileID: 0}
-  countdown: 15
-  teleportCD: 120
-  healthCD: {fileID: 0}
-  manaCD: {fileID: 0}
-  teleCD: {fileID: 0}
-  TxtteleCD: {fileID: 0}
-  TxthealthCD: {fileID: 0}
-  TxtmanaCD: {fileID: 0}
 --- !u!114 &114850059056354482
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -247,6 +221,7 @@ MonoBehaviour:
   maxSpeed: 30
   jumpHeight: 42
   inventoryUI: {fileID: 0}
+  dialogManager: {fileID: 0}
 --- !u!212 &212148832750921770
 SpriteRenderer:
   m_ObjectHideFlags: 1

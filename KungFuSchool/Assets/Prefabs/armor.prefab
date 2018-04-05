@@ -68,12 +68,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbdb63af9d6f24a779dae24cf999746b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemTest: {fileID: 0}
+  item: {fileID: 0}
   inventory: 1
-  EquipmentItem: 1
+  isStacking: 0
+  itemCount: 1
   itemName: "\xC1o Cu"
   itemDetails: ao giap tho so
-  itemType: 1
+  EquipmentSlot: 1
+  itemType: 0
   defaultOption: {fileID: 11400000, guid: 0a250e91fdca8554b914b38ebbb0988c, type: 2}
   defaultPoint: 15
   avaiableOption:
@@ -81,7 +83,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c3fb255dabb294e4e8b08353a06a0060, type: 2}
   - {fileID: 11400000, guid: 0a250e91fdca8554b914b38ebbb0988c, type: 2}
   maxLines: 3
-  autoDestroy: 15
+  gold: 0
 --- !u!212 &212731567214735842
 SpriteRenderer:
   m_ObjectHideFlags: 1

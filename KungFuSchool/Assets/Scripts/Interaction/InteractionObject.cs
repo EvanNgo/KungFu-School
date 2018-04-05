@@ -3,34 +3,44 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractionObject : MonoBehaviour {
-    public Item itemTest;
+    public Item item;
     public bool inventory;
-    public bool EquipmentItem = false;
     public bool isStacking;
     public int itemCount = 1;
     public string itemName;
     public string itemDetails;
-    public Item.EquipmentSlot itemType;
+    public Item.EquipmentSlot EquipmentSlot;
+    public Item.ItemType itemType;
     public Option defaultOption;
     public int defaultPoint;
     public List<Option> avaiableOption;
     public int maxLines;
+    public int gold;
     private float autoDestroy = 15f;
     private float timeCount = 0;
     private void Start()
     {
-        itemTest = ScriptableObject.CreateInstance<Item>();
-        setEquipSlot();
-        itemTest.icon = GetComponent<SpriteRenderer>().sprite;
-        itemTest.name = itemName;
-        itemTest.count = itemCount;
-        itemTest.details = itemDetails;
-        itemTest.isEquipment = EquipmentItem;
-        itemTest.isStacking = isStacking;
-        if (itemTest.isEquipment) {
-            itemTest.defaultOption = defaultOption;
-            itemTest.defaultPoint = defaultPoint;
-            setOption();
+        item = ScriptableObject.CreateInstance<Item>();
+        item.icon = GetComponent<SpriteRenderer>().sprite;
+        item.itemType = itemType;
+        if (item.itemType != Item.ItemType.Gold)
+        {
+            setEquipSlot();
+            item.name = itemName;
+            item.count = itemCount;
+            item.details = itemDetails;
+
+            item.isStacking = isStacking;
+            if ((int)item.itemType == 0)
+            {
+                item.defaultOption = defaultOption;
+                item.defaultPoint = defaultPoint;
+                setOption();
+            }
+        }
+        else
+        {
+            item.price = gold;
         }
     }
 
@@ -51,20 +61,19 @@ public class InteractionObject : MonoBehaviour {
         Destroy(gameObject);
     }
     public void setEquipSlot() {
-        int itemTypeSlot = (int)itemType;
-        itemTest.equipSlot = itemType;
+        item.equipSlot = EquipmentSlot;
     }
     public void setOption()
     {
-        if (EquipmentItem) {
+        if ((int)itemType==0) {
             int lines = Random.Range(0, maxLines);
-            itemTest.options = new Option[lines];
-            itemTest.points = new int[lines];
+            item.options = new Option[lines];
+            item.points = new int[lines];
             for (int i = 0; i < lines; i++) {
                 int optionPosition = Random.Range(0, avaiableOption.Count);
                 Option op = avaiableOption[optionPosition];
-                itemTest.options[i] = op;
-                itemTest.points[i] = Random.Range(0, itemTest.options[i].maxPoint) + 1;
+                item.options[i] = op;
+                item.points[i] = Random.Range(0, item.options[i].maxPoint) + 1;
                 avaiableOption.RemoveAt(optionPosition);
             }
         }

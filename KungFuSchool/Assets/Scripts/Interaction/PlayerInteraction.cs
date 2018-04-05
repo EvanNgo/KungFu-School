@@ -6,47 +6,60 @@ public class PlayerInteraction : MonoBehaviour {
     public GameObject currentObject;
     public InteractionObject currentObjectScript;
     Inventory inventory;
-
+    public float rangeForTakeItem;
     void Start(){
         inventory = Inventory.instance;
+        InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
     void Update(){
-        if (Input.GetButtonDown("Interact") && currentObject != null)
+        if (currentObject != null && currentObjectScript!=null)
+//            Input.GetButtonDown("Interact")
         {   
-            if (currentObjectScript.inventory)
+            if (currentObjectScript.itemType == Item.ItemType.Gold)
             {
-                inventory.AddItem(currentObjectScript.itemTest, currentObject);
+                inventory.TakeGold(currentObjectScript.item, currentObject);
+            }
+            else
+            {
+                if (Input.GetButtonDown("Interact"))
+                {
+                    if (currentObjectScript.inventory)
+                    {
+                        inventory.AddItem(currentObjectScript.item, currentObject);
+                    }
+                }
             }
         }
     }
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "InterObject")
-        {   
-            currentObject = collision.gameObject;
-            currentObjectScript = currentObject.GetComponent<InteractionObject>();
-        }
+    void OnDrawGizmosSelected(){
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, rangeForTakeItem);
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "InterObject")
-        {   
-            currentObject = collision.gameObject;
-            currentObjectScript = currentObject.GetComponent<InteractionObject>();
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.gameObject.tag == "InterObject")
-        {   
-            if (collision.gameObject == currentObject)
+    void UpdateTarget ()
+    {   
+        GameObject[] items = GameObject.FindGameObjectsWithTag("InterObject");
+        float take = Mathf.Infinity;
+        float shortestDistance = Mathf.Infinity;
+        GameObject nearestItem = null;
+        foreach (GameObject item in items)
+        {
+            float distanceToEnemy = Vector3.Distance(transform.position, item.transform.position);
+            if (distanceToEnemy < shortestDistance)
             {
-                currentObject = null;
-                currentObjectScript = null;
+                shortestDistance = distanceToEnemy;
+                nearestItem = item;
             }
+        }
+
+        if (nearestItem != null && shortestDistance <= rangeForTakeItem)
+        {   
+            currentObject = nearestItem;
+            currentObjectScript = nearestItem.GetComponent<InteractionObject>();
+        } else
+        {
+            nearestItem = null;
         }
     }
 }

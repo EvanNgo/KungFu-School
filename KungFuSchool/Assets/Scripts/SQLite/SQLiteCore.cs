@@ -8,9 +8,7 @@ using System;
 public static class SQLiteCore {
     public static string connectString = "URI=file:" + Application.dataPath + "/KungFuSchool.db";
     public static IDbConnection conn = new SqliteConnection(connectString);
-    public static ApplicationPlayer rootPlayer = new ApplicationPlayer();
     public static List<LevelManager> levelManager = getLevelManager();
-    //public static List<Item> ItemInInventory = getItemInInvengory();
     public static int LastAddedItem = -1;
     public static void Connect() {
         if (conn.State != ConnectionState.Open) {
@@ -18,7 +16,8 @@ public static class SQLiteCore {
         }
     }
 
-    public static void getPlayerInfor() {
+    public static Player getPlayerInfor() {
+        Player player = new Player();
         string query = "Select * From RootPlayer";
         Connect();
         try {
@@ -29,13 +28,54 @@ public static class SQLiteCore {
                     cmd.ExecuteNonQuery();
                     IDataReader datas = cmd.ExecuteReader();
                     while (datas.Read()) {
-                        rootPlayer.Level = Convert.ToInt32(datas[0]);
-                        rootPlayer.Exp = Convert.ToInt32(datas[1]);
+                        player.Level = Convert.ToInt32(datas[0]);
+                        player.Exp = Convert.ToInt32(datas[1]);
+                        player.Gold = Convert.ToInt32(datas[2]);
+                        player.Str = Convert.ToInt32(datas[3]);
+                        player.Agi = Convert.ToInt32(datas[4]);
+                        player.Sta = Convert.ToInt32(datas[5]);
+                        player.Intel = Convert.ToInt32(datas[6]);
+                        player.Health = Convert.ToInt32(datas[7]);
+                        player.Mana = Convert.ToInt32(datas[8]);
+                        player.Point = Convert.ToInt32(datas[9]);
+                        player.RemainPoint = Convert.ToInt32(datas[10]);
                     }
+                    return player;
                 }
             }
         } catch (Exception excp) {
             Debug.Log("ERROR:getPlayerInfor " + excp);
+            return null;
+        }
+    }
+    public static void UpdatePlayer(Player player){
+        string query = "UPDATE RootPlayer SET Level = " + player.Level + ", " +
+            "EXP = " + player.Exp + ", " +
+            "Gold = " + player.Gold + ", " +
+            "Str = " + player.Str + ", " +
+            "Agi = " + player.Agi + ", " +
+            "Sta = " + player.Sta + ", " +
+            "Int = " + player.Intel + ", " +
+            "Health = " + player.Health + ", " +
+            "Mana = " + player.Mana + ", " +
+            "Point = " + player.Point + ", " +
+            "RemainPoint = " + player.RemainPoint + 
+            " WHERE id = 1";
+        Connect();
+        try
+        {
+            using (conn)
+            {
+                using (IDbCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = query;
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+        catch (Exception excp)
+        {
+            Debug.Log("ERROR:UpdatePlayer " + excp);
         }
     }
 

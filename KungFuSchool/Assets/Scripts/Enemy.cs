@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour {
             if (index == dropingItem.Length)
             {
                 InteractionObject inter = Gold.GetComponent<InteractionObject>();
-                inter.gold = 300;
+                inter.gold = goldDropping;
                 Instantiate(Gold, transform.position, Quaternion.identity);
             }
             else

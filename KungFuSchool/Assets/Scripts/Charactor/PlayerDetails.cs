@@ -4,17 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 public class PlayerDetails : MonoBehaviour {
-
-    public float health = 1000;
-    public float mana = 500;
+    private float health = 100;
+    private float mana = 100;
     private float currentHealth;
     private float currentMana;
     public Image healthBar;
     public Image manaBar;
     public Text txtHealth;
     public Text txtMana;
-    public float countdown;
-    public float teleportCD;
+    private float countdown = 15;
+    private float teleportCD = 120;
     public Image healthCD;
     public Image manaCD;
     public Image teleCD;
@@ -27,21 +26,11 @@ public class PlayerDetails : MonoBehaviour {
     private bool healthCounting;
     private bool manaCounting;
     private bool teleCounting;
-
+    PlayerManager playerManager;
     // Use this for initialization
     void Start () {
-        currentHealth = 725;
-        currentMana = 234;
-        healthBar.fillAmount = currentHealth / health;
-        manaBar.fillAmount = currentMana / mana;
-        txtHealth.text = (float)Math.Round((double)currentHealth / health, 2) * 100 + "%";
-        txtMana.text = (float)Math.Round((double)currentMana / mana, 2) * 100 + "%";
-        TxthealthCD.enabled = false;
-        healthCD.enabled = false;
-        TxtmanaCD.enabled = false;
-        manaCD.enabled = false;
-        TxtteleCD.enabled = false;
-        teleCD.enabled = false;
+        playerManager = PlayerManager.instance;
+        CurrentSetup();
     }
 
     private void Update()
@@ -147,8 +136,14 @@ public class PlayerDetails : MonoBehaviour {
 
     public void UsingHPPotion()
     {
-        if (healthCounting || !Inventory.instance.UsePotion((int)Item.ItemType.HPPotion) || currentHealth == health)
+        if (healthCounting || currentHealth == health)
         {
+            Debug.Log("HP IS FULL OR CD");
+            return;
+        }
+        if (!Inventory.instance.UsePotion((int)Item.ItemType.HPPotion))
+        {
+            Debug.Log("CANT FIND HP POTION");
             return;
         }
         healthTimeCount = countdown;
@@ -163,8 +158,14 @@ public class PlayerDetails : MonoBehaviour {
     }
     public void UsingMPPotion()
     {
-        if (manaCounting || !Inventory.instance.UsePotion((int)Item.ItemType.MPPotion) || currentMana == mana)
+        if (manaCounting || currentMana == mana)
         {
+            Debug.Log("MP IS FULL OR CD");
+            return;
+        }
+        if (!Inventory.instance.UsePotion((int)Item.ItemType.MPPotion))
+        {
+            Debug.Log("CANT FIND MP POTION");
             return;
         }
         manaTimeCount = countdown;
@@ -190,5 +191,20 @@ public class PlayerDetails : MonoBehaviour {
         TxtteleCD.enabled = true;
         teleCD.fillAmount = 1;
         teleCD.enabled = true;
+    }
+
+    private void CurrentSetup(){
+        currentHealth = playerManager.player.Health;
+        currentMana = playerManager.player.Mana;
+        healthBar.fillAmount = currentHealth / health;
+        manaBar.fillAmount = currentMana / mana;
+        txtHealth.text = (float)Math.Round((double)currentHealth / health, 2) * 100 + "%";
+        txtMana.text = (float)Math.Round((double)currentMana / mana, 2) * 100 + "%";
+        TxthealthCD.enabled = false;
+        healthCD.enabled = false;
+        TxtmanaCD.enabled = false;
+        manaCD.enabled = false;
+        TxtteleCD.enabled = false;
+        teleCD.enabled = false;
     }
 }

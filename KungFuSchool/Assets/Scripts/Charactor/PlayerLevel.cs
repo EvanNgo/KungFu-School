@@ -6,26 +6,20 @@ using System;
 public class PlayerLevel : MonoBehaviour {
     int ExpOfLevel;
     int CurrentLevel;
-    private float currentExp;
+    private int currentExp;
     public Image expBar;
     public Text txtExp;
     public Text txtLevel;
     // Use this for initialization
     void Start()
     {
-        if (SQLiteCore.rootPlayer.Level == 0)
-        {   
-            CurrentLevel = 1;
-            // Save to database;
-        }
-        else {
-            CurrentLevel = SQLiteCore.rootPlayer.Level;
-        }
-        txtLevel.text = CurrentLevel + "";
+        CurrentLevel = PlayerManager.instance.player.Level;
         ExpOfLevel = SQLiteCore.levelManager[CurrentLevel - 1].Exp;
-        currentExp = SQLiteCore.rootPlayer.Exp;
-        expBar.fillAmount = currentExp / ExpOfLevel;
-        txtExp.text = currentExp * 100 / ExpOfLevel + "%";
+        currentExp = PlayerManager.instance.player.Exp;
+        expBar.fillAmount = (float)currentExp / ExpOfLevel;
+        float textExp = (float)Math.Round((double)currentExp * 100 / ExpOfLevel, 2);
+        txtExp.text = textExp + "%";
+        txtLevel.text = CurrentLevel + "";
     }
 
     public void addExp(int exp)
@@ -37,7 +31,10 @@ public class PlayerLevel : MonoBehaviour {
             ExpOfLevel = SQLiteCore.levelManager[CurrentLevel - 1].Exp;
             txtLevel.text = CurrentLevel + "";
         }
-        expBar.fillAmount = currentExp / ExpOfLevel;
+        PlayerManager.instance.player.Level = CurrentLevel;
+        PlayerManager.instance.player.Exp = currentExp;
+        SQLiteCore.UpdatePlayer(PlayerManager.instance.player);
+        expBar.fillAmount = (float)currentExp / ExpOfLevel;
         float textExp = (float)Math.Round((double)currentExp * 100 / ExpOfLevel, 2);
         txtExp.text = textExp + "%";
         txtLevel.text = CurrentLevel + "";

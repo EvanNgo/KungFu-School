@@ -18,12 +18,27 @@ public class Inventory : MonoBehaviour {
     public delegate void OnItemChanged();
     public OnItemChanged onItemChangedCallback;
     public List<Item> items = new List<Item>();
-    public Text txtMoney;
+    public Text txtGold;
+    private int Gold;
     public int space = 20;
     void Start(){
         LoadCurrentItem();
+        Gold = PlayerManager.instance.player.Gold;
+        setTextGold();
     }
 
+    private void setTextGold(){
+        if (Gold > 9999)
+        {
+            int van = Gold/10000;
+            int luong = Gold % 10000;
+            txtGold.text = van + " vạn "+ luong + " lượng";
+        }
+        else
+        {
+            txtGold.text = Gold + " lượng";
+        }
+    }
     public void AddItem(Item itemToAdd,GameObject itemScript){
         if ((int)itemToAdd.itemType!=0 && items.Count > 0)
         {
@@ -159,8 +174,11 @@ public class Inventory : MonoBehaviour {
         return false;
     }
 
-    public void TakeGold(Item Gold,GameObject itemScript){
-        Debug.Log("You took " + Gold.price);
+    public void TakeGold(Item itemGold,GameObject itemScript){
+        Gold = Gold + itemGold.price;
+        PlayerManager.instance.player.Gold = Gold;
+        SQLiteCore.UpdatePlayer(PlayerManager.instance.player);
+        setTextGold();
         itemScript.SendMessage("DoInteraction");
     }   
 }

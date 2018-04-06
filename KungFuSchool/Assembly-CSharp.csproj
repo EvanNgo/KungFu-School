@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\PlayerManager.cs" />
      <Compile Include="Assets\Scripts\CameraFollow.cs" />
      <Compile Include="Assets\Scripts\Charactor\AttackController.cs" />
      <Compile Include="Assets\Scripts\Charactor\PlayerControlelr.cs" />
@@ -71,8 +72,8 @@
      <Compile Include="Assets\Scripts\Inventory\Item.cs" />
      <Compile Include="Assets\Scripts\Inventory\Option.cs" />
      <Compile Include="Assets\Scripts\MeleeBladeController.cs" />
-     <Compile Include="Assets\Scripts\Objects\ApplicationPlayer.cs" />
      <Compile Include="Assets\Scripts\Objects\LevelManager.cs" />
+     <Compile Include="Assets\Scripts\Objects\Player.cs" />
      <Compile Include="Assets\Scripts\Question\QuestItem.cs" />
      <Compile Include="Assets\Scripts\Question\QuestManager.cs" />
      <Compile Include="Assets\Scripts\Question\QuestObject.cs" />

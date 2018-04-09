@@ -4,83 +4,43 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 public class PlayerControlelr : MonoBehaviour {
-    public float maxSpeed;
-    public float jumpHeight;
+    public float moveSpeed;
+    private bool playerMoving;
+    private Vector2 lastMove;
     public GameObject inventoryUI;
     public GameObject dialogManager;
     Rigidbody2D myBody;
     Animator myAni;
-    bool facingRight = true;
-    bool grounded;
-    bool borderLeft = false;
-    bool borderRight = false;
-    bool isBagging;
-    bool isShopping;
+
     void Start() {
         myBody = GetComponent<Rigidbody2D>();
         myAni = GetComponent<Animator>();
     } 
     // Update is called once per frame
     void FixedUpdate() {
-        if (inventoryUI.activeSelf)
-        {
-            return;
-        }
+        playerMoving = false;
+//        if (inventoryUI.activeSelf)
+//        {
+//            return;
+//        }
         float move = Input.GetAxis("Horizontal");
-        if (!(move <= 0 && borderLeft) || !(move >= 0 && borderRight))
+        if (Input.GetAxisRaw("Horizontal") > 0.1f || Input.GetAxisRaw("Horizontal") < -0.1f)
         {
-            myBody.velocity = new Vector2(move * maxSpeed, myBody.velocity.y);
-        }
-        myAni.SetFloat("Speed", Mathf.Abs(move));
-        if (move > 0 && !facingRight) {
-            faceControll();
-        }
-        else if (move < 0 && facingRight)
-        {
-            faceControll();
+            transform.Translate( new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f,0f));
+            playerMoving = true;
+            lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
         }
 
-        if (Input.GetKey(KeyCode.Space))
+        if (Input.GetAxisRaw("Vertical") > 0.1f || Input.GetAxisRaw("Vertical") < -0.1f)
         {
-            if (grounded) {
-                myAni.SetFloat("Speed", 0);
-                myAni.SetBool("Jumping", true);
-                grounded = false;
-                myBody.velocity = new Vector2(myBody.velocity.x, jumpHeight);
-            }
+            transform.Translate( new Vector3(0, Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime,0f));
+            playerMoving = true;
+            lastMove = new Vector2(0f,Input.GetAxisRaw("Vertical"));
         }
-    }
-
-    void faceControll()
-    {
-        facingRight = !facingRight;
-        Vector3 theScale = transform.localScale;
-        theScale.x *= -1;
-        transform.localScale = theScale;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {	
-		if (collision.gameObject.tag == "Ground" && collision.relativeVelocity.y >= 0)
-		{
-			myAni.SetBool("Jumping",false);
-			grounded = true;
-		}
-        if (collision.gameObject.tag == "BorderLeft")
-        {
-            borderLeft = true;
-        }
-        if (collision.gameObject.tag == "BorderRight")
-        {
-            borderRight = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {   
-        if (collision.gameObject.tag == "Ground")
-        {
-            grounded = false;
-        }
+        myAni.SetBool("Moving", playerMoving);
+        myAni.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
+        myAni.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));
+        myAni.SetFloat("LastMoveX", lastMove.x);
+        myAni.SetFloat("LastMoveY", lastMove.y);
     }
 }

@@ -9,6 +9,9 @@ public class PlayerControlelr : MonoBehaviour {
     private Vector2 lastMove;
     public GameObject inventoryUI;
     public GameObject dialogManager;
+    private float attackTime = 0.3f;
+    private float attackCounter = 0;
+    private bool attack = false; 
     Rigidbody2D myBody;
     Animator myAni;
 
@@ -23,20 +26,42 @@ public class PlayerControlelr : MonoBehaviour {
 //        {
 //            return;
 //        }
-        float move = Input.GetAxis("Horizontal");
-        if (Input.GetAxisRaw("Horizontal") > 0.1f || Input.GetAxisRaw("Horizontal") < -0.1f)
+        if (!attack)
         {
-            transform.Translate( new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f,0f));
-            playerMoving = true;
-            lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
+            if (Input.GetAxisRaw("Horizontal") > 0.1f || Input.GetAxisRaw("Horizontal") < -0.1f)
+            {
+                transform.Translate( new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f,0f));
+                playerMoving = true;
+                lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
+            }
+
+            if (Input.GetAxisRaw("Vertical") > 0.1f || Input.GetAxisRaw("Vertical") < -0.1f)
+            {
+                transform.Translate( new Vector3(0, Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime,0f));
+                playerMoving = true;
+                lastMove = new Vector2(0f,Input.GetAxisRaw("Vertical"));
+            }
+
+            if (Input.GetKeyDown(KeyCode.K))
+            {   
+                attackCounter = attackTime;
+                attack = true; 
+                myBody.velocity = Vector2.zero;
+                myAni.SetBool("Attack", true);
+            }
         }
 
-        if (Input.GetAxisRaw("Vertical") > 0.1f || Input.GetAxisRaw("Vertical") < -0.1f)
+        if (attackCounter >= 0)
         {
-            transform.Translate( new Vector3(0, Input.GetAxisRaw("Vertical") * moveSpeed * Time.deltaTime,0f));
-            playerMoving = true;
-            lastMove = new Vector2(0f,Input.GetAxisRaw("Vertical"));
+            attackCounter -= Time.deltaTime;
         }
+
+        if (attackCounter <= 0)
+        {
+            myAni.SetBool("Attack", false);
+            attack = false; 
+        }
+
         myAni.SetBool("Moving", playerMoving);
         myAni.SetFloat("MoveX", Input.GetAxisRaw("Horizontal"));
         myAni.SetFloat("MoveY", Input.GetAxisRaw("Vertical"));

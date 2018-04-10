@@ -25,20 +25,32 @@ public class Enemy : MonoBehaviour {
         healthBar.fillAmount = currentHealth / health;
         if (currentHealth <= 0)
         {
-            BoxCollider2D col = gameObject.GetComponent<BoxCollider2D>();
+            CapsuleCollider2D col = gameObject.GetComponent<CapsuleCollider2D>();
             col.enabled = false;
-            int index = Random.Range(0, dropingItem.Length+1);
-            if (index == dropingItem.Length)
+            if (goldDropping > 0)
             {
-                InteractionObject inter = Gold.GetComponent<InteractionObject>();
-                inter.gold = goldDropping;
-                Instantiate(Gold, transform.position, Quaternion.identity);
+                int index = Random.Range(0, dropingItem.Length + 1);
+                if (index == dropingItem.Length)
+                {
+                    InteractionObject intaer = Gold.GetComponent<InteractionObject>();
+                    intaer.gold = goldDropping;
+                    Instantiate(Gold, transform.position, Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(dropingItem[index], transform.position, Quaternion.identity);
+                }
             }
             else
-            {
-                Instantiate(dropingItem[index], transform.position, Quaternion.identity);
+            {   
+                if (dropingItem.Length > 0)
+                {
+                    int index = Random.Range(0, dropingItem.Length);
+                    Instantiate(dropingItem[index], transform.position, Quaternion.identity);
+                }
+
             }
-            target.gameObject.GetComponent<PlayerLevel>().SendMessage("addExp", enemyExp);
+            //target.gameObject.GetComponent<PlayerLevel>().SendMessage("addExp", enemyExp);
             string[] spawnerName = gameObject.name.Split('_');
             GameObject.Find(spawnerName[0]).GetComponent<Spawner>().Death = true;
             Destroy(gameObject, 0.5f);

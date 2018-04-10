@@ -7,7 +7,9 @@ public class PlayerManager : MonoBehaviour {
     public static PlayerManager instance {
         get {
             if (_instance == null) {
-                _instance = FindObjectOfType<PlayerManager> ();
+                Debug.Log("Khoi tao");
+                GameObject gameManager = GameObject.FindGameObjectWithTag("GameManager");
+                _instance = gameManager.GetComponent<PlayerManager>();
             }
             return _instance;
         }
@@ -15,7 +17,8 @@ public class PlayerManager : MonoBehaviour {
     static PlayerManager _instance;
 
     void Awake ()
-    {
+    {   
+        player = SQLiteCore.getPlayerInfor();
         _instance = this;
     }
 
@@ -23,11 +26,7 @@ public class PlayerManager : MonoBehaviour {
 	// Use this for initialization
     public Player player;
 	void Start () {
-        player = SQLiteCore.getPlayerInfor();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
+        Debug.Log("haha");
+
 	}
 }

@@ -29,7 +29,7 @@ public class PlayerDetails : MonoBehaviour {
     PlayerManager playerManager;
     // Use this for initialization
     void Start () {
-        playerManager = PlayerManager.instance;
+        playerManager = GetComponentInParent<PlayerManager>();
         CurrentSetup();
     }
 
@@ -196,6 +196,14 @@ public class PlayerDetails : MonoBehaviour {
     private void CurrentSetup(){
         currentHealth = playerManager.player.Health;
         currentMana = playerManager.player.Mana;
+        if (playerManager == null)
+        {
+            Debug.Log("null");
+        }
+        else
+        {
+            Debug.Log("not null");
+        }
         healthBar.fillAmount = currentHealth / health;
         manaBar.fillAmount = currentMana / mana;
         txtHealth.text = (float)Math.Round((double)currentHealth / health, 2) * 100 + "%";

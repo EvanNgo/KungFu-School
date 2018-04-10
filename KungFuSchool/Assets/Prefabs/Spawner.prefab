@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1563392355971888}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.5940113, y: 1.6196613, z: -0.22688353}
+  m_LocalPosition: {x: -0.5, y: 0.5, z: -0.22688353}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -51,7 +51,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eeb0cf5537c64f5180feb8f504de6cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cooldown: 5
-  Enemy: {fileID: 1133153193476138, guid: 2cfcc9a7b6d0c48fb88c4d13d3326af7, type: 2}
-  EnemyName: Jack
+  Cooldown: 10
+  Enemy: {fileID: 1942200144743844, guid: 758ebb385ad094dd0929f450f4411389, type: 2}
+  EnemyName: cogo
   Death: 0

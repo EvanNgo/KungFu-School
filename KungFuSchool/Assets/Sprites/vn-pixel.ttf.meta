@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 285b5a7e70a61854b88fddb96f3df84d
+timeCreated: 1523371635
+licenseType: Free
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: FVF Fernando 08
+  fontNames:
+  - FVF Fernando 08
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

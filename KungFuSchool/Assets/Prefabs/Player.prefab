@@ -51,6 +51,7 @@ GameObject:
   - component: {fileID: 4630601512310090}
   - component: {fileID: 212769267312471486}
   - component: {fileID: 60194571484727780}
+  - component: {fileID: 114267881094629958}
   m_Layer: 0
   m_Name: swing effects_0
   m_TagString: Untagged
@@ -89,7 +90,7 @@ GameObject:
   - component: {fileID: 58455172191568700}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -259,6 +260,18 @@ MonoBehaviour:
   moveSpeed: 5
   inventoryUI: {fileID: 0}
   dialogManager: {fileID: 0}
+--- !u!114 &114267881094629958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1954320777435010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d727bc4f02c474a7d9357e705b5ed0e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dmg: 100
 --- !u!212 &212075994889992680
 SpriteRenderer:
   m_ObjectHideFlags: 1

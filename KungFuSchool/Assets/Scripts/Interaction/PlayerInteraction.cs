@@ -40,7 +40,6 @@ public class PlayerInteraction : MonoBehaviour {
     void UpdateTarget ()
     {   
         GameObject[] items = GameObject.FindGameObjectsWithTag("InterObject");
-        float take = Mathf.Infinity;
         float shortestDistance = Mathf.Infinity;
         GameObject nearestItem = null;
         foreach (GameObject item in items)

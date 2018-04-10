@@ -26,10 +26,8 @@ public class PlayerDetails : MonoBehaviour {
     private bool healthCounting;
     private bool manaCounting;
     private bool teleCounting;
-    PlayerManager playerManager;
     // Use this for initialization
     void Start () {
-        playerManager = GetComponentInParent<PlayerManager>();
         CurrentSetup();
     }
 
@@ -194,18 +192,8 @@ public class PlayerDetails : MonoBehaviour {
     }
 
     private void CurrentSetup(){
-        currentHealth = playerManager.player.Health;
-        currentMana = playerManager.player.Mana;
-        if (playerManager == null)
-        {
-            Debug.Log("null");
-        }
-        else
-        {
-            Debug.Log("not null");
-        }
-        healthBar.fillAmount = currentHealth / health;
-        manaBar.fillAmount = currentMana / mana;
+        healthBar.fillAmount = 1;
+        manaBar.fillAmount = 1;
         txtHealth.text = (float)Math.Round((double)currentHealth / health, 2) * 100 + "%";
         txtMana.text = (float)Math.Round((double)currentMana / mana, 2) * 100 + "%";
         TxthealthCD.enabled = false;

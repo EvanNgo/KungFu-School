@@ -142,7 +142,6 @@ public class DialogItem : MonoBehaviour {
 
     public void showQuipingItem(Item item){
         ShowingItem = item;
-        int slotIndex = (int)ShowingItem.equipSlot;
         EquipBox.SetActive(false);
         EquipingBox.SetActive(false);
         NonEquipBox.SetActive(false);

@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
     public float health = 100;
-    private GameObject target;
+    public string enemyName;
+    public Text txtEnemyName;
     public QuestManager questManager;
     float currentHealth;
     public float enemyExp = 600;
@@ -13,15 +14,25 @@ public class Enemy : MonoBehaviour {
     public GameObject[] dropingItem;
     public GameObject Gold;
     public int goldDropping;
+    public bool attack;
+    private GameObject target;
+    public GameObject floatingText;
     // Use this for initialization
-    void Start () {
+    void Start() {
         questManager = FindObjectOfType<QuestManager>();
         currentHealth = health;
         target = GameObject.FindGameObjectWithTag("Player");
+        txtEnemyName.text = enemyName;
+    }
+    public void Update(){
+        if (attack) {
+            AttackPlayer();
+        }
     }
 
-    public void TakeDameged(int dameged){
+    public void TakeDameged(int dameged) {
         currentHealth -= dameged;
+        FloatingTextController.CreateFloatingText("-" + dameged, transform);
         healthBar.fillAmount = currentHealth / health;
         if (currentHealth <= 0)
         {
@@ -42,7 +53,7 @@ public class Enemy : MonoBehaviour {
                 }
             }
             else
-            {   
+            {
                 if (dropingItem.Length > 0)
                 {
                     int index = Random.Range(0, dropingItem.Length);
@@ -55,5 +66,8 @@ public class Enemy : MonoBehaviour {
             GameObject.Find(spawnerName[0]).GetComponent<Spawner>().Death = true;
             Destroy(gameObject, 0.5f);
         }
+    }
+
+    public void AttackPlayer() {
     }
 }

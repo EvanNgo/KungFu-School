@@ -151,7 +151,7 @@ public class PlayerDetails : MonoBehaviour {
         healthCD.fillAmount = 1;
         healthCD.enabled = true;
         currentHealth = ( health - currentHealth <= 100 ) ? currentHealth = health : currentHealth + 100;
-        txtHealth.text = (float)Math.Round((double)currentHealth / health, 2) * 100 + "%";
+        txtHealth.text = (float)Math.Round((double)currentHealth / health, 2) * 100 + "";
         healthBar.fillAmount = currentHealth / health;
     }
     public void UsingMPPotion()
@@ -173,7 +173,7 @@ public class PlayerDetails : MonoBehaviour {
         manaCD.fillAmount = 1;
         manaCD.enabled = true;
         currentMana = ( mana - currentMana <= 100 ) ? currentMana = mana : currentMana + 100;
-        txtMana.text = (float)Math.Round((double)currentMana / mana, 2) * 100 + "%";
+        txtMana.text = (float)Math.Round((double)currentMana / mana, 2) * 100 + "";
         manaBar.fillAmount = currentMana / mana;
 
     }
@@ -194,8 +194,8 @@ public class PlayerDetails : MonoBehaviour {
     private void CurrentSetup(){
         healthBar.fillAmount = 1;
         manaBar.fillAmount = 1;
-        txtHealth.text = (float)Math.Round((double)currentHealth / health, 2) * 100 + "%";
-        txtMana.text = (float)Math.Round((double)currentMana / mana, 2) * 100 + "%";
+        txtHealth.text = 100 + "";
+        txtMana.text = 100 + "";
         TxthealthCD.enabled = false;
         healthCD.enabled = false;
         TxtmanaCD.enabled = false;

@@ -9,7 +9,7 @@ public class PlayerControlelr : MonoBehaviour {
     private Vector2 lastMove;
     public GameObject inventoryUI;
     public GameObject dialogManager;
-    private float attackTime = 0.3f;
+    private float attackTime = 1f;
     private float attackCounter = 0;
     private float defaultDown = -1;
     private bool attack = false; 
@@ -31,7 +31,7 @@ public class PlayerControlelr : MonoBehaviour {
         if (!attack)
         {
             if (Input.GetAxisRaw("Horizontal") > 0.1f || Input.GetAxisRaw("Horizontal") < -0.1f)
-            {
+            {   
                 transform.Translate( new Vector3(Input.GetAxisRaw("Horizontal") * moveSpeed * Time.deltaTime, 0f,0f));
                 playerMoving = true;
                 lastMove = new Vector2(Input.GetAxisRaw("Horizontal"), 0f);
@@ -49,7 +49,7 @@ public class PlayerControlelr : MonoBehaviour {
                 attackCounter = attackTime;
                 attack = true; 
                 myBody.velocity = Vector2.zero;
-                myAni.SetBool("Attack", true);
+                myAni.SetBool("Sword_Attack", true);
             }
         }
 
@@ -60,7 +60,7 @@ public class PlayerControlelr : MonoBehaviour {
 
         if (attackCounter <= 0)
         {
-            myAni.SetBool("Attack", false);
+            myAni.SetBool("Sword_Attack", false);
             attack = false; 
         }
 

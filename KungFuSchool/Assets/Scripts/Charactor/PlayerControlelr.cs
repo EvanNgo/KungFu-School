@@ -11,6 +11,7 @@ public class PlayerControlelr : MonoBehaviour {
     public GameObject dialogManager;
     private float attackTime = 0.3f;
     private float attackCounter = 0;
+    private float defaultDown = -1;
     private bool attack = false; 
     Rigidbody2D myBody;
     Animator myAni;
@@ -18,6 +19,7 @@ public class PlayerControlelr : MonoBehaviour {
     void Start() {
         myBody = GetComponent<Rigidbody2D>();
         myAni = GetComponent<Animator>();
+        lastMove = new Vector2(0, -1);
     } 
     // Update is called once per frame
     void FixedUpdate() {

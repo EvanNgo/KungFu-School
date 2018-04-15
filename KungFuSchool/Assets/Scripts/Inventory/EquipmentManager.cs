@@ -100,6 +100,10 @@ public class EquipmentManager : MonoBehaviour {
     }
 
     public void EquipingItemClick(int index){
+        if (currentEquipment[index] == null)
+        {
+            return;
+        }
         DialogItemManager.instance.ShowQuipingItem(currentEquipment[index]);
     }
 }

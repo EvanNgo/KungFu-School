@@ -4,6 +4,27 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 public class PlayerLevel : MonoBehaviour {
+    #region Singleton
+
+    public static PlayerLevel instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<PlayerLevel>();
+            }
+            return _instance;
+        }
+    }
+    static PlayerLevel _instance;
+
+    void Awake()
+    {
+        _instance = this;
+    }
+
+    #endregion
     int ExpOfLevel;
     int CurrentLevel;
     private int currentExp;

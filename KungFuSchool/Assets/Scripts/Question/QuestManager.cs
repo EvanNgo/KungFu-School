@@ -3,6 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class QuestManager : MonoBehaviour {
+    #region Singleton
+
+    public static QuestManager instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<QuestManager>();
+            }
+            return _instance;
+        }
+    }
+    static QuestManager _instance;
+
+    void Awake()
+    {
+        _instance = this;
+    }
+
+    #endregion
     public QuestObject[] quests;
     public bool[] questCompleted;
     public DialogueManager dialogManager;

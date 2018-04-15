@@ -1,0 +1,1577 @@
+fileFormatVersion: 2
+guid: 1b0f83a019cb19a478f27b27aab71edf
+timeCreated: 1523729444
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Visoes_3_Sprites_by_DoubleLeggy_0
+    21300002: Visoes_3_Sprites_by_DoubleLeggy_1
+    21300004: Visoes_3_Sprites_by_DoubleLeggy_2
+    21300006: Visoes_3_Sprites_by_DoubleLeggy_3
+    21300008: Visoes_3_Sprites_by_DoubleLeggy_4
+    21300010: Visoes_3_Sprites_by_DoubleLeggy_5
+    21300012: Visoes_3_Sprites_by_DoubleLeggy_6
+    21300014: Visoes_3_Sprites_by_DoubleLeggy_7
+    21300016: Visoes_3_Sprites_by_DoubleLeggy_8
+    21300018: Visoes_3_Sprites_by_DoubleLeggy_9
+    21300020: Visoes_3_Sprites_by_DoubleLeggy_10
+    21300022: Visoes_3_Sprites_by_DoubleLeggy_11
+    21300024: Visoes_3_Sprites_by_DoubleLeggy_12
+    21300026: Visoes_3_Sprites_by_DoubleLeggy_13
+    21300028: Visoes_3_Sprites_by_DoubleLeggy_14
+    21300030: Visoes_3_Sprites_by_DoubleLeggy_15
+    21300032: Visoes_3_Sprites_by_DoubleLeggy_16
+    21300034: Visoes_3_Sprites_by_DoubleLeggy_17
+    21300036: Visoes_3_Sprites_by_DoubleLeggy_18
+    21300038: Visoes_3_Sprites_by_DoubleLeggy_19
+    21300040: Visoes_3_Sprites_by_DoubleLeggy_20
+    21300042: Visoes_3_Sprites_by_DoubleLeggy_21
+    21300044: Visoes_3_Sprites_by_DoubleLeggy_22
+    21300046: Visoes_3_Sprites_by_DoubleLeggy_23
+    21300048: Visoes_3_Sprites_by_DoubleLeggy_24
+    21300050: Visoes_3_Sprites_by_DoubleLeggy_25
+    21300052: Visoes_3_Sprites_by_DoubleLeggy_26
+    21300054: Visoes_3_Sprites_by_DoubleLeggy_27
+    21300056: Visoes_3_Sprites_by_DoubleLeggy_28
+    21300058: Visoes_3_Sprites_by_DoubleLeggy_29
+    21300060: Visoes_3_Sprites_by_DoubleLeggy_30
+    21300062: Visoes_3_Sprites_by_DoubleLeggy_31
+    21300064: Visoes_3_Sprites_by_DoubleLeggy_32
+    21300066: Visoes_3_Sprites_by_DoubleLeggy_33
+    21300068: Visoes_3_Sprites_by_DoubleLeggy_34
+    21300070: Visoes_3_Sprites_by_DoubleLeggy_35
+    21300072: Visoes_3_Sprites_by_DoubleLeggy_36
+    21300074: Visoes_3_Sprites_by_DoubleLeggy_37
+    21300076: Visoes_3_Sprites_by_DoubleLeggy_38
+    21300078: Visoes_3_Sprites_by_DoubleLeggy_39
+    21300080: Visoes_3_Sprites_by_DoubleLeggy_40
+    21300082: Visoes_3_Sprites_by_DoubleLeggy_41
+    21300084: Visoes_3_Sprites_by_DoubleLeggy_43
+    21300086: Visoes_3_Sprites_by_DoubleLeggy_44
+    21300088: Visoes_3_Sprites_by_DoubleLeggy_45
+    21300090: Visoes_3_Sprites_by_DoubleLeggy_46
+    21300092: Visoes_3_Sprites_by_DoubleLeggy_47
+    21300094: Visoes_3_Sprites_by_DoubleLeggy_48
+    21300096: Visoes_3_Sprites_by_DoubleLeggy_50
+    21300098: Visoes_3_Sprites_by_DoubleLeggy_51
+    21300100: Visoes_3_Sprites_by_DoubleLeggy_52
+    21300102: Visoes_3_Sprites_by_DoubleLeggy_53
+    21300104: Visoes_3_Sprites_by_DoubleLeggy_54
+    21300106: Visoes_3_Sprites_by_DoubleLeggy_55
+    21300108: Visoes_3_Sprites_by_DoubleLeggy_56
+    21300110: Visoes_3_Sprites_by_DoubleLeggy_58
+    21300112: Visoes_3_Sprites_by_DoubleLeggy_64
+    21300114: Visoes_3_Sprites_by_DoubleLeggy_66
+    21300116: Visoes_3_Sprites_by_DoubleLeggy_67
+    21300118: Visoes_3_Sprites_by_DoubleLeggy_68
+    21300120: Visoes_3_Sprites_by_DoubleLeggy_69
+    21300122: Visoes_3_Sprites_by_DoubleLeggy_70
+    21300124: Visoes_3_Sprites_by_DoubleLeggy_71
+    21300126: Visoes_3_Sprites_by_DoubleLeggy_72
+    21300128: Visoes_3_Sprites_by_DoubleLeggy_73
+    21300130: Visoes_3_Sprites_by_DoubleLeggy_74
+    21300132: Visoes_3_Sprites_by_DoubleLeggy_75
+    21300134: Visoes_3_Sprites_by_DoubleLeggy_76
+    21300136: Visoes_3_Sprites_by_DoubleLeggy_77
+    21300138: Visoes_3_Sprites_by_DoubleLeggy_78
+    21300140: Visoes_3_Sprites_by_DoubleLeggy_79
+    21300142: Visoes_3_Sprites_by_DoubleLeggy_80
+    21300144: Visoes_3_Sprites_by_DoubleLeggy_81
+    21300146: Visoes_3_Sprites_by_DoubleLeggy_82
+    21300148: Visoes_3_Sprites_by_DoubleLeggy_42
+    21300150: Visoes_3_Sprites_by_DoubleLeggy_49
+    21300152: Visoes_3_Sprites_by_DoubleLeggy_57
+    21300154: Visoes_3_Sprites_by_DoubleLeggy_59
+    21300156: Visoes_3_Sprites_by_DoubleLeggy_60
+    21300158: Visoes_3_Sprites_by_DoubleLeggy_61
+    21300160: Visoes_3_Sprites_by_DoubleLeggy_62
+    21300162: Visoes_3_Sprites_by_DoubleLeggy_63
+    21300164: Visoes_3_Sprites_by_DoubleLeggy_65
+    21300166: Visoes_3_Sprites_by_DoubleLeggy_83
+    21300168: Visoes_3_Sprites_by_DoubleLeggy_84
+    21300170: Visoes_3_Sprites_by_DoubleLeggy_85
+    21300172: Visoes_3_Sprites_by_DoubleLeggy_86
+    21300174: Visoes_3_Sprites_by_DoubleLeggy_87
+    21300176: Visoes_3_Sprites_by_DoubleLeggy_88
+    21300178: Visoes_3_Sprites_by_DoubleLeggy_89
+    21300180: Visoes_3_Sprites_by_DoubleLeggy_90
+    21300182: Visoes_3_Sprites_by_DoubleLeggy_91
+    21300184: Visoes_3_Sprites_by_DoubleLeggy_92
+    21300186: Visoes_3_Sprites_by_DoubleLeggy_93
+    21300188: Visoes_3_Sprites_by_DoubleLeggy_94
+    21300190: Visoes_3_Sprites_by_DoubleLeggy_95
+    21300192: Visoes_3_Sprites_by_DoubleLeggy_96
+    21300194: Visoes_3_Sprites_by_DoubleLeggy_97
+  externalObjects: {}
+  serializedVersion: 4
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -1
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 16
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - buildTarget: DefaultTexturePlatform
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Standalone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: iPhone
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  - buildTarget: Android
+    maxTextureSize: 512
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 224
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 224
+        width: 29
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 224
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_3
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 224
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_4
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 224
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_5
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 224
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_6
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 224
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_7
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 224
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_8
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 224
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_9
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 224
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_10
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 224
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_11
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 224
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_12
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 192
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_13
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 192
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_14
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 192
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_15
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 192
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_16
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 192
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_17
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 192
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_18
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 192
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_19
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 192
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_20
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 160
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_21
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 160
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_22
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 160
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_23
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 160
+        width: 22
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_24
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 160
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_25
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 160
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_26
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 160
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_27
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 160
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_28
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 128
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_29
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 128
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_30
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 128
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_31
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 128
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_32
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 128
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_33
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 128
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_34
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 128
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_35
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 128
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_36
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 96
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_37
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 96
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_38
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 96
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_39
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 96
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_40
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 96
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_41
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 96
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_43
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 64
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_44
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 64
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_45
+      rect:
+        serializedVersion: 2
+        x: 100
+        y: 64
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_46
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 64
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_47
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 64
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_48
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 64
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_50
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 71
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_51
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 32
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_52
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 32
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_53
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 32
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_54
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 32
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_55
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 32
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_56
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 32
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_58
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 51
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_64
+      rect:
+        serializedVersion: 2
+        x: 354
+        y: 47
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_66
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 47
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_67
+      rect:
+        serializedVersion: 2
+        x: 316
+        y: 32
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_68
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 32
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_69
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 32
+        width: 7
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_70
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 0
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_71
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 0
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_72
+      rect:
+        serializedVersion: 2
+        x: 101
+        y: 0
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_73
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 0
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_74
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 0
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_75
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 0
+        width: 23
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_76
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 4
+        width: 11
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_77
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 4
+        width: 11
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_78
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 2
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_79
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 2
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_80
+      rect:
+        serializedVersion: 2
+        x: 340
+        y: 4
+        width: 16
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_81
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 4
+        width: 10
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_82
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 4
+        width: 6
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_42
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 192
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_49
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 160
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_57
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 128
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_59
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 192
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_60
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 160
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_61
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 128
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_62
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 96
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_63
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 64
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_65
+      rect:
+        serializedVersion: 2
+        x: 230
+        y: 32
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_83
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 0
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_84
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 192
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_85
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 160
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_86
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 128
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_87
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 96
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_88
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 64
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_89
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 32
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_90
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 0
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_91
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 192
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_92
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 160
+        width: 22
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_93
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 128
+        width: 23
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_94
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 96
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_95
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 64
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_96
+      rect:
+        serializedVersion: 2
+        x: 131
+        y: 32
+        width: 25
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Visoes_3_Sprites_by_DoubleLeggy_97
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 0
+        width: 26
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    outline: []
+    physicsShape: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

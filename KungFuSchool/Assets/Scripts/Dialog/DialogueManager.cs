@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class DialogueManager : MonoBehaviour {
     #region Singleton
 
-
     public static DialogueManager instance {
         get {
             if (_instance == null) {
@@ -24,43 +23,30 @@ public class DialogueManager : MonoBehaviour {
     #endregion
     public GameObject dialogBox;
     public Text dialogText;
-    public bool dialogActive;
-    public string[] dialogLines;
-    public int currentLine;
-	// Use this for initialization
-	void Start () {
-        dialogBox.SetActive(false);
-        dialogActive = false;
-	}
-	
-	// Update is called once per frame
-	void Update () {
-        if (dialogActive && Input.GetButtonDown("Select"))
-        {
-            currentLine++;
-            if (currentLine >= dialogLines.Length)
-            {
-                dialogBox.SetActive(false);
-                dialogActive = false;
-                currentLine = 0;
-            }
-            else
-            {
-                dialogText.text = dialogLines[currentLine];
-            }
-        }
-	}
+    private string[] dialogLines;
+    private int currentLine;
 
     public void ShowBox(string[] dialogDe){
-        dialogLines = new string[dialogDe.Length];
-        dialogLines = dialogDe;
-        dialogActive = true;
-        dialogBox.SetActive(true);
+        Debug.Log("CallDialog");
+        dialogBox.SetActive(!dialogBox.activeSelf);
         dialogLines = new string[dialogDe.Length];
         dialogLines = dialogDe;
         if (dialogLines.Length > 0)
         {
             dialogText.text = dialogLines[0];
+        }
+    }
+    public void BoxClicked()
+    {
+        currentLine++;
+        if (currentLine >= dialogLines.Length)
+        {
+            dialogBox.SetActive(!dialogBox.activeSelf);
+            currentLine = 0;
+        }
+        else
+        {
+            dialogText.text = dialogLines[currentLine];
         }
     }
 }

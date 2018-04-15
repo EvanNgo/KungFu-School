@@ -44,7 +44,7 @@ public class Inventory : MonoBehaviour {
         {
             for (int i = 0; i < items.Count; i++)
             {
-                if (items[i].name==itemToAdd.name && items[i].details == itemToAdd.details && items[i].icon == itemToAdd.icon && items[i].count<99)
+                if (items[i].name==itemToAdd.name && items[i].icon == itemToAdd.icon && items[i].count < 99)
                 {
                     items[i].count += 1;
                     if (SQLiteCore.UpdateItem(items[i])){
@@ -54,7 +54,7 @@ public class Inventory : MonoBehaviour {
                 }
             }
         }
-        if (items.Count > space) { Debug.Log("Inventory Full!!");  return; }
+        if (items.Count >= space) { Debug.Log("Inventory Full!!");  return; }
         if (SQLiteCore.AddItemToInventory(itemToAdd) == -1) {
             Debug.Log("Save item ERROR");
             return;
@@ -62,6 +62,66 @@ public class Inventory : MonoBehaviour {
         itemToAdd.id = SQLiteCore.LastAddedItem;
         items.Add(itemToAdd);
         itemScript.SendMessage("DoInteraction");
+    }
+
+    public void BuyItem(Item itemBuy)
+    {
+        if ((int)itemBuy.itemType != 0 && items.Count > 0)
+        {
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].name == itemBuy.name && items[i].icon == itemBuy.icon && items[i].count < 99)
+                {
+                    if(items[i].count + itemBuy.count < 100)
+                    {
+                        items[i].count += itemBuy.count;
+                        PlayerManager.instance.player.Gold = PlayerManager.instance.player.Gold - (itemBuy.count * itemBuy.priceBuy);
+                        Gold = PlayerManager.instance.player.Gold;
+                        setTextGold();
+                        SQLiteCore.UpdatePlayer(PlayerManager.instance.player);
+                        SQLiteCore.UpdateItem(items[i]);
+                        if (onItemChangedCallback != null)
+                            onItemChangedCallback.Invoke();
+                        return;
+                    }
+                    else
+                    {
+                        if (items.Count >= space) { Debug.Log("Inventory Full!!"); return; }
+                        itemBuy.count = itemBuy.count - (99 - items[i].count);
+                        items[i].count = 99;
+                        PlayerManager.instance.player.Gold = PlayerManager.instance.player.Gold - (itemBuy.count * itemBuy.priceBuy);
+                        Gold = PlayerManager.instance.player.Gold;
+                        setTextGold();
+                        SQLiteCore.UpdatePlayer(PlayerManager.instance.player);
+                        SQLiteCore.UpdateItem(items[i]);
+                        if (SQLiteCore.AddItemToInventory(itemBuy) == -1)
+                        {
+                            Debug.Log("Save item ERROR");
+                            return;
+                        }
+                        itemBuy.id = SQLiteCore.LastAddedItem;
+                        items.Add(itemBuy);
+                        if (onItemChangedCallback != null)
+                            onItemChangedCallback.Invoke();
+                        return;
+                    }
+                }
+            }
+        }
+        if (items.Count >= space) { Debug.Log("Inventory Full!!"); return; }
+        PlayerManager.instance.player.Gold = PlayerManager.instance.player.Gold - (itemBuy.count * itemBuy.priceBuy);
+        Gold = PlayerManager.instance.player.Gold;
+        setTextGold();
+        SQLiteCore.UpdatePlayer(PlayerManager.instance.player);
+        if (SQLiteCore.AddItemToInventory(itemBuy) == -1)
+        {
+            Debug.Log("Save item ERROR");
+            return;
+        }
+        itemBuy.id = SQLiteCore.LastAddedItem;
+        items.Add(itemBuy);
+        if (onItemChangedCallback != null)
+            onItemChangedCallback.Invoke();
     }
 
     public void LoadCurrentItem()
@@ -175,7 +235,7 @@ public class Inventory : MonoBehaviour {
     }
 
     public void TakeGold(Item itemGold,GameObject itemScript){
-        Gold = Gold + itemGold.price;
+        Gold = Gold + itemGold.priceSell;
         PlayerManager.instance.player.Gold = Gold;
         SQLiteCore.UpdatePlayer(PlayerManager.instance.player);
         setTextGold();

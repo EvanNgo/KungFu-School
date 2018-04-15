@@ -1,8 +1,33 @@
 ﻿using UnityEngine;
 
 public class InventoryManager : MonoBehaviour {
+    #region Singleton
+
+    public static InventoryManager instance
+    {
+        get
+        {
+            if (_instance == null)
+            {
+                _instance = FindObjectOfType<InventoryManager>();
+            }
+            return _instance;
+        }
+    }
+    static InventoryManager _instance;
+
+    void Awake()
+    {
+        _instance = this;
+    }
+
+    #endregion
     Inventory inventory;
+    public NPC currentNPC;
+    public InventoryMode inventoryMode;
     public GameObject inventoryUI;
+    public GameObject equipmentUI;
+    public GameObject shopUI;
     public GameObject RegentBar;
 	// Use this for initialization
 	void Start () {
@@ -14,11 +39,16 @@ public class InventoryManager : MonoBehaviour {
 	void Update () {
         if (Input.GetButtonDown("Inventory"))
         {
+            if (!inventoryUI.activeSelf)
+            {
+                inventoryMode = InventoryMode.Inventory;
+            }
             InventoryControl();
         }
 	}
 
-    public void InventoryControl(){
+    public void InventoryControl()
+    {   
         inventoryUI.SetActive(!inventoryUI.activeSelf);
         UpdateUI();
         if (!inventoryUI.activeSelf)
@@ -26,6 +56,16 @@ public class InventoryManager : MonoBehaviour {
             DialogItemManager.instance.CloseDialog();
         }
         RegentBar.SetActive(!inventoryUI.activeSelf);
+        switch (inventoryMode)
+        {
+            case InventoryMode.Inventory:
+                equipmentUI.SetActive(!equipmentUI.activeSelf);
+                break;
+            case InventoryMode.Shop:
+                shopUI.SetActive(!shopUI.activeSelf);
+                UpdateShop();
+                break;
+        }
     }
 
     void UpdateUI(){
@@ -42,4 +82,23 @@ public class InventoryManager : MonoBehaviour {
             }
         }
     }
+
+    public void UpdateShop()
+    {
+        ShopSlot[] slots = GetComponentsInChildren<ShopSlot>();
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            if (i < currentNPC.shopList.Length)
+            {
+                slots[i].AddItem(currentNPC.shopList[i]);
+            }
+            else
+            {
+                slots[i].ClearSlot();
+            }
+        }
+    }
+
+    public enum InventoryMode { Inventory,Shop }
 }

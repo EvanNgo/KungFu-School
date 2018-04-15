@@ -24,8 +24,17 @@ public class DialogItem : MonoBehaviour {
 
     #endregion
     private EquipmentManager eManager;
+    private PlayerManager playerManager;
     private Item EquipingItem;
     private Item ShowingItem;
+    [Header("Non Equip Shop Box")]
+    public GameObject NonEquipShop;
+    public Image nesIcon;
+    public Text nesName;
+    public Text nesType;
+    public Text nesDetail;
+    public Text nesCount;
+    public Text nesPrice;
     [Header("Non Equip Item")]
     public GameObject NonEquipBox;
     public Image neIcon;
@@ -64,9 +73,14 @@ public class DialogItem : MonoBehaviour {
     public Text[] ueOpPoints;
     public Text[] ueOpUnits;
 
+    private void Start()
+    {
+        playerManager = PlayerManager.instance;
+    }
     public void showItem(Item item){
         ShowingItem = item;
         int slotIndex = (int)item.equipSlot;
+        NonEquipShop.SetActive(false);
         EquipBox.SetActive(false);
         EquipingBox.SetActive(false);
         NonEquipBox.SetActive(false);
@@ -140,6 +154,69 @@ public class DialogItem : MonoBehaviour {
         }
     }
 
+    public void ShowNonEquipShopBox(Item item)
+    {
+        item.count = 1;
+        if(PlayerManager.instance.player.Gold >= item.priceBuy)
+        {
+            item.count = 1;
+        }
+        else
+        {
+            item.count = 0;
+        }
+        ShowingItem = item;
+        EquipBox.SetActive(false);
+        EquipingBox.SetActive(false);
+        NonEquipBox.SetActive(false);
+        UnequipBox.SetActive(false);
+        NonEquipShop.SetActive(true);
+        nesIcon.sprite = item.icon;
+        nesName.text = item.name;
+        nesType.text = ((int)item.itemType == 1 || (int)item.itemType == 2) ? "Dược Phẩm" : "Vật Phẩm Nhiệm Vụ";
+        nesDetail.text = item.details;
+        nesCount.text = item.count + "";
+        nesPrice.text = item.count * item.priceBuy + "";
+    }
+    public void btnPlus()
+    {
+        if (ShowingItem.count == 98)
+        {
+            ShowingItem.count = 1;
+        }
+        else
+        {
+            if(PlayerManager.instance.player.Gold < (ShowingItem.count+1) * ShowingItem.priceBuy)
+            {
+                return;
+            }
+            ShowingItem.count++;
+        }
+        nesCount.text = ShowingItem.count + "";
+        nesPrice.text = ShowingItem.count * ShowingItem.priceBuy + "";
+    }
+    public void btnRemove()
+    {
+        if (ShowingItem.count == 1)
+        {
+            if (PlayerManager.instance.player.Gold >= 99 * ShowingItem.priceBuy)
+            {
+                ShowingItem.count = 99;
+            }
+            else
+            {
+                ShowingItem.count = (int)PlayerManager.instance.player.Gold / ShowingItem.priceBuy;
+            }
+        }
+        else
+        {
+            ShowingItem.count--;
+        }
+        nesCount.text = ShowingItem.count + "";
+        nesPrice.text = ShowingItem.count * ShowingItem.priceBuy + "";
+    }
+
+
     public void showQuipingItem(Item item){
         ShowingItem = item;
         EquipBox.SetActive(false);
@@ -171,6 +248,16 @@ public class DialogItem : MonoBehaviour {
 
     public void UsingItem(){
         ShowingItem.Use();
+    }
+
+    public void BuyItem()
+    {   
+        if (playerManager.player.Gold < ShowingItem.count * ShowingItem.priceBuy)
+        {
+            Debug.Log("Not enought money");
+            return;
+        }
+        ShowingItem.Buy();
     }
 
     public void UnequipItem(){

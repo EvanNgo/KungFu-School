@@ -253,13 +253,13 @@ public static class SQLiteCore {
         if ((int)item.itemType == 0) {
             query = String.Format("INSERT INTO Inventory (id,name,icon,detail,equipSlot,defaultOptionTitle,defaultOptionPoint,defaultOptionUnit,defaultOptionTag,isEquiping,itemType,isStacking,count)" +
                 " VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}')",
-                item.name, item.icon.name, item.details, item.equipSlot + "", item.defaultOption.title, item.defaultPoint, item.defaultOption.unit, item.defaultOption.tag, isEquiping, item.itemType + "",isStacking,1);
+                item.name, item.icon.name, item.details, item.equipSlot + "", item.defaultOption.title, item.defaultPoint, item.defaultOption.unit, item.defaultOption.tag, isEquiping, item.itemType + "",isStacking, item.count);
         }
         else
         {
             query = String.Format("INSERT INTO Inventory (id,name,icon,detail,equipSlot,defaultOptionTitle,defaultOptionPoint,defaultOptionUnit,defaultOptionTag,isEquiping,itemType,isStacking,count)" +
                 " VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}')",
-                item.name, item.icon.name, item.details, item.equipSlot + "","",0, "","", isEquiping, item.itemType + "",isStacking,1);
+                item.name, item.icon.name, item.details, item.equipSlot + "","",0, "","", isEquiping, item.itemType + "",isStacking, item.count);
         }
         
         Connect();

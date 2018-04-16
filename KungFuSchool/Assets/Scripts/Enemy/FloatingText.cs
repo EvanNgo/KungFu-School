@@ -15,7 +15,6 @@ public class FloatingText : MonoBehaviour {
 
     public void SetText(string text)
     {
-        Debug.Log("SetText");
         damageText.text = text;
     }
 }

@@ -38,7 +38,15 @@ public class InventorySlot : MonoBehaviour {
     {
         if (item != null)
         {
-            DialogItemManager.instance.ShowDialog(item);
+            switch (InventoryManager.instance.inventoryMode)
+            {
+                case InventoryManager.InventoryMode.Shop:
+                    DialogItemManager.instance.ShowItemInShop(item);
+                    break;
+                case InventoryManager.InventoryMode.Inventory:
+                    DialogItemManager.instance.ShowDialog(item);
+                    break;
+            }
         }
     }
 }

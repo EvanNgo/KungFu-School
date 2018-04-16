@@ -21,12 +21,9 @@ public class PlayerInteraction : MonoBehaviour {
             }
             else
             {
-                if (Input.GetButtonDown("Interact"))
+                if (Input.GetKeyDown(KeyCode.K))
                 {
-                    if (currentObjectScript.inventory)
-                    {
-                        inventory.AddItem(currentObjectScript.item, currentObject);
-                    }
+                    inventory.AddItem(currentObjectScript.item, currentObject);
                 }
             }
         }

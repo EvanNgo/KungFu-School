@@ -26,8 +26,11 @@ public class PlayerControlelr : MonoBehaviour {
     void Start() {
         myBody = GetComponent<Rigidbody2D>();
         myAni = GetComponent<Animator>();
+        myAni.speed = 1;
         lastMove = new Vector2(0, -1);
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+        myAni.SetFloat("AttackSpeed", 1);
+        myAni.SetFloat("MoveSpeed", 1);
     }
     void FixedUpdate() {
         playerMoving = false;
@@ -61,7 +64,7 @@ public class PlayerControlelr : MonoBehaviour {
             myAni.SetBool("Sword_Attack", attack);
         }
 
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.K) && !attack)
         {
             if (currentEnemy != null)
             {

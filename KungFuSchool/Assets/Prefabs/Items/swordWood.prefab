@@ -37,7 +37,7 @@ Transform:
   m_GameObject: {fileID: 1888892634319608}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -29.126, y: 13.186, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -69,21 +69,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   item: {fileID: 0}
-  inventory: 1
-  isStacking: 0
   itemCount: 1
-  itemName: Kiem Go
-  itemDetails: Mot cay kiem da cu
-  EquipmentSlot: 5
+  isStacking: 0
+  itemName: "Ki\u1EBFm G\u1ED7"
+  itemDetails: "M\u1ED9t thanh ki\u1EBFm g\u1ED7 m\u1EE5c n\xE1t"
+  priceBuy: 500
+  priceSell: 100
   itemType: 0
-  defaultOption: {fileID: 11400000, guid: 6d5932ad7fb015146915ba6f69969763, type: 2}
-  defaultPoint: 15
+  isShopItem: 0
+  itemOptionLines: 3
+  itemLevel: 0
+  EquipmentSlot: 5
+  defaultOption: {fileID: 11400000, guid: 0b4adce65f6124575abb7f9b02f61601, type: 2}
+  defaultPoint: 100
   avaiableOption:
-  - {fileID: 11400000, guid: 6d5932ad7fb015146915ba6f69969763, type: 2}
-  - {fileID: 11400000, guid: 39c311e0332012746855cb0945d18d34, type: 2}
-  - {fileID: 11400000, guid: 226b9b2d64b720f479f8b4faf3765bf5, type: 2}
-  maxLines: 3
-  gold: 0
+  - {fileID: 11400000, guid: e1e6f7687b16b4660aac544ac8542e56, type: 2}
+  - {fileID: 11400000, guid: b1083b57a8dce4da9aa276f63492c77a, type: 2}
+  - {fileID: 11400000, guid: 0b4adce65f6124575abb7f9b02f61601, type: 2}
 --- !u!212 &212763885338210394
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -115,8 +117,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1761227617
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 57e6096eebe5147b79ea5753897eec89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

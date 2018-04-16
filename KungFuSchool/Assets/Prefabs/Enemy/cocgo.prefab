@@ -200,14 +200,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 200
-  enemyName: "C\u1ECDc G\u1ED7"
-  txtEnemyName: {fileID: 114090644807188424}
-  enemyExp: 50
   healthBar: {fileID: 114636505146437212}
-  dropingItem: []
-  Gold: {fileID: 0}
-  goldDropping: 0
+  enemyName: "C\u1ECDc G\u1ED7"
   attack: 0
+  txtEnemyName: {fileID: 114090644807188424}
+  Armor: 0
+  dropingItem:
+  - {fileID: 1888892634319608, guid: 30a16ae55455a41448c750663c124747, type: 2}
+  Gold: {fileID: 1924766487030142, guid: 764b2f55c413a4d39a5d50688fac0a74, type: 2}
+  goldDropping: 0
+  enemyExp: 1
+  ItemMaxLines: 0
 --- !u!114 &114557731234764058
 MonoBehaviour:
   m_ObjectHideFlags: 1

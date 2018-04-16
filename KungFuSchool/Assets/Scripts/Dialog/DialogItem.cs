@@ -41,6 +41,9 @@ public class DialogItem : MonoBehaviour {
     public Text neName;
     public Text neType;
     public Text neDetail;
+    public Text nePrice;
+    public Button neUseBTN;
+    public Text neDeleteBTN;
     [Header("Equip Item")]
     public GameObject EquipBox;
     public Text eName;
@@ -51,6 +54,9 @@ public class DialogItem : MonoBehaviour {
     public Text[] eOpTitles;
     public Text[] eOpPoints;
     public Text[] eOpUnits;
+    public Text ePrice;
+    public Button eUseBTN;
+    public Text eDeleteBTN;
     [Header("Equiping Item")]
     public GameObject EquipingBox;
     public Text epName;
@@ -61,7 +67,7 @@ public class DialogItem : MonoBehaviour {
     public Text[] epOpTitles;
     public Text[] epOpPoints;
     public Text[] epOpUnits;
-
+    public Text epPrice;
     [Header("Unequip Item")]
     public GameObject UnequipBox;
     public Text ueName;
@@ -72,34 +78,42 @@ public class DialogItem : MonoBehaviour {
     public Text[] ueOpTitles;
     public Text[] ueOpPoints;
     public Text[] ueOpUnits;
-
+    public Text uePrice;
     private void Start()
     {
         playerManager = PlayerManager.instance;
     }
-    public void showItem(Item item){
-        ShowingItem = item;
-        int slotIndex = (int)item.equipSlot;
+    public void DisableAllDialog(){
         NonEquipShop.SetActive(false);
         EquipBox.SetActive(false);
         EquipingBox.SetActive(false);
         NonEquipBox.SetActive(false);
         UnequipBox.SetActive(false);
-        if ((int)item.itemType!=0)
+    }
+    public void ShowItemInShop(Item item){
+        DisableAllDialog();
+        ShowingItem = item;
+        if ((int)item.itemType != 0)
         {
             neIcon.overrideSprite = item.icon;
             neName.text = item.name;
             neType.text = ((int)item.itemType == 1 || (int)item.itemType == 2) ? "Dược Phẩm" : "Vật Phẩm Nhiệm Vụ";
             neDetail.text = item.details;
+            nePrice.text = item.priceSell * item.count + " Lượng";
+            NonEquipBox.SetActive(true);
+            neUseBTN.interactable = false;
+            neDeleteBTN.text = "Bán";
             NonEquipBox.SetActive(true);
         }
         else
         {
             eName.text = item.name;
+            eName.color = item.GetItemColor();
             eDetail.text = item.details;
             eDefaultTitle.text = item.defaultOption.title;
             eDefaultPoint.text = item.defaultPoint + "";
             eDefaultUnit.text = item.defaultOption.unit;
+            ePrice.text = item.priceSell * item.count + " Lượng";
             for (int i = 0; i < eOpTitles.Length; i++)
             {
                 if (i >= item.options.Length)
@@ -113,6 +127,59 @@ public class DialogItem : MonoBehaviour {
                     eOpTitles[i].text = item.options[i].title;
                     eOpPoints[i].text = item.points[i] + "";
                     eOpUnits[i].text = item.options[i].unit;
+                    eOpTitles[i].color = item.GetItemColor();
+                    eOpPoints[i].color = item.GetItemColor();
+                    eOpUnits[i].color = item.GetItemColor();
+                }
+            }
+            eUseBTN.interactable = false;
+            eDeleteBTN.text = "Bán";
+            EquipBox.SetActive(true);
+        }
+    }
+    public void showItem(Item item){
+        ShowingItem = item;
+        int slotIndex = (int)item.equipSlot;
+        DisableAllDialog();
+        if ((int)item.itemType!=0)
+        {
+            neIcon.overrideSprite = item.icon;
+            neName.text = item.name;
+            neName.color = Color.white;
+            neType.text = ((int)item.itemType == 1 || (int)item.itemType == 2) ? "Dược Phẩm" : "Vật Phẩm Nhiệm Vụ";
+            neDetail.text = item.details;
+            nePrice.text = item.priceSell * item.count + " Lượng";
+            neUseBTN.interactable = true;
+            neDeleteBTN.text = "Xóa";
+            NonEquipBox.SetActive(true);
+        }
+        else
+        {
+            eUseBTN.interactable = true;
+            eDeleteBTN.text = "Xóa";
+            eName.text = item.name;
+            eName.color = item.GetItemColor();
+            eDetail.text = item.details;
+            eDefaultTitle.text = item.defaultOption.title;
+            eDefaultPoint.text = item.defaultPoint + "";
+            eDefaultUnit.text = item.defaultOption.unit;
+            ePrice.text = item.priceSell + " Lượng";
+            for (int i = 0; i < eOpTitles.Length; i++)
+            {
+                if (i >= item.options.Length)
+                {
+                    eOpTitles[i].text = "";
+                    eOpPoints[i].text = "";
+                    eOpUnits[i].text = "";
+                }
+                else
+                {
+                    eOpTitles[i].text = item.options[i].title;
+                    eOpPoints[i].text = item.points[i] + "";
+                    eOpUnits[i].text = item.options[i].unit;
+                    eOpTitles[i].color = item.GetItemColor();
+                    eOpPoints[i].color = item.GetItemColor();
+                    eOpUnits[i].color = item.GetItemColor();
                 }
             }
             EquipBox.SetActive(true);
@@ -126,14 +193,15 @@ public class DialogItem : MonoBehaviour {
             }
             if (EquipingItem == null)
             {   
-                EquipingBox.SetActive(false);
                 return;
             }
             epName.text = EquipingItem.name;
+            epName.color = EquipingItem.GetItemColor();
             epDetail.text = EquipingItem.details;
             epDefaultTitle.text = EquipingItem.defaultOption.title;
             epDefaultPoint.text = EquipingItem.defaultPoint + "";
             epDefaultUnit.text = EquipingItem.defaultOption.unit;
+            epPrice.text = item.priceSell + " Lượng";
             for (int i = 0; i < eOpTitles.Length; i++)
             {
                 if (EquipingItem.options==null || EquipingItem.options.Length == 0 || i >= EquipingItem.options.Length)
@@ -147,6 +215,9 @@ public class DialogItem : MonoBehaviour {
                     epOpTitles[i].text = EquipingItem.options[i].title;
                     epOpPoints[i].text = EquipingItem.points[i] + "";
                     epOpUnits[i].text = EquipingItem.options[i].unit;
+                    epOpTitles[i].color = EquipingItem.GetItemColor();
+                    epOpPoints[i].color = EquipingItem.GetItemColor();
+                    epOpUnits[i].color = EquipingItem.GetItemColor();
                 }
             }
             EquipingItem = null;
@@ -156,6 +227,7 @@ public class DialogItem : MonoBehaviour {
 
     public void ShowNonEquipShopBox(Item item)
     {
+        DisableAllDialog();
         item.count = 1;
         if(PlayerManager.instance.player.Gold >= item.priceBuy)
         {
@@ -166,21 +238,17 @@ public class DialogItem : MonoBehaviour {
             item.count = 0;
         }
         ShowingItem = item;
-        EquipBox.SetActive(false);
-        EquipingBox.SetActive(false);
-        NonEquipBox.SetActive(false);
-        UnequipBox.SetActive(false);
-        NonEquipShop.SetActive(true);
         nesIcon.sprite = item.icon;
         nesName.text = item.name;
         nesType.text = ((int)item.itemType == 1 || (int)item.itemType == 2) ? "Dược Phẩm" : "Vật Phẩm Nhiệm Vụ";
         nesDetail.text = item.details;
         nesCount.text = item.count + "";
         nesPrice.text = item.count * item.priceBuy + "";
+        NonEquipShop.SetActive(true);
     }
     public void btnPlus()
     {
-        if (ShowingItem.count == 98)
+        if (ShowingItem.count >= 99)
         {
             ShowingItem.count = 1;
         }
@@ -197,7 +265,7 @@ public class DialogItem : MonoBehaviour {
     }
     public void btnRemove()
     {
-        if (ShowingItem.count == 1)
+        if (ShowingItem.count <= 1)
         {
             if (PlayerManager.instance.player.Gold >= 99 * ShowingItem.priceBuy)
             {
@@ -219,15 +287,14 @@ public class DialogItem : MonoBehaviour {
 
     public void showQuipingItem(Item item){
         ShowingItem = item;
-        EquipBox.SetActive(false);
-        EquipingBox.SetActive(false);
-        NonEquipBox.SetActive(false);
-        UnequipBox.SetActive(false);
+        DisableAllDialog();
         ueName.text = ShowingItem.name;
+        ueName.color = item.GetItemColor();
         ueDetail.text = ShowingItem.details;
         ueDefaultTitle.text = ShowingItem.defaultOption.title;
         ueDefaultPoint.text = ShowingItem.defaultPoint + "";
         ueDefaultUnit.text = ShowingItem.defaultOption.unit;
+        uePrice.text = item.priceSell * item.count + " Lượng";
         for (int i = 0; i < ueOpTitles.Length; i++)
         {
             if (i >= ShowingItem.options.Length)
@@ -241,6 +308,9 @@ public class DialogItem : MonoBehaviour {
                 ueOpTitles[i].text = ShowingItem.options[i].title;
                 ueOpPoints[i].text = ShowingItem.points[i] + "";
                 ueOpUnits[i].text = ShowingItem.options[i].unit;
+                ueOpTitles[i].color = item.GetItemColor();
+                ueOpPoints[i].color = item.GetItemColor();
+                ueOpUnits[i].color = item.GetItemColor();
             }
         }
         UnequipBox.SetActive(true);
@@ -265,6 +335,12 @@ public class DialogItem : MonoBehaviour {
     }
 
     public void RemoveItem(){
+        if (InventoryManager.instance.inventoryMode == InventoryManager.InventoryMode.Shop)
+        {
+            playerManager.player.Gold += ShowingItem.priceSell * ShowingItem.count;
+            SQLiteCore.UpdatePlayer(playerManager.player);
+            Inventory.instance.UpdateGold();;
+        }
         ShowingItem.RemoveFromInventory();
     }
 }

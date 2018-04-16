@@ -23,6 +23,10 @@ public class Inventory : MonoBehaviour {
     public int space = 20;
     void Start(){
         LoadCurrentItem();
+        UpdateGold();
+    }
+
+    public void UpdateGold(){
         Gold = PlayerManager.instance.player.Gold;
         setTextGold();
     }
@@ -76,8 +80,7 @@ public class Inventory : MonoBehaviour {
                     {
                         items[i].count += itemBuy.count;
                         PlayerManager.instance.player.Gold = PlayerManager.instance.player.Gold - (itemBuy.count * itemBuy.priceBuy);
-                        Gold = PlayerManager.instance.player.Gold;
-                        setTextGold();
+                        UpdateGold();
                         SQLiteCore.UpdatePlayer(PlayerManager.instance.player);
                         SQLiteCore.UpdateItem(items[i]);
                         if (onItemChangedCallback != null)
@@ -90,8 +93,7 @@ public class Inventory : MonoBehaviour {
                         itemBuy.count = itemBuy.count - (99 - items[i].count);
                         items[i].count = 99;
                         PlayerManager.instance.player.Gold = PlayerManager.instance.player.Gold - (itemBuy.count * itemBuy.priceBuy);
-                        Gold = PlayerManager.instance.player.Gold;
-                        setTextGold();
+                        UpdateGold();
                         SQLiteCore.UpdatePlayer(PlayerManager.instance.player);
                         SQLiteCore.UpdateItem(items[i]);
                         if (SQLiteCore.AddItemToInventory(itemBuy) == -1)
@@ -110,8 +112,7 @@ public class Inventory : MonoBehaviour {
         }
         if (items.Count >= space) { Debug.Log("Inventory Full!!"); return; }
         PlayerManager.instance.player.Gold = PlayerManager.instance.player.Gold - (itemBuy.count * itemBuy.priceBuy);
-        Gold = PlayerManager.instance.player.Gold;
-        setTextGold();
+        UpdateGold();
         SQLiteCore.UpdatePlayer(PlayerManager.instance.player);
         if (SQLiteCore.AddItemToInventory(itemBuy) == -1)
         {
@@ -235,10 +236,8 @@ public class Inventory : MonoBehaviour {
     }
 
     public void TakeGold(Item itemGold,GameObject itemScript){
-        Gold = Gold + itemGold.priceSell;
-        PlayerManager.instance.player.Gold = Gold;
-        SQLiteCore.UpdatePlayer(PlayerManager.instance.player);
-        setTextGold();
+        PlayerManager.instance.player.Gold += itemGold.priceSell;
+        UpdateGold();
         itemScript.SendMessage("DoInteraction");
     }   
 }

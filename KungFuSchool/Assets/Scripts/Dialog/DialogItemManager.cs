@@ -39,6 +39,13 @@ public class DialogItemManager : MonoBehaviour {
         DialogItem.instance.showQuipingItem(item);
     }
 
+    public void ShowItemInShop(Item item){
+        if (!dialogUI.activeSelf)
+        {
+            dialogUI.SetActive(!dialogUI.activeSelf);
+        }
+        DialogItem.instance.ShowItemInShop(item);
+    }
     public void ShowNonEquipShopBox(Item item)
     {
         if (!dialogUI.activeSelf)

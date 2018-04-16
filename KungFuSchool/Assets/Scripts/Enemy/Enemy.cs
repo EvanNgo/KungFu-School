@@ -4,17 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour {
+    //Enemy Setup
     public float health = 100;
-    public string enemyName;
-    public Text txtEnemyName;
-    public int enemyExp;
     public Image healthBar;
+    public string enemyName;
+    private float currentHealth;
+    public bool attack;
+    public Text txtEnemyName;
+    public int Armor = 0;
+    //Enemy Dropping Item
     public GameObject[] dropingItem;
     public GameObject Gold;
     public int goldDropping;
-    public bool attack;
+    public int enemyExp;
+
+    public int ItemMaxLines = 0;
     //private GameObject target;
-    private float currentHealth;
+
     //private QuestManager questManager;
     private PlayerLevel playerLevel;
     // Use this for initialization
@@ -32,6 +38,11 @@ public class Enemy : MonoBehaviour {
     }
 
     public void TakeDameged(int dameged) {
+        dameged -= Armor;
+        if (dameged < 1)
+        {
+            dameged = 1;
+        }
         currentHealth -= dameged;
         FloatingTextController.CreateFloatingText("-" + dameged, transform);
         healthBar.fillAmount = currentHealth / health;
@@ -46,11 +57,14 @@ public class Enemy : MonoBehaviour {
                 if (index == dropingItem.Length)
                 {
                     InteractionObject intaer = Gold.GetComponent<InteractionObject>();
-                    intaer.gold = goldDropping;
+                    int gold = (int)Random.Range((int)goldDropping * 0.9f, (int)goldDropping * 1.1f);
+                    intaer.priceSell = gold;
                     Instantiate(Gold, transform.position, Quaternion.identity);
                 }
                 else
                 {
+                    InteractionObject inter = dropingItem[index].GetComponent<InteractionObject>();
+                    inter.setOption(ItemMaxLines);
                     Instantiate(dropingItem[index], transform.position, Quaternion.identity);
                 }
             }

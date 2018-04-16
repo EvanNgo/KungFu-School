@@ -9,9 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 22279af401bd25947a43a7dca8f8648b, type: 3}
-  m_Name: attackspeed
+  m_Name: AttackSpeed
   m_EditorClassIdentifier: 
   title: "T\u1ED1c \u0110\u1ED9 \u0110\xE1nh +"
   tag: attackspeed
-  maxPoint: 30
+  maxPoint: 40
+  point: 0
   unit: '%'
+  pointPerUnit: 10

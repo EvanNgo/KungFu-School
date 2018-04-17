@@ -14,6 +14,9 @@ TagManager:
   - InterObject
   - Inventory
   - GameManager
+  - EquipBoxOptions
+  - EquipingBoxOption
+  - UnEquipBoxOption
   layers:
   - Default
   - TransparentFX

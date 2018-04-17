@@ -81,7 +81,7 @@ public class InteractionObject : MonoBehaviour {
     }
     public void setOption(int maxLines)
     {
-        int lines = Random.Range(0, maxLines);
+        int lines = Random.Range(0, maxLines+1);
         item.options = new Option[lines];
         item.points = new int[lines];
         for (int i = 0; i < lines; i++) {

@@ -20,7 +20,6 @@ public class Item : ScriptableObject {
     public int defaultPoint;
     public Option[] options;
     public int[] points;
-    public Color itemColor;
     public virtual void Use()
     {
         if (itemType == ItemType.Equipment)
@@ -47,35 +46,83 @@ public class Item : ScriptableObject {
     }
 
     public Color GetItemColor(){
-        if (itemColor != null)
+        if (options == null || options.Length == 0)
         {
-            itemColor = itemColor;
-        }
-        if (options == null)
-        {
-            itemColor = Color.white;
+            return Color.white;
         }
         else if (options.Length > 0 && options.Length < 3)
         {
-            itemColor = Color.green;
+            return Color.green;
         }
         else if (options.Length >= 3 && options.Length < 5)
         {
-            itemColor = Color.blue;
+            return new Color32(3, 169, 244, 255);
         }
         else if (options.Length >= 5 && options.Length < 7)
         {
-            itemColor = new Color32(156, 39, 176, 255);
+            return new Color32(156, 39, 176, 255);
         }
         else if (options.Length == 7 || options.Length == 8)
         {
-            itemColor = Color.yellow;
+            return Color.yellow;
         }
-        else if (options.Length == 9)
+        else
         {
-            itemColor = Color.gray;
+            return Color.gray;
         }
-        return itemColor;
+    }
+
+    public string GetEquipName(){
+        switch(equipSlot){
+            case EquipmentSlot.Head:
+                return "Mũ";
+                break;
+            case EquipmentSlot.Armor:
+                return "Áo Giáp";
+                break;
+            case EquipmentSlot.Gloves:
+                return "Găng Tay";
+                break;
+            case EquipmentSlot.Pant:
+                return "Quần";
+                break;
+            case EquipmentSlot.Foot:
+                return "Giầy";
+                break;
+            case EquipmentSlot.Weapon:
+                return "Vũ Khí Chính";
+                break;
+            case EquipmentSlot.Shield:
+                return "Vũ Khí Phụ";
+                break;
+            case EquipmentSlot.Pedan:
+                return "Dây Chuyền";
+                break;
+            case EquipmentSlot.Ring:
+                return "Nhẫn";
+                break;
+            case EquipmentSlot.Rare:
+                return "Bảo Vật";
+                break;
+            default:
+                return "";
+        }
+    }
+
+    public string GetTypeName(){
+        switch(itemType){
+            case ItemType.HPPotion:
+                return "Dược Phẩm";
+                break;
+            case ItemType.MPPotion:
+                return "Dược Phẩm";
+                break;
+            case ItemType.Question:
+                return "Vật Phẩm Nhiệm Vụ";
+                break;
+            default:
+                return "";
+        }
     }
     public enum EquipmentSlot { Head, Armor, Gloves , Pant , Foot , Weapon , Shield , Pedan, Ring , Rare}
     public enum ItemType { Equipment , HPPotion , MPPotion , Question , Gold}

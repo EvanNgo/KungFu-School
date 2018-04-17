@@ -35,10 +35,12 @@ public static class SQLiteCore {
                         player.Agi = Convert.ToInt32(datas[4]);
                         player.Sta = Convert.ToInt32(datas[5]);
                         player.Intel = Convert.ToInt32(datas[6]);
-                        player.Health = Convert.ToInt32(datas[7]);
-                        player.Mana = Convert.ToInt32(datas[8]);
-                        player.Point = Convert.ToInt32(datas[9]);
-                        player.RemainPoint = Convert.ToInt32(datas[10]);
+                        player.RemainPoint = Convert.ToInt32(datas[7]);
+                        player.Health = 75 + player.Sta * 5;
+                        player.Mana = 25 + player.Intel * 5;
+                        player.SpellDame = player.Intel * 3;
+                        player.AttackDame = player.Str * 2;
+                        player.Armor = player.Agi * 2 ;
                     }
                     return player;
                 }
@@ -56,9 +58,6 @@ public static class SQLiteCore {
             "Agi = " + player.Agi + ", " +
             "Sta = " + player.Sta + ", " +
             "Int = " + player.Intel + ", " +
-            "Health = " + player.Health + ", " +
-            "Mana = " + player.Mana + ", " +
-            "Point = " + player.Point + ", " +
             "RemainPoint = " + player.RemainPoint + 
             " WHERE id = 1";
         Connect();
@@ -144,7 +143,7 @@ public static class SQLiteCore {
                             Option op = ScriptableObject.CreateInstance<Option>();
                             op.title = Convert.ToString(datas[5]);
                             op.unit = Convert.ToString(datas[7]);
-                            op.tag = Convert.ToString(datas[8]);
+                            op.tag = (StatManager.TagManager)Enum.Parse(typeof(StatManager.TagManager), Convert.ToString(datas[8]));
                             item.defaultOption = op;
                             item.defaultPoint = Convert.ToInt32(datas[6]);
                         }
@@ -188,7 +187,7 @@ public static class SQLiteCore {
                         Option op = ScriptableObject.CreateInstance<Option>();
                         op.title = Convert.ToString(datas[5]);
                         op.unit = Convert.ToString(datas[7]);
-                        op.tag = Convert.ToString(datas[8]);
+                        op.tag = (StatManager.TagManager)Enum.Parse(typeof(StatManager.TagManager), Convert.ToString(datas[8]));
                         item.priceSell = Convert.ToInt32(datas[13]);
                         item.defaultOption = op;
                         item.defaultPoint = Convert.ToInt32(datas[6]);
@@ -226,7 +225,7 @@ public static class SQLiteCore {
                     while (datas.Read())
                     {
                         Option op = ScriptableObject.CreateInstance<Option>();
-                        op.tag = Convert.ToString(datas[2]);
+                        op.tag = (StatManager.TagManager)Enum.Parse(typeof(StatManager.TagManager), Convert.ToString(datas[2]));
                         op.title = Convert.ToString(datas[3]);
                         op.point = Convert.ToInt16(datas[4]);
                         op.unit = Convert.ToString(datas[5]);
@@ -252,7 +251,7 @@ public static class SQLiteCore {
         if ((int)item.itemType == 0) {
             query = String.Format("INSERT INTO Inventory (id,name,icon,detail,equipSlot,defaultOptionTitle,defaultOptionPoint,defaultOptionUnit,defaultOptionTag,itemType,isStacking,count,price)" +
                 " VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}')",
-                item.name, item.icon.name, item.details, item.equipSlot + "", item.defaultOption.title, item.defaultPoint, item.defaultOption.unit, item.defaultOption.tag, item.itemType + "",isStacking, 1,item.priceSell);
+                item.name, item.icon.name, item.details, item.equipSlot + "", item.defaultOption.title, item.defaultPoint, item.defaultOption.unit, item.defaultOption.tag + "", item.itemType + "",isStacking, 1,item.priceSell);
         }
         else
         {
@@ -273,7 +272,6 @@ public static class SQLiteCore {
                     cmd.CommandText = "select last_insert_rowid()";
                     Int64 LastRowID64 = (Int64)cmd.ExecuteScalar();
                     LastAddedItem = (int)LastRowID64;
-                    Debug.Log(item.name);
                     if ((int)item.itemType == 0 && item.options!=null && LastAddedItem != -1)
                     {
                         Debug.Log("Save Option");
@@ -294,7 +292,7 @@ public static class SQLiteCore {
 
     public static void AddItemOption(int itemID, int point, Option option)
     {
-        string query = String.Format("INSERT INTO ItemOption (id,itemID,tag,title,point,unit) VALUES (NULL,'{0}','{1}','{2}','{3}','{4}')", itemID, option.tag, option.title, point,option.unit);
+        string query = String.Format("INSERT INTO ItemOption (id,itemID,tag,title,point,unit) VALUES (NULL,'{0}','{1}','{2}','{3}','{4}')", itemID, option.tag+ "", option.title, point,option.unit);
         Connect();
         try
         {

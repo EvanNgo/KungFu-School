@@ -35,194 +35,188 @@ public class DialogItem : MonoBehaviour {
     public Text nesDetail;
     public Text nesCount;
     public Text nesPrice;
-    [Header("Non Equip Item")]
-    public GameObject NonEquipBox;
-    public Image neIcon;
-    public Text neName;
-    public Text neType;
-    public Text neDetail;
-    public Text nePrice;
-    public Button neUseBTN;
-    public Text neDeleteBTN;
-    [Header("Equip Item")]
-    public GameObject EquipBox;
+    [Header("Inventory Box")]
+    public GameObject InventoryBox;
     public Text eName;
+    public Text inventItemType;
     public Text eDetail;
     public Text eDefaultTitle;
     public Text eDefaultPoint;
     public Text eDefaultUnit;
-    public Text[] eOpTitles;
-    public Text[] eOpPoints;
-    public Text[] eOpUnits;
     public Text ePrice;
+    public Text eOptionText;
     public Button eUseBTN;
     public Text eDeleteBTN;
+    public GameObject[] InventoryBoxOption;
     [Header("Equiping Item")]
     public GameObject EquipingBox;
     public Text epName;
+    public Text equipingItemType;
     public Text epDetail;
     public Text epDefaultTitle;
     public Text epDefaultPoint;
     public Text epDefaultUnit;
-    public Text[] epOpTitles;
-    public Text[] epOpPoints;
-    public Text[] epOpUnits;
     public Text epPrice;
+    public Text epOptionText;
+    public GameObject[] EquipingBoxOption;
     [Header("Unequip Item")]
     public GameObject UnequipBox;
+    public Text unequipItemType;
     public Text ueName;
     public Text ueDetail;
     public Text ueDefaultTitle;
     public Text ueDefaultPoint;
     public Text ueDefaultUnit;
-    public Text[] ueOpTitles;
-    public Text[] ueOpPoints;
-    public Text[] ueOpUnits;
+    public Text ueOptionText;
     public Text uePrice;
+    public GameObject[] UnequipBoxOption;
     private void Start()
     {
         playerManager = PlayerManager.instance;
     }
     public void DisableAllDialog(){
         NonEquipShop.SetActive(false);
-        EquipBox.SetActive(false);
+        InventoryBox.SetActive(false);
         EquipingBox.SetActive(false);
-        NonEquipBox.SetActive(false);
         UnequipBox.SetActive(false);
     }
     public void ShowItemInShop(Item item){
+        if (ShowingItem!=null && ShowingItem == item)
+        {
+            return;
+        }
         DisableAllDialog();
         ShowingItem = item;
-        if ((int)item.itemType != 0)
+        eName.text = item.name;
+        eName.color = item.GetItemColor();
+        eDetail.text = item.details;
+        eDefaultTitle.text = item.defaultOption.title;
+        eDefaultPoint.text = item.defaultPoint + "";
+        eDefaultUnit.text = item.defaultOption.unit;
+        ePrice.text = item.priceSell * item.count + " Lượng";
+        eUseBTN.interactable = false;
+        eDeleteBTN.text = "Bán";
+        InventoryBox.SetActive(true);
+        if (InventoryBoxOption == null || InventoryBoxOption.Length!=9)
         {
-            neIcon.overrideSprite = item.icon;
-            neName.text = item.name;
-            neType.text = ((int)item.itemType == 1 || (int)item.itemType == 2) ? "Dược Phẩm" : "Vật Phẩm Nhiệm Vụ";
-            neDetail.text = item.details;
-            nePrice.text = item.priceSell * item.count + " Lượng";
-            NonEquipBox.SetActive(true);
-            neUseBTN.interactable = false;
-            neDeleteBTN.text = "Bán";
-            NonEquipBox.SetActive(true);
+            InventoryBoxOption = GameObject.FindGameObjectsWithTag("EquipBoxOptions");
         }
-        else
+        for (int i = 0; i < InventoryBoxOption.Length; i++)
         {
-            eName.text = item.name;
-            eName.color = item.GetItemColor();
-            eDetail.text = item.details;
-            eDefaultTitle.text = item.defaultOption.title;
-            eDefaultPoint.text = item.defaultPoint + "";
-            eDefaultUnit.text = item.defaultOption.unit;
-            ePrice.text = item.priceSell * item.count + " Lượng";
-            for (int i = 0; i < eOpTitles.Length; i++)
+            if (i >= item.options.Length)
             {
-                if (i >= item.options.Length)
-                {
-                    eOpTitles[i].text = "";
-                    eOpPoints[i].text = "";
-                    eOpUnits[i].text = "";
-                }
-                else
-                {
-                    eOpTitles[i].text = item.options[i].title;
-                    eOpPoints[i].text = item.points[i] + "";
-                    eOpUnits[i].text = item.options[i].unit;
-                    eOpTitles[i].color = item.GetItemColor();
-                    eOpPoints[i].color = item.GetItemColor();
-                    eOpUnits[i].color = item.GetItemColor();
-                }
+                InventoryBoxOption[i].SetActive(false);
             }
-            eUseBTN.interactable = false;
-            eDeleteBTN.text = "Bán";
-            EquipBox.SetActive(true);
+            else
+            {
+                InventoryBoxOption[i].SetActive(true);
+                InventoryBoxOption[i].GetComponent<ItemOptionDialog>().SetText(item.options[i], item.points[i], item.GetItemColor());
+            }
         }
+
     }
     public void showItem(Item item){
-        ShowingItem = item;
-        int slotIndex = (int)item.equipSlot;
-        DisableAllDialog();
-        if ((int)item.itemType!=0)
+        if (ShowingItem!=null && ShowingItem == item)
         {
-            neIcon.overrideSprite = item.icon;
-            neName.text = item.name;
-            neName.color = Color.white;
-            neType.text = ((int)item.itemType == 1 || (int)item.itemType == 2) ? "Dược Phẩm" : "Vật Phẩm Nhiệm Vụ";
-            neDetail.text = item.details;
-            nePrice.text = item.priceSell * item.count + " Lượng";
-            neUseBTN.interactable = true;
-            neDeleteBTN.text = "Xóa";
-            NonEquipBox.SetActive(true);
+            return;
+        }
+        ShowingItem = item;
+        DisableAllDialog();
+        eUseBTN.interactable = true;
+        eDeleteBTN.text = "Xóa";
+        eName.text = item.name;
+        eName.color = item.GetItemColor();
+        eDetail.text = item.details;
+
+        ePrice.text = item.priceSell + "";
+        InventoryBox.SetActive(true);
+        if (InventoryBoxOption == null || InventoryBoxOption.Length!=9)
+        {
+            InventoryBoxOption = GameObject.FindGameObjectsWithTag("EquipBoxOptions");
+        }
+        if ((int)item.itemType!=0){
+            inventItemType.text = item.GetTypeName();
+            eDefaultTitle.enabled = false;
+            eDefaultPoint.enabled = false;
+            eDefaultUnit.enabled = false;
+            eOptionText.enabled = false;
+            for (int i = 0; i < InventoryBoxOption.Length; i++)
+            {
+                InventoryBoxOption[i].SetActive(false);
+            }
+            return;
+        }
+        inventItemType.text = item.GetEquipName();
+        eDefaultTitle.enabled = true;
+        eDefaultPoint.enabled = true;
+        eDefaultUnit.enabled = true;
+        eDefaultTitle.text = item.defaultOption.title;
+        eDefaultPoint.text = item.defaultPoint + "";
+        eDefaultUnit.text = item.defaultOption.unit;
+        if (item.options.Length > 0)
+        {
+            eOptionText.enabled = true;
         }
         else
         {
-            eUseBTN.interactable = true;
-            eDeleteBTN.text = "Xóa";
-            eName.text = item.name;
-            eName.color = item.GetItemColor();
-            eDetail.text = item.details;
-            eDefaultTitle.text = item.defaultOption.title;
-            eDefaultPoint.text = item.defaultPoint + "";
-            eDefaultUnit.text = item.defaultOption.unit;
-            ePrice.text = item.priceSell + " Lượng";
-            for (int i = 0; i < eOpTitles.Length; i++)
-            {
-                if (i >= item.options.Length)
-                {
-                    eOpTitles[i].text = "";
-                    eOpPoints[i].text = "";
-                    eOpUnits[i].text = "";
-                }
-                else
-                {
-                    eOpTitles[i].text = item.options[i].title;
-                    eOpPoints[i].text = item.points[i] + "";
-                    eOpUnits[i].text = item.options[i].unit;
-                    eOpTitles[i].color = item.GetItemColor();
-                    eOpPoints[i].color = item.GetItemColor();
-                    eOpUnits[i].color = item.GetItemColor();
-                }
-            }
-            EquipBox.SetActive(true);
-            if (eManager == null)
-            {
-                eManager = EquipmentManager.instance;
-            }
-            if (eManager.currentEquipment[slotIndex] != null)
-            {
-                EquipingItem = eManager.currentEquipment[slotIndex];
-            }
-            if (EquipingItem == null)
-            {   
-                return;
-            }
-            epName.text = EquipingItem.name;
-            epName.color = EquipingItem.GetItemColor();
-            epDetail.text = EquipingItem.details;
-            epDefaultTitle.text = EquipingItem.defaultOption.title;
-            epDefaultPoint.text = EquipingItem.defaultPoint + "";
-            epDefaultUnit.text = EquipingItem.defaultOption.unit;
-            epPrice.text = item.priceSell + " Lượng";
-            for (int i = 0; i < eOpTitles.Length; i++)
-            {
-                if (EquipingItem.options==null || EquipingItem.options.Length == 0 || i >= EquipingItem.options.Length)
-                {
-                    epOpTitles[i].text = "";
-                    epOpPoints[i].text = "";
-                    epOpUnits[i].text = "";
-                }
-                else
-                {
-                    epOpTitles[i].text = EquipingItem.options[i].title;
-                    epOpPoints[i].text = EquipingItem.points[i] + "";
-                    epOpUnits[i].text = EquipingItem.options[i].unit;
-                    epOpTitles[i].color = EquipingItem.GetItemColor();
-                    epOpPoints[i].color = EquipingItem.GetItemColor();
-                    epOpUnits[i].color = EquipingItem.GetItemColor();
-                }
-            }
-            EquipingItem = null;
-            EquipingBox.SetActive(true);
+            eOptionText.enabled = false;
         }
+        int slotIndex = (int)item.equipSlot;
+        for (int i = 0; i < InventoryBoxOption.Length; i++)
+        {
+            if (i >= item.options.Length)
+            {
+                InventoryBoxOption[i].SetActive(false);
+            }
+            else
+            {
+                InventoryBoxOption[i].SetActive(true);
+                InventoryBoxOption[i].GetComponent<ItemOptionDialog>().SetText(item.options[i], item.points[i], item.GetItemColor());
+            }
+        }
+            
+        if (EquipmentManager.instance.currentEquipment[slotIndex] != null)
+        {
+            EquipingItem = EquipmentManager.instance.currentEquipment[slotIndex];
+        }
+        if (EquipingItem == null)
+        {   
+            return;
+        }
+        equipingItemType.text = EquipingItem.GetEquipName();
+        epName.text = EquipingItem.name;
+        epName.color = EquipingItem.GetItemColor();
+        epDetail.text = EquipingItem.details;
+        epDefaultTitle.text = EquipingItem.defaultOption.title;
+        epDefaultPoint.text = EquipingItem.defaultPoint + "";
+        epDefaultUnit.text = EquipingItem.defaultOption.unit;
+        epPrice.text = item.priceSell + "";
+        if (EquipingItem.options.Length > 0)
+        {
+            epOptionText.enabled = true;
+        }
+        else
+        {
+            epOptionText.enabled = false;
+        }
+        EquipingBox.SetActive(true);
+        if (EquipingBoxOption == null || EquipingBoxOption.Length!=9)
+        {
+            EquipingBoxOption = GameObject.FindGameObjectsWithTag("EquipingBoxOption");
+        }
+        for (int i = 0; i < EquipingBoxOption.Length; i++)
+        {
+            if (i >= EquipingItem.options.Length)
+            {
+                EquipingBoxOption[i].SetActive(false);
+            }
+            else
+            {
+                EquipingBoxOption[i].SetActive(true);
+                EquipingBoxOption[i].GetComponent<ItemOptionDialog>().SetText(EquipingItem.options[i], EquipingItem.points[i], EquipingItem.GetItemColor());
+            }
+        }
+        EquipingItem = null;
     }
 
     public void ShowNonEquipShopBox(Item item)
@@ -286,34 +280,45 @@ public class DialogItem : MonoBehaviour {
 
 
     public void showQuipingItem(Item item){
+        if (ShowingItem == item)
+        {
+            return;
+        }
         ShowingItem = item;
         DisableAllDialog();
         ueName.text = ShowingItem.name;
+        unequipItemType.text = ShowingItem.GetEquipName();
         ueName.color = item.GetItemColor();
         ueDetail.text = ShowingItem.details;
         ueDefaultTitle.text = ShowingItem.defaultOption.title;
         ueDefaultPoint.text = ShowingItem.defaultPoint + "";
         ueDefaultUnit.text = ShowingItem.defaultOption.unit;
-        uePrice.text = item.priceSell * item.count + " Lượng";
-        for (int i = 0; i < ueOpTitles.Length; i++)
+        uePrice.text = item.priceSell * item.count + "";
+        if (item.options.Length > 0)
         {
-            if (i >= ShowingItem.options.Length)
+            ueOptionText.enabled = true;
+        }
+        else
+        {
+            ueOptionText.enabled = false;
+        }
+        UnequipBox.SetActive(true);
+        if (UnequipBoxOption == null || UnequipBoxOption.Length!=9)
+        {
+            UnequipBoxOption = GameObject.FindGameObjectsWithTag("UnEquipBoxOption");
+        }
+        for (int i = 0; i < UnequipBoxOption.Length; i++)
+        {
+            if (i >= item.options.Length)
             {
-                ueOpTitles[i].text = "";
-                ueOpPoints[i].text = "";
-                ueOpUnits[i].text = "";
+                EquipingBoxOption[i].SetActive(false);
             }
             else
             {
-                ueOpTitles[i].text = ShowingItem.options[i].title;
-                ueOpPoints[i].text = ShowingItem.points[i] + "";
-                ueOpUnits[i].text = ShowingItem.options[i].unit;
-                ueOpTitles[i].color = item.GetItemColor();
-                ueOpPoints[i].color = item.GetItemColor();
-                ueOpUnits[i].color = item.GetItemColor();
+                UnequipBoxOption[i].SetActive(true);
+                UnequipBoxOption[i].GetComponent<ItemOptionDialog>().SetText(item.options[i], item.points[i], item.GetItemColor());
             }
         }
-        UnequipBox.SetActive(true);
     }
 
     public void UsingItem(){

@@ -61,9 +61,11 @@
      <Compile Include="Assets\Scripts\Charactor\PlayerInteraction.cs" />
      <Compile Include="Assets\Scripts\Charactor\PlayerLevel.cs" />
      <Compile Include="Assets\Scripts\Charactor\PlayerManager.cs" />
+     <Compile Include="Assets\Scripts\Charactor\StatManager.cs" />
      <Compile Include="Assets\Scripts\Dialog\DialogItem.cs" />
      <Compile Include="Assets\Scripts\Dialog\DialogItemManager.cs" />
      <Compile Include="Assets\Scripts\Dialog\DialogueManager.cs" />
+     <Compile Include="Assets\Scripts\Dialog\ItemOptionDialog.cs" />
      <Compile Include="Assets\Scripts\Dialog\TakingMenuManager.cs" />
      <Compile Include="Assets\Scripts\Enemy\DamageFloating.cs" />
      <Compile Include="Assets\Scripts\Enemy\Enemy.cs" />

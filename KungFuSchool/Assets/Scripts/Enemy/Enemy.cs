@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour {
     public int goldDropping;
     public int enemyExp;
 
-    public int ItemMaxLines = 0;
+    public int ItemMaxLines = 3;
     //private GameObject target;
 
     //private QuestManager questManager;
@@ -63,8 +63,6 @@ public class Enemy : MonoBehaviour {
                 }
                 else
                 {
-                    InteractionObject inter = dropingItem[index].GetComponent<InteractionObject>();
-                    inter.setOption(ItemMaxLines);
                     Instantiate(dropingItem[index], transform.position, Quaternion.identity);
                 }
             }
@@ -75,7 +73,6 @@ public class Enemy : MonoBehaviour {
                     int index = Random.Range(0, dropingItem.Length);
                     Instantiate(dropingItem[index], transform.position, Quaternion.identity);
                 }
-
             }
             //target.gameObject.GetComponent<PlayerLevel>().SendMessage("addExp", enemyExp);
             string[] spawnerName = gameObject.name.Split('_');

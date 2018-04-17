@@ -210,7 +210,7 @@ MonoBehaviour:
   Gold: {fileID: 1924766487030142, guid: 764b2f55c413a4d39a5d50688fac0a74, type: 2}
   goldDropping: 0
   enemyExp: 1
-  ItemMaxLines: 0
+  ItemMaxLines: 2
 --- !u!114 &114557731234764058
 MonoBehaviour:
   m_ObjectHideFlags: 1

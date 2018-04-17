@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 
 public class InventoryManager : MonoBehaviour {
+    
     #region Singleton
 
     public static InventoryManager instance
@@ -22,10 +23,12 @@ public class InventoryManager : MonoBehaviour {
     }
 
     #endregion
+
     Inventory inventory;
     public NPC currentNPC;
     public InventoryMode inventoryMode;
     public GameObject inventoryUI;
+    public GameObject playerInformationUI;
     public GameObject equipmentUI;
     public GameObject shopUI;
     public GameObject RegentBar;
@@ -60,6 +63,7 @@ public class InventoryManager : MonoBehaviour {
         {
             case InventoryMode.Inventory:
                 equipmentUI.SetActive(!equipmentUI.activeSelf);
+                playerInformationUI.SetActive(!playerInformationUI.activeSelf);
                 break;
             case InventoryMode.Shop:
                 shopUI.SetActive(!shopUI.activeSelf);

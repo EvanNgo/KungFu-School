@@ -76,13 +76,17 @@ MonoBehaviour:
   priceBuy: 500
   priceSell: 100
   itemType: 0
-  isShopItem: 0
+  itemColor: 0
   itemOptionLines: 9
-  itemLevel: 0
   EquipmentSlot: 5
-  defaultOption: {fileID: 0}
-  defaultPoint: 100
-  avaiableOption: []
+  defaultOption: {fileID: 11400000, guid: 048bcdf107652483a93dfa4f5f7d10ef, type: 2}
+  defaultPoint: 15
+  avaiableOption:
+  - {fileID: 11400000, guid: 048bcdf107652483a93dfa4f5f7d10ef, type: 2}
+  - {fileID: 11400000, guid: 2b220b61f0c8544709565904fa86286c, type: 2}
+  - {fileID: 11400000, guid: 0cb0495822153464daa952b21630c198, type: 2}
+  minOption: 0
+  maxOption: 100
 --- !u!212 &212763885338210394
 SpriteRenderer:
   m_ObjectHideFlags: 1

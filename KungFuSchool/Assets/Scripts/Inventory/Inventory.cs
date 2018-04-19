@@ -206,7 +206,7 @@ public class Inventory : MonoBehaviour {
             onItemChangedCallback.Invoke ();
     }
     public Item LookUpPotion(int itemType){
-        for (int i = items.Count-1; i > 0; i--)
+        for (int i = items.Count-1; i >= 0; i--)
         {
             if ((int)items[i].itemType == itemType)
             {
@@ -216,9 +216,9 @@ public class Inventory : MonoBehaviour {
         return null;
     }
     public bool UsePotion(int itemPotion){
-        if (LookUpPotion(itemPotion) != null)
+        Item usingItem = LookUpPotion(itemPotion);
+        if (usingItem != null)
         {
-            Item usingItem = LookUpPotion(itemPotion);
             if (usingItem.count > 1)
             {
                 usingItem.count--;

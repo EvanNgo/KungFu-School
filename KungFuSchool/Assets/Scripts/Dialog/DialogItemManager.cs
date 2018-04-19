@@ -23,12 +23,12 @@ public class DialogItemManager : MonoBehaviour {
     #endregion
     public GameObject dialogUI;
 
-    public void ShowDialog(Item item){
+    public void ShowItemInventory(Item item,bool inShop){
         if (!dialogUI.activeSelf)
         {
             dialogUI.SetActive(!dialogUI.activeSelf);
         }
-        DialogItem.instance.showItem(item);
+        DialogItem.instance.ShowItemInventory(item,inShop);
     }
 
     public void ShowQuipingItem(Item item){
@@ -38,14 +38,7 @@ public class DialogItemManager : MonoBehaviour {
         }
         DialogItem.instance.showQuipingItem(item);
     }
-
-    public void ShowItemInShop(Item item){
-        if (!dialogUI.activeSelf)
-        {
-            dialogUI.SetActive(!dialogUI.activeSelf);
-        }
-        DialogItem.instance.ShowItemInShop(item);
-    }
+        
     public void ShowNonEquipShopBox(Item item)
     {
         if (!dialogUI.activeSelf)

@@ -3,6 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class StatManager : MonoBehaviour {
+    #region Singleton
+    public static StatManager instance {
+        get {
+            if (_instance == null) {
+                _instance = FindObjectOfType<StatManager>();
+            }
+            return _instance;
+        }
+    }
+    static StatManager _instance;
+
+    void Awake ()
+    {   
+        _instance = this;
+    }
+
+    #endregion
+    private PlayerManager playerManager;
+    private EquipmentManager equipmentManager;
     public int AttackDamage = 0;
     public int DamagePer = 0;
     public int SpellDame = 0;
@@ -24,11 +43,21 @@ public class StatManager : MonoBehaviour {
     public int Lucky = 0;
     public int MoreGold = 0;
     public int Redamage = 0;
+
     private void Start(){
-        
+        equipmentManager = EquipmentManager.instance;
+        playerManager = PlayerManager.instance;
     }
 
-    public void UpdateStatByTag(TagManager tag,int point){
+    public int getHealth(){
+        return 75 + playerManager.player.Sta * 5 + HP;
+    }
+
+    public int getMana(){
+        return 25 + playerManager.player.Sta * 3 + MP;
+    }
+
+    public void EquipItemUpdate(TagManager tag,int point){
         switch (tag)
         {
             case TagManager.AttackDamage: 

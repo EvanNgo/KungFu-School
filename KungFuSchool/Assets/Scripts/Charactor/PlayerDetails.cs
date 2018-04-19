@@ -4,10 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 public class PlayerDetails : MonoBehaviour {
-    private float health = 100;
-    private float mana = 100;
-    private float currentHealth;
-    private float currentMana;
+    private StatManager statManager;
+    private int health;
+    private int mana;
+    private int currentHealth;
+    private int currentMana;
     public Image healthBar;
     public Image manaBar;
     public Text txtHealth;
@@ -28,6 +29,7 @@ public class PlayerDetails : MonoBehaviour {
     private bool teleCounting;
     // Use this for initialization
     void Start () {
+        statManager = StatManager.instance;
         CurrentSetup();
     }
 
@@ -192,6 +194,10 @@ public class PlayerDetails : MonoBehaviour {
     }
 
     private void CurrentSetup(){
+        health = statManager.getHealth();
+        mana = statManager.getMana();
+        currentHealth = health;
+        currentMana = mana;
         healthBar.fillAmount = 1;
         manaBar.fillAmount = 1;
         txtHealth.text = 100 + "";

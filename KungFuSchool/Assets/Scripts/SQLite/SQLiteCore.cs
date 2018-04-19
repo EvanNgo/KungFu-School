@@ -36,11 +36,6 @@ public static class SQLiteCore {
                         player.Sta = Convert.ToInt32(datas[5]);
                         player.Intel = Convert.ToInt32(datas[6]);
                         player.RemainPoint = Convert.ToInt32(datas[7]);
-                        player.Health = 75 + player.Sta * 5;
-                        player.Mana = 25 + player.Intel * 5;
-                        player.SpellDame = player.Intel * 3;
-                        player.AttackDame = player.Str * 2;
-                        player.Armor = player.Agi * 2 ;
                     }
                     return player;
                 }
@@ -138,6 +133,7 @@ public static class SQLiteCore {
                         if (Convert.ToInt32(datas[11]) == 0) { item.isStacking = false; } else { item.isStacking = true; }
                         item.count = Convert.ToInt32(datas[12]);
                         item.priceSell = Convert.ToInt32(datas[13]);
+                        item.itemColor = (Item.ItemColor)Enum.Parse(typeof(Item.ItemColor), Convert.ToString(datas[14]));
                         if ((int)item.itemType == 0) {
                             item.equipSlot = (Item.EquipmentSlot)Enum.Parse(typeof(Item.EquipmentSlot), Convert.ToString(datas[4]));
                             Option op = ScriptableObject.CreateInstance<Option>();
@@ -184,6 +180,7 @@ public static class SQLiteCore {
                         item.icon = Resources.Load<Sprite>(itemIcon);
                         item.details = Convert.ToString(datas[3]);
                         item.equipSlot = (Item.EquipmentSlot)Enum.Parse(typeof(Item.EquipmentSlot), Convert.ToString(datas[4]));
+                        item.itemColor = (Item.ItemColor)Enum.Parse(typeof(Item.ItemColor), Convert.ToString(datas[14]));
                         Option op = ScriptableObject.CreateInstance<Option>();
                         op.title = Convert.ToString(datas[5]);
                         op.unit = Convert.ToString(datas[7]);
@@ -248,16 +245,17 @@ public static class SQLiteCore {
         int isStacking = 0;
         if (item.isStacking) { isStacking = 1; }
         string query;
+        Debug.Log(item.defaultOption.tag + "");
         if ((int)item.itemType == 0) {
-            query = String.Format("INSERT INTO Inventory (id,name,icon,detail,equipSlot,defaultOptionTitle,defaultOptionPoint,defaultOptionUnit,defaultOptionTag,itemType,isStacking,count,price)" +
-                " VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}')",
-                item.name, item.icon.name, item.details, item.equipSlot + "", item.defaultOption.title, item.defaultPoint, item.defaultOption.unit, item.defaultOption.tag + "", item.itemType + "",isStacking, 1,item.priceSell);
+            query = String.Format("INSERT INTO Inventory (id,name,icon,detail,itemColor,equipSlot,defaultOptionTitle,defaultOptionPoint,defaultOptionUnit,defaultOptionTag,itemType,isStacking,count,price)" +
+                " VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}')",
+                item.name, item.icon.name, item.details,item.itemColor+"", item.equipSlot + "", item.defaultOption.title, item.defaultPoint, item.defaultOption.unit, item.defaultOption.tag + "", item.itemType + "",isStacking, 1,item.priceSell);
         }
         else
         {
-            query = String.Format("INSERT INTO Inventory (id,name,icon,detail,itemType,isStacking,count,price)" +
-                " VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}')",
-                item.name, item.icon.name, item.details, item.itemType + "",isStacking, item.count,item.priceSell);
+            query = String.Format("INSERT INTO Inventory (id,name,icon,detail,itemColor,itemType,isStacking,count,price)" +
+                " VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}')",
+                item.name, item.icon.name, item.details,item.itemColor, item.itemType + "",isStacking, item.count,item.priceSell);
         }
         
         Connect();

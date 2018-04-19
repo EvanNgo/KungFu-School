@@ -12,16 +12,16 @@ public class InteractionObject : MonoBehaviour {
     public int priceBuy = 0;
     public int priceSell = 1;
     public Item.ItemType itemType;
-    public bool isShopItem = false;
+    public Item.ItemColor itemColor;
 
     [Header("Equipment Item's Setting")]
     public int itemOptionLines = 3;
-    public ItemLevel itemLevel;
     public Item.EquipmentSlot EquipmentSlot;
     public Option defaultOption;
     public int defaultPoint;
     public List<Option> avaiableOption;
-
+    public int minOption;
+    public int maxOption;
     [Header("Item's System Setting")]
     private float autoDestroy = 15f;
     private float timeCount = 0;
@@ -34,7 +34,7 @@ public class InteractionObject : MonoBehaviour {
         {
             case Item.ItemType.Equipment:
                 BasicSetup();
-                setEquipSlot();
+                item.equipSlot = EquipmentSlot;
                 item.defaultOption = defaultOption;
                 item.defaultPoint = defaultPoint;
                 setOption(itemOptionLines);
@@ -71,21 +71,36 @@ public class InteractionObject : MonoBehaviour {
         item.count = itemCount;
         item.details = itemDetails;
         item.isStacking = isStacking;
+        item.itemColor = itemColor;
     }
     public void DoInteraction()
     {
         Destroy(gameObject);
     }
-    private void setEquipSlot() {
-        item.equipSlot = EquipmentSlot;
-    }
     public void setOption(int maxLines)
     {
-        int lines = Random.Range(0, maxLines+1);
+        int lines = 0;
+        Debug.Log("avaiableOption:"  +avaiableOption.Count);
+        if (avaiableOption.Count < maxLines)
+        {
+            lines = avaiableOption.Count;
+            Debug.Log("maxlines:"  +maxLines);
+        }
+        else
+        {
+            lines = Random.Range(0, maxLines+1);
+        }
         item.options = new Option[lines];
         item.points = new int[lines];
+        if (lines == 0)
+        {
+            return;
+        }
+        Debug.Log(lines);
         for (int i = 0; i < lines; i++) {
             int optionPosition = Random.Range(0, avaiableOption.Count);
+            Debug.Log(optionPosition);
+            Debug.Log(avaiableOption.Count);
             Option op = avaiableOption[optionPosition];
             item.options[i] = op;
             if (op.maxPoint == op.pointPerUnit)
@@ -94,14 +109,17 @@ public class InteractionObject : MonoBehaviour {
             }
             else
             {
-                int maxpoint = op.maxPoint / 4 * ((int)itemLevel + 1);
-                int randomRange = maxpoint / op.pointPerUnit;
-                item.points[i] = Random.Range(1, randomRange + 1) * op.pointPerUnit;
-            }
+                int randomNumber = Random.Range(minOption, maxOption) + 1;
+                int opNumber =(int) (randomNumber * op.maxPoint) / 100;
+                int tempOption = opNumber / op.pointPerUnit;
+                item.points[i] = (tempOption != 0) ? tempOption * op.pointPerUnit : op.pointPerUnit ;
 
+            }
             avaiableOption.RemoveAt(optionPosition);
         }
     }
 
-    public enum ItemLevel{VeryLow,Low,Normal,Hight}
+    public int GetPartOption(){
+        return 0;
+    }
 }

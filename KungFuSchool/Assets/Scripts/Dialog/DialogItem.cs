@@ -80,50 +80,23 @@ public class DialogItem : MonoBehaviour {
         EquipingBox.SetActive(false);
         UnequipBox.SetActive(false);
     }
-    public void ShowItemInShop(Item item){
-        if (ShowingItem!=null && ShowingItem == item)
-        {
-            return;
-        }
-        DisableAllDialog();
-        ShowingItem = item;
-        eName.text = item.name;
-        eName.color = item.GetItemColor();
-        eDetail.text = item.details;
-        eDefaultTitle.text = item.defaultOption.title;
-        eDefaultPoint.text = item.defaultPoint + "";
-        eDefaultUnit.text = item.defaultOption.unit;
-        ePrice.text = item.priceSell * item.count + " Lượng";
-        eUseBTN.interactable = false;
-        eDeleteBTN.text = "Bán";
-        InventoryBox.SetActive(true);
-        if (InventoryBoxOption == null || InventoryBoxOption.Length!=9)
-        {
-            InventoryBoxOption = GameObject.FindGameObjectsWithTag("EquipBoxOptions");
-        }
-        for (int i = 0; i < InventoryBoxOption.Length; i++)
-        {
-            if (i >= item.options.Length)
-            {
-                InventoryBoxOption[i].SetActive(false);
-            }
-            else
-            {
-                InventoryBoxOption[i].SetActive(true);
-                InventoryBoxOption[i].GetComponent<ItemOptionDialog>().SetText(item.options[i], item.points[i], item.GetItemColor());
-            }
-        }
-
-    }
-    public void showItem(Item item){
+    public void ShowItemInventory(Item item,bool inShop){
         if (ShowingItem!=null && ShowingItem == item)
         {
             return;
         }
         ShowingItem = item;
         DisableAllDialog();
-        eUseBTN.interactable = true;
-        eDeleteBTN.text = "Xóa";
+        if (inShop)
+        {
+            eUseBTN.interactable = false;
+            eDeleteBTN.text = "Bán";
+        }
+        else
+        {
+            eUseBTN.interactable = true;
+            eDeleteBTN.text = "Xóa";
+        }
         eName.text = item.name;
         eName.color = item.GetItemColor();
         eDetail.text = item.details;

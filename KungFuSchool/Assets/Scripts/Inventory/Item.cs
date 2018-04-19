@@ -15,6 +15,7 @@ public class Item : ScriptableObject {
     public ItemType itemType;
     public bool isEquiping = false;
     //Equipment Item's information
+    public ItemColor itemColor;
     public EquipmentSlot equipSlot;
     public Option defaultOption;
     public int defaultPoint;
@@ -46,29 +47,31 @@ public class Item : ScriptableObject {
     }
 
     public Color GetItemColor(){
-        if (options == null || options.Length == 0)
+        switch (itemColor)
         {
-            return Color.white;
-        }
-        else if (options.Length > 0 && options.Length < 3)
-        {
-            return Color.green;
-        }
-        else if (options.Length >= 3 && options.Length < 5)
-        {
-            return new Color32(3, 169, 244, 255);
-        }
-        else if (options.Length >= 5 && options.Length < 7)
-        {
-            return new Color32(156, 39, 176, 255);
-        }
-        else if (options.Length == 7 || options.Length == 8)
-        {
-            return Color.yellow;
-        }
-        else
-        {
-            return Color.gray;
+            case ItemColor.Purple:
+                return new Color32(156, 39, 176, 255);
+                break;
+            case ItemColor.Yellow:
+                return Color.yellow;
+                break;
+            case ItemColor.Silver:
+                return Color.gray;
+                break;
+            default: 
+                if (options == null || options.Length == 0)
+                {
+                    return Color.white;
+                }
+                else if (options.Length > 0 && options.Length < 3)
+                {
+                    return Color.green;
+                }
+                else
+                {
+                    return new Color32(3, 169, 244, 255);
+                }
+                break;
         }
     }
 
@@ -90,10 +93,10 @@ public class Item : ScriptableObject {
                 return "Giầy";
                 break;
             case EquipmentSlot.Weapon:
-                return "Vũ Khí Chính";
+                return "V.K Chính";
                 break;
             case EquipmentSlot.Shield:
-                return "Vũ Khí Phụ";
+                return "V.K Phụ";
                 break;
             case EquipmentSlot.Pedan:
                 return "Dây Chuyền";
@@ -126,4 +129,5 @@ public class Item : ScriptableObject {
     }
     public enum EquipmentSlot { Head, Armor, Gloves , Pant , Foot , Weapon , Shield , Pedan, Ring , Rare}
     public enum ItemType { Equipment , HPPotion , MPPotion , Question , Gold}
+    public enum ItemColor {Normal,Purple,Yellow,Silver}
 }

@@ -13,16 +13,4 @@ public class Player{
     public int Agi;
     public int Sta;
     public int Intel;
-
-    //Stat
-    public int Health;
-    public int Mana;
-    public int AttackDame;
-    public int SpellDame;
-    public int Armor;
-
-    public int GetAttackDame(){
-        int dame = AttackDame;
-        return dame;
-    }
 }

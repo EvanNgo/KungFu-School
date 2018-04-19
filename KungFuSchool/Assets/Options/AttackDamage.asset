@@ -11,9 +11,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22279af401bd25947a43a7dca8f8648b, type: 3}
   m_Name: AttackDamage
   m_EditorClassIdentifier: 
-  title: "S\xE1t Th\u01B0\u01A1ng"
+  title: "V\u1EADt C\xF4ng"
   tag: 0
-  maxPoint: 100
+  maxPoint: 200
   point: 0
-  unit: 
+  unit: "\u0110i\u1EC3m"
   pointPerUnit: 1

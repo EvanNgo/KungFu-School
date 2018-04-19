@@ -23,4 +23,18 @@ public class PlayerManager : MonoBehaviour {
     #endregion
 	// Use this for initialization
     public Player player;
+
+    public int getSta(){
+        return player.Sta;
+    }
+    public int getAgi(){
+        return player.Agi;
+    }
+    public int getStr(){
+        return player.Str;
+    }
+    public int getIntel(){
+        return player.Intel;
+    }
+
 }

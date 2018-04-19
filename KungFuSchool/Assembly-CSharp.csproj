@@ -82,6 +82,7 @@
      <Compile Include="Assets\Scripts\Inventory\Item.cs" />
      <Compile Include="Assets\Scripts\Inventory\Option.cs" />
      <Compile Include="Assets\Scripts\Inventory\ShopSlot.cs" />
+     <Compile Include="Assets\Scripts\Inventory\StatDetai.cs" />
      <Compile Include="Assets\Scripts\NPC\NPC.cs" />
      <Compile Include="Assets\Scripts\Question\QuestItem.cs" />
      <Compile Include="Assets\Scripts\Question\QuestManager.cs" />

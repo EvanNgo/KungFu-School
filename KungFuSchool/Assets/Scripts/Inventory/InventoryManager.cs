@@ -27,6 +27,8 @@ public class InventoryManager : MonoBehaviour {
     Inventory inventory;
     public NPC currentNPC;
     public InventoryMode inventoryMode;
+    public StatDetai statDetail;
+    public StatManager statManager;
     public GameObject inventoryUI;
     public GameObject playerInformationUI;
     public GameObject equipmentUI;
@@ -62,11 +64,11 @@ public class InventoryManager : MonoBehaviour {
         switch (inventoryMode)
         {
             case InventoryMode.Inventory:
-                equipmentUI.SetActive(!equipmentUI.activeSelf);
-                playerInformationUI.SetActive(!playerInformationUI.activeSelf);
+                equipmentUI.SetActive(inventoryUI.activeSelf);
+                playerInformationUI.SetActive(inventoryUI.activeSelf);
                 break;
             case InventoryMode.Shop:
-                shopUI.SetActive(!shopUI.activeSelf);
+                shopUI.SetActive(inventoryUI.activeSelf);
                 UpdateShop();
                 break;
         }

@@ -23,10 +23,11 @@ public class DialogItem : MonoBehaviour {
     }
 
     #endregion
-    private EquipmentManager eManager;
-    private PlayerManager playerManager;
-    private Item EquipingItem;
-    private Item ShowingItem;
+    EquipmentManager eManager;
+    PlayerManager playerManager;
+    StatDetai statDetails;
+    Item EquipingItem;
+    Item ShowingItem;
     [Header("Non Equip Shop Box")]
     public GameObject NonEquipShop;
     public Image nesIcon;
@@ -73,6 +74,7 @@ public class DialogItem : MonoBehaviour {
     private void Start()
     {
         playerManager = PlayerManager.instance;
+        statDetails = StatDetai.instance;
     }
     public void DisableAllDialog(){
         NonEquipShop.SetActive(false);
@@ -252,7 +254,7 @@ public class DialogItem : MonoBehaviour {
     }
 
 
-    public void showQuipingItem(Item item){
+    public void ShowQuipingItem(Item item){
         if (ShowingItem == item)
         {
             return;
@@ -284,7 +286,7 @@ public class DialogItem : MonoBehaviour {
         {
             if (i >= item.options.Length)
             {
-                EquipingBoxOption[i].SetActive(false);
+                UnequipBoxOption[i].SetActive(false);
             }
             else
             {
@@ -296,6 +298,11 @@ public class DialogItem : MonoBehaviour {
 
     public void UsingItem(){
         ShowingItem.Use();
+        if (ShowingItem.itemType == Item.ItemType.Equipment)
+        {
+            statDetails.UpdateStat();
+        }
+        ShowingItem = null;
     }
 
     public void BuyItem()
@@ -306,10 +313,14 @@ public class DialogItem : MonoBehaviour {
             return;
         }
         ShowingItem.Buy();
+        ShowingItem = null;
     }
 
     public void UnequipItem(){
         EquipmentManager.instance.UnEquip(ShowingItem);
+        ShowingItem = null;
+        statDetails.UpdateStat();
+
     }
 
     public void RemoveItem(){
@@ -320,5 +331,6 @@ public class DialogItem : MonoBehaviour {
             Inventory.instance.UpdateGold();;
         }
         ShowingItem.RemoveFromInventory();
+        ShowingItem = null;
     }
 }

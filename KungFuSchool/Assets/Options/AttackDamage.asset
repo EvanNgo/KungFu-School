@@ -13,7 +13,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: "V\u1EADt C\xF4ng"
   tag: 0
-  maxPoint: 200
+  maxPoint: 100
   point: 0
   unit: "\u0110i\u1EC3m"
   pointPerUnit: 1

@@ -245,7 +245,6 @@ public static class SQLiteCore {
         int isStacking = 0;
         if (item.isStacking) { isStacking = 1; }
         string query;
-        Debug.Log(item.defaultOption.tag + "");
         if ((int)item.itemType == 0) {
             query = String.Format("INSERT INTO Inventory (id,name,icon,detail,itemColor,equipSlot,defaultOptionTitle,defaultOptionPoint,defaultOptionUnit,defaultOptionTag,itemType,isStacking,count,price)" +
                 " VALUES (NULL,'{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}','{12}')",
@@ -272,7 +271,6 @@ public static class SQLiteCore {
                     LastAddedItem = (int)LastRowID64;
                     if ((int)item.itemType == 0 && item.options!=null && LastAddedItem != -1)
                     {
-                        Debug.Log("Save Option");
                         for (int i = 0; i < item.options.Length; i++) {
                             AddItemOption(LastAddedItem,item.points[i],item.options[i]);
                         }

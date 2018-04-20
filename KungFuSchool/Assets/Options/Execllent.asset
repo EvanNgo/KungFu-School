@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Name: Execllent
   m_EditorClassIdentifier: 
   title: "Tr\xED T\u1EED"
-  tag: 15
+  tag: 17
   maxPoint: 10
   point: 0
   unit: '%'

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Option", menuName = "Inventory/Option")]
+[CreateAssetMenu(fileName = "New Option", menuName = "Option")]
 public class Option : ScriptableObject {
     public string title;
     public StatManager.TagManager tag;

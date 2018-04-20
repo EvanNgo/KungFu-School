@@ -5,7 +5,9 @@ using UnityEngine.EventSystems;
 
 public class PlayerControlelr : MonoBehaviour {
     [Header("Basic Setting")]
-    public float moveSpeed;
+    public float moveSpeed = 4;
+    float AniAttackSpeed = 1;
+    float AniMoveSpeed = 1;
     private bool playerMoving;
     private Vector2 lastMove;
     public GameObject inventoryUI;
@@ -18,7 +20,8 @@ public class PlayerControlelr : MonoBehaviour {
     [Header("Enemy Finding")]
     public float rangeForAttackEnemy;
     public float rangeForFoundEnemy;
-    private GameObject currentEnemy;
+    GameObject currentEnemy;
+    StatManager statManager;
 
     [Header("NPC Finding")]
     public NPC currentNPC;
@@ -26,13 +29,21 @@ public class PlayerControlelr : MonoBehaviour {
     void Start() {
         myBody = GetComponent<Rigidbody2D>();
         myAni = GetComponent<Animator>();
-        myAni.speed = 1;
+        statManager = StatManager.instance;
         lastMove = new Vector2(0, -1);
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
-        myAni.SetFloat("AttackSpeed", 1);
-        myAni.SetFloat("MoveSpeed", 1);
+        AniAttackSpeed = ((float)statManager.getAttackSpeed() + 100) / 100;
+        myAni.SetFloat("AttackSpeed",AniAttackSpeed);
+        AniMoveSpeed = ((float)statManager.getMoveSpeed() + 100) / 100;
+        moveSpeed = moveSpeed * AniMoveSpeed;
+        myAni.SetFloat("MoveSpeed",AniMoveSpeed);
     }
     void FixedUpdate() {
+        AniAttackSpeed = ((float)statManager.getAttackSpeed() + 100) / 100;
+        myAni.SetFloat("AttackSpeed",AniAttackSpeed);
+        AniMoveSpeed = ((float)statManager.getMoveSpeed() + 100) / 100;
+        moveSpeed = moveSpeed * AniMoveSpeed;
+        myAni.SetFloat("MoveSpeed",AniMoveSpeed);
         playerMoving = false;
         if (inventoryUI.activeSelf || dialogManager.activeSelf || talkingMenu.activeSelf)
         {

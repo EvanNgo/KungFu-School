@@ -27,14 +27,17 @@ public class EquipmentManager : MonoBehaviour {
     public Item[] currentEquipment;
     private List<Item> listCurrentItem;
     Inventory inventory;
+    StatManager statManager;
     private void Start(){
         listCurrentItem = SQLiteCore.getEquipingitem();
         inventory = Inventory.instance;
+        statManager = StatManager.instance;
         int numSlots = System.Enum.GetNames (typeof(Item.EquipmentSlot)).Length;
         currentEquipment = new Item[numSlots];
         for (int i = 0; i < equipSlots.Length; i++)
         {
-            equipSlots[i].sprite = Resources.Load <Sprite> ("root_"+i);;
+            //equipSlots[i].sprite = Resources.Load <Sprite> ("root_"+i);
+            equipSlots[i].enabled = false;
         }
         if (listCurrentItem.Count > 0)
         {
@@ -74,10 +77,12 @@ public class EquipmentManager : MonoBehaviour {
         {
             oldItem = currentEquipment [slotIndex];
             inventory.ChangeItemAt (oldItem,index);
+            statManager.UpdateEquipItem(oldItem, false);
         }
         currentEquipment[slotIndex] = item;
         equipSlots[slotIndex].overrideSprite = item.icon;
         equipSlots[slotIndex].enabled = true;
+        statManager.UpdateEquipItem(item, true);
     }
 
     public void UnEquip(Item item){
@@ -88,8 +93,10 @@ public class EquipmentManager : MonoBehaviour {
         }
         int slotIndex = (int)item.equipSlot;
         currentEquipment[slotIndex] = null;
-        equipSlots[slotIndex].overrideSprite = Resources.Load <Sprite> ("root_"+slotIndex);;
+        equipSlots[slotIndex].sprite = null;
+        equipSlots[slotIndex].enabled = false;
         DialogItemManager.instance.CloseDialog();
+        statManager.UpdateEquipItem(item, false);
     }
 
     public void LoadCurrentItem(Item item){
@@ -97,9 +104,11 @@ public class EquipmentManager : MonoBehaviour {
         currentEquipment[slotIndex] = item;
         equipSlots[slotIndex].overrideSprite = item.icon;
         equipSlots[slotIndex].enabled = true;
+        statManager.UpdateEquipItem(item, true);
     }
 
     public void EquipingItemClick(int index){
+        Debug.Log("EquipingItemClick");
         if (currentEquipment[index] == null)
         {
             return;

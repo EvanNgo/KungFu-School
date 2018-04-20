@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\Charactor\PlayerInteraction.cs" />
      <Compile Include="Assets\Scripts\Charactor\PlayerLevel.cs" />
      <Compile Include="Assets\Scripts\Charactor\PlayerManager.cs" />
+     <Compile Include="Assets\Scripts\Charactor\StatDetai.cs" />
      <Compile Include="Assets\Scripts\Charactor\StatManager.cs" />
      <Compile Include="Assets\Scripts\Dialog\DialogItem.cs" />
      <Compile Include="Assets\Scripts\Dialog\DialogItemManager.cs" />
@@ -73,7 +74,6 @@
      <Compile Include="Assets\Scripts\Enemy\FloatingText.cs" />
      <Compile Include="Assets\Scripts\Enemy\FloatingTextController.cs" />
      <Compile Include="Assets\Scripts\Enemy\Spawner.cs" />
-     <Compile Include="Assets\Scripts\Inventory\BasicItem.cs" />
      <Compile Include="Assets\Scripts\Inventory\EquipmentManager.cs" />
      <Compile Include="Assets\Scripts\Inventory\InteractionObject.cs" />
      <Compile Include="Assets\Scripts\Inventory\Inventory.cs" />
@@ -82,7 +82,6 @@
      <Compile Include="Assets\Scripts\Inventory\Item.cs" />
      <Compile Include="Assets\Scripts\Inventory\Option.cs" />
      <Compile Include="Assets\Scripts\Inventory\ShopSlot.cs" />
-     <Compile Include="Assets\Scripts\Inventory\StatDetai.cs" />
      <Compile Include="Assets\Scripts\NPC\NPC.cs" />
      <Compile Include="Assets\Scripts\Question\QuestItem.cs" />
      <Compile Include="Assets\Scripts\Question\QuestManager.cs" />

@@ -89,7 +89,7 @@ public class Item : ScriptableObject {
             case EquipmentSlot.Pant:
                 return "Quần";
                 break;
-            case EquipmentSlot.Foot:
+            case EquipmentSlot.Boots:
                 return "Giầy";
                 break;
             case EquipmentSlot.Weapon:
@@ -127,7 +127,7 @@ public class Item : ScriptableObject {
                 return "";
         }
     }
-    public enum EquipmentSlot { Head, Armor, Gloves , Pant , Foot , Weapon , Shield , Pedan, Ring , Rare}
+    public enum EquipmentSlot { Head, Armor, Gloves , Pant , Boots , Weapon , Shield , Pedan, Ring , Rare}
     public enum ItemType { Equipment , HPPotion , MPPotion , Question , Gold}
     public enum ItemColor {Normal,Purple,Yellow,Silver}
 }

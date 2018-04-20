@@ -99,8 +99,6 @@ public class InteractionObject : MonoBehaviour {
         Debug.Log(lines);
         for (int i = 0; i < lines; i++) {
             int optionPosition = Random.Range(0, avaiableOption.Count);
-            Debug.Log(optionPosition);
-            Debug.Log(avaiableOption.Count);
             Option op = avaiableOption[optionPosition];
             item.options[i] = op;
             if (op.maxPoint == op.pointPerUnit)

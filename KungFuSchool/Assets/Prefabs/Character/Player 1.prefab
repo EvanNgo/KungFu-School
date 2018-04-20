@@ -41,7 +41,11 @@ GameObject:
   - component: {fileID: 70464607970377304}
   - component: {fileID: 95204504953310620}
   - component: {fileID: 212534492290448632}
+  - component: {fileID: 114943812595621680}
   - component: {fileID: 114797085525340702}
+  - component: {fileID: 114717103051597176}
+  - component: {fileID: 114113171640639368}
+  - component: {fileID: 114594032404732378}
   m_Layer: 0
   m_Name: Player 1
   m_TagString: Untagged
@@ -99,7 +103,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1622894829505860}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.17, y: 8, z: 0}
+  m_LocalPosition: {x: 11.45, y: 2.2, z: 0}
   m_LocalScale: {x: 0.6, y: 0.6, z: 1}
   m_Children:
   - {fileID: 4410345041182102}
@@ -183,6 +187,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114113171640639368
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1622894829505860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5e6aaa98e50a043b1123e74c380fa3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  expBar: {fileID: 0}
+  txtExp: {fileID: 0}
+  txtLevel: {fileID: 0}
 --- !u!114 &114130223073953476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,6 +213,62 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmg: 100
+--- !u!114 &114594032404732378
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1622894829505860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c471e04ac0414a95a7b8a9463b60e57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentObject: {fileID: 0}
+  currentObjectScript: {fileID: 0}
+  rangeForTakeItem: 1
+--- !u!114 &114717103051597176
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1622894829505860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f17ab65e97de4809a9ae1ae6044c4d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AttackDamage: 0
+  DamagePer: 0
+  SpellDame: 0
+  Armor: 0
+  HP: 0
+  MP: 0
+  Crit: 0
+  CritDame: 0
+  AttackSpeed: 0
+  SpellSpeed: 0
+  MoveSpeed: 0
+  HitHP: 0
+  RegentHP: 0
+  RegentTime: 0
+  Freeze: 0
+  Stun: 0
+  Poison: 0
+  Execllent: 0
+  Lucky: 0
+  MoreGold: 0
+  Redamage: 0
+  AddStr: 0
+  AddAgi: 0
+  AddSta: 0
+  AddIntel: 0
+  Defense: 0
+  StunTime: 0
+  FreezeTime: 0
+  RegentPer: 0
+  ArmorPerLevel: 0
+  DamePerLevel: 0
 --- !u!114 &114797085525340702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -214,6 +288,17 @@ MonoBehaviour:
   rangeForFoundEnemy: 2.5
   currentNPC: {fileID: 0}
   NPCTalkingEnable: 0
+--- !u!114 &114943812595621680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1622894829505860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5293df4e2e4594b99aed9268f8cc1bc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212534492290448632
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -246,7 +331,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -897812859
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300036, guid: d6b146d4f16524d16ac73e615f706634, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -290,7 +375,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -897812859
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0035162c49c3c49338dee8586dc607e1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -334,7 +419,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -897812859
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 008f4178014ff8847b1d8e78f19c029b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
